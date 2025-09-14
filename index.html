@@ -100,6 +100,54 @@
         </div>
     </div>
 
+    <div class="seccion" id="modelo-datos">
+    <h2>3. Diseño del Modelo de Datos</h2>
+
+    <p>
+        El modelo relacional fue diseñado para permitir la trazabilidad completa de los pedidos, inventario y entregas 
+        en el contexto de <strong>Farmacias Limeñas</strong>. Este modelo se implementó en el entorno de 
+        <strong>Microsoft Fabric (Data Warehouse)</strong> y contiene las siguientes tablas:
+    </p>
+
+    <!-- Imagen del modelo de datos -->
+    <div style="text-align: center; margin: 30px 0;">
+        <img src="3.Modelo/Modelo de datos-Grupo5.png" 
+             alt="Modelo de Datos - Farmacias Limeñas"
+             style="max-width: 80%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+    </div>
+
+    <!-- Descripción de tablas -->
+    <p><strong>G5_Clientes</strong><br>
+    Contiene información de las boticas o puntos de venta, incluyendo ID del cliente, nombre, dirección y categoría.</p>
+
+    <p><strong>G5_Productos</strong><br>
+    Incluye todos los productos disponibles, su nombre, precio unitario y proveedor asociado.</p>
+
+    <p><strong>G5_Proveedores</strong><br>
+    Datos básicos de los proveedores, como nombre y contacto.</p>
+
+    <p><strong>G5_Almacen</strong><br>
+    Registro de almacenes físicos, con ciudad, dirección y persona encargada.</p>
+
+    <p><strong>G5_Inventario</strong><br>
+    Muestra el stock disponible por producto y por almacén, a nivel de fechas específicas.</p>
+
+    <p><strong>G5_Pedidos</strong><br>
+    Tabla principal de pedidos realizados por los clientes, con fecha, producto y cliente asociado.</p>
+
+    <p><strong>G5_Detalle_Pedidos</strong><br>
+    Registra los productos específicos y cantidades asociadas a cada pedido.</p>
+
+    <p><strong>G5_Entregas</strong><br>
+    Representa las entregas realizadas, incluyendo almacén, responsable, fecha y si fue completa o no.</p>
+
+    <p><strong>G5_Detalle_Entrega</strong><br>
+    Especifica qué cantidad de cada producto fue efectivamente entregado en cada pedido.</p>
+
+    <p><strong>Calendario</strong><br>
+    Tabla maestra de fechas que permite desagregar la información por día, semana, mes o trimestre.</p>
+    </div>
+
 </body>
 </html>
 

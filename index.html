@@ -65,6 +65,41 @@
         </p>
     </div>
 
+        <div class="seccion" id="arquitectura">
+        <h2>Arquitectura del Proyecto</h2>
+        <p>
+            La arquitectura del proyecto fue diseñada para integrar múltiples herramientas en la nube con el fin de 
+            automatizar y facilitar la medición del <strong>Fill Rate</strong>. Esta solución combina el uso de una base 
+            de datos en SQL Azure, procesamiento automático en Microsoft Fabric, aplicaciones operativas en Power Apps, 
+            flujos de automatización con Power Automate y visualizaciones con Power BI.
+        </p>
+
+        <p>
+            Cada componente cumple un rol específico dentro del flujo de datos. Desde la carga de información diaria 
+            hasta la generación de reportes automáticos y dashboards interactivos, la arquitectura fue pensada para lograr 
+            eficiencia, trazabilidad y control operativo.
+        </p>
+
+        <ul>
+            <li><strong>1. Origen:</strong> Archivos Excel con datos de pedidos, entregas, productos y almacenes.</li>
+            <li><strong>2. SQL Azure:</strong> Carga y normalización de datos en base de datos relacional en la nube.</li>
+            <li><strong>3. Fabric - Data Warehouse:</strong> Importación a un entorno analítico para uso en Power BI.</li>
+            <li><strong>4. Pipeline:</strong> Automatización diaria para actualizar las tablas desde SQL a Fabric.</li>
+            <li><strong>5. Notebook en PySpark:</strong> Envío de resumen de pedidos diarios al correo.</li>
+            <li><strong>6. Power Apps:</strong> Aplicaciones para registrar y modificar pedidos, entregas e inventario.</li>
+            <li><strong>7. Power Automate:</strong> Generación automática de reportes semanales vía correo.</li>
+            <li><strong>8. Power BI:</strong> Dashboard de seguimiento de desempeño logístico.</li>
+        </ul>
+
+        <!-- Imagen de la arquitectura del proyecto -->
+        <div style="text-align: center; margin-top: 20px;">
+            <img src="2.Arquitectura/Arquitectura_proyecto.png" 
+                 alt="Diagrama de Arquitectura del Proyecto" 
+                 style="max-width: 80%; height: auto; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <p style="font-size: 14px; color: #555;">Figura: Arquitectura técnica del proyecto Fill Rate</p>
+        </div>
+    </div>
+
 </body>
 </html>
 

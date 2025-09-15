@@ -180,6 +180,47 @@
         </p>
     </div>
 
+    <!-- SECCIÓN 5: Automatización en Fabric (Pipeline) -->
+    <div class="seccion" id="automatizacion-fabric">
+        <h2>🧩 Automatización en Fabric (Pipeline)</h2>
+    
+        <p>
+            La automatización del flujo de datos es una parte fundamental del proyecto de análisis del <strong>Fill Rate</strong> en <em>Farmacias Limeñas</em>. 
+            Para lograr que la información esté siempre actualizada, se configuró un <strong>pipeline automático</strong> dentro de Microsoft Fabric llamado <code>pl_tablas</code>.
+        </p>
+    
+        <p>
+            Este pipeline tiene como objetivo central la <strong>actualización diaria de las tablas del Data Warehouse</strong>, asegurando que la información más reciente 
+            esté disponible para los dashboards de Power BI, el notebook PySpark y los procesos automatizados posteriores.
+        </p>
+    
+        <h3>📌 Características del Pipeline</h3>
+        <ul>
+            <li><strong>Nombre del pipeline:</strong> <code>pl_tablas</code></li>
+            <li><strong>Frecuencia de ejecución:</strong> Diario a las <strong>8:00 PM</strong></li>
+            <li><strong>Herramienta usada:</strong> Microsoft Fabric - Data Factory</li>
+            <li><strong>Tipo de tareas:</strong>
+                <ul>
+                    <li>Actualiza las tablas importadas desde Azure SQL hacia Fabric Data Warehouse</li>
+                    <li>Ejecuta automáticamente el <strong>Notebook de PySpark</strong> al finalizar</li>
+                    <li>No realiza carga desde fuentes externas, sino sincronización y limpieza de las tablas ya integradas</li>
+                </ul>
+            </li>
+        </ul>
+    
+        <h3>📈 Flujo del Pipeline</h3>
+        <p>
+            El pipeline sigue una estructura secuencial donde cada tabla es procesada individualmente mediante <strong>Data Flows</strong>, 
+            y al final del flujo se llama automáticamente al notebook que genera y envía un resumen diario de los pedidos registrados.
+        </p>
+    
+        <!-- Imagen del pipeline -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="2.pipeline/pipeline.png" 
+                 alt="Pipeline de actualización en Microsoft Fabric" 
+                 style="max-width: 95%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+    </div>
 
 
 

@@ -136,6 +136,49 @@
             <li><strong>Calendario:</strong> Tabla maestra de fechas utilizada para análisis temporales y generación de medidas como el Fill Rate mensual.</li>
         </ul>
     </div>
+    
+    <div class="seccion" id="notebook">
+        <h2>📘 Sección 4: Notebook en PySpark</h2>
+    
+        <p>
+            Una parte clave del proceso automatizado fue el desarrollo de un notebook utilizando <strong>PySpark</strong>, 
+            que se ejecuta al final del pipeline diario creado en Microsoft Fabric. 
+            Este notebook tiene como propósito principal <strong>consultar la cantidad total de pedidos realizados durante el día</strong> 
+            y enviar dicha información por correo electrónico al usuario.
+        </p>
+    
+        <!-- Imagen del notebook -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="4.Notebook/notebook.png" 
+                 alt="Código del notebook en PySpark" 
+                 style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        </div>
+    
+        <p>
+            Esta automatización es parte de la estrategia para mantener informada a la operación sin necesidad de intervención manual, 
+            promoviendo la toma de decisiones basadas en datos en tiempo real.
+        </p>
+    
+        <h3>🔄 Flujo del Proceso</h3>
+        <ol>
+            <li><strong>Consulta de datos:</strong> El notebook se conecta al Data Warehouse en Fabric y realiza una consulta SQL que cuenta los pedidos registrados en la fecha actual.</li>
+            <li><strong>Formateo de resultados:</strong> Se transforma la información a un formato legible.</li>
+            <li><strong>Notificación vía correo electrónico:</strong> Se envía un correo automático con los resultados, utilizando un servidor SMTP (en este caso, Gmail).</li>
+        </ol>
+    
+        <!-- Imagen del correo enviado -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="4.Notebook/correo_notebook.png" 
+                 alt="Correo automático enviado desde el notebook" 
+                 style="max-width: 70%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        </div>
+    
+        <p>
+            Este notebook se configura con la cuenta de Microsoft Fabric 
+            <strong>g05@tqt7l.onmicrosoft.com</strong> y envía correos a la cuenta personal del usuario 
+            <strong>karyj98@hotmail.com</strong>.
+        </p>
+    </div>
 
 
 

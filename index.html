@@ -104,62 +104,39 @@
         <h2>3. Diseño del Modelo de Datos</h2>
     
         <p>
-            El modelo de datos desarrollado se encuentra en el entorno de <strong>Microsoft Fabric - Data Warehouse</strong>, 
-            y está orientado a representar de manera lógica y operativa el proceso completo de pedidos, entregas, inventario y gestión de clientes.
-            A continuación, se describen brevemente las principales tablas que conforman este modelo relacional:
+            A continuación, se presenta el modelo de datos relacional utilizado para el análisis del Fill Rate. 
+            Las tablas fueron importadas desde Azure SQL a Microsoft Fabric y modeladas en un entorno de Data Warehouse, 
+            permitiendo establecer relaciones clave entre pedidos, entregas, inventario y entidades maestras como productos y clientes.
         </p>
     
-        <!-- Imagen del modelo relacional -->
+        <!-- Imagen del modelo de datos -->
         <div style="text-align: center; margin: 30px 0;">
             <img src="3.Modelo/Modelo de datos-Grupo5.png" 
-                 alt="Modelo de Datos - Farmacias Limeñas"
-                 style="max-width: 80%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                 alt="Modelo de Datos" 
+                 style="max-width: 80%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
         </div>
     
-        <!-- Lista de tablas con puntos -->
+        <!-- Introducción a la descripción de tablas -->
+        <p>
+            El modelo está compuesto por varias tablas interrelacionadas que permiten capturar tanto la información de pedidos como de entregas, inventario y datos maestros. 
+            A continuación, se describe brevemente el propósito de cada una:
+        </p>
+    
+        <!-- Descripción de tablas con viñetas -->
         <ul style="line-height: 1.8; font-size: 16px;">
-            <li>
-                <strong>G5_Clientes</strong><br>
-                Contiene información de las boticas o puntos de venta, incluyendo ID del cliente, nombre, dirección y categoría.
-            </li>
-            <li>
-                <strong>G5_Productos</strong><br>
-                Incluye todos los productos disponibles, su nombre, precio unitario y proveedor asociado.
-            </li>
-            <li>
-                <strong>G5_Proveedores</strong><br>
-                Datos básicos de los proveedores, como nombre y contacto.
-            </li>
-            <li>
-                <strong>G5_Almacen</strong><br>
-                Registro de almacenes físicos, con ciudad, dirección y persona encargada.
-            </li>
-            <li>
-                <strong>G5_Inventario</strong><br>
-                Muestra el stock disponible por producto y por almacén, a nivel de fechas específicas.
-            </li>
-            <li>
-                <strong>G5_Pedidos</strong><br>
-                Tabla principal de pedidos realizados por los clientes, con fecha, producto y cliente asociado.
-            </li>
-            <li>
-                <strong>G5_Detalle_Pedidos</strong><br>
-                Registra los productos específicos y cantidades asociadas a cada pedido.
-            </li>
-            <li>
-                <strong>G5_Entregas</strong><br>
-                Representa las entregas realizadas, incluyendo almacén, responsable, fecha y si fue completa o no.
-            </li>
-            <li>
-                <strong>G5_Detalle_Entrega</strong><br>
-                Especifica qué cantidad de cada producto fue efectivamente entregado en cada pedido.
-            </li>
-            <li>
-                <strong>Calendario</strong><br>
-                Tabla maestra de fechas que permite desagregar la información por día, semana, mes o trimestre, esencial para análisis temporales.
-            </li>
+            <li><strong>G5_Clientes:</strong> Contiene información de las boticas o puntos de venta, incluyendo ID del cliente, nombre, dirección y categoría.</li>
+            <li><strong>G5_Productos:</strong> Incluye todos los productos disponibles, su nombre, precio unitario y proveedor asociado.</li>
+            <li><strong>G5_Proveedores:</strong> Datos básicos de los proveedores, como nombre y contacto.</li>
+            <li><strong>G5_Almacen:</strong> Registro de almacenes físicos, con ciudad, dirección y persona encargada.</li>
+            <li><strong>G5_Inventario:</strong> Muestra el stock disponible por producto y por almacén, a nivel de fechas específicas.</li>
+            <li><strong>G5_Pedidos:</strong> Contiene los pedidos realizados por los clientes, con su respectiva fecha y producto solicitado.</li>
+            <li><strong>G5_Detalle_Pedidos:</strong> Detalle por producto y cantidad de cada pedido registrado.</li>
+            <li><strong>G5_Entregas:</strong> Registra cuándo y desde qué almacén se realizó una entrega, si fue completa o no, y quién la gestionó.</li>
+            <li><strong>G5_Detalle_Entrega:</strong> Detalle de la cantidad efectivamente entregada para cada producto.</li>
+            <li><strong>Calendario:</strong> Tabla maestra de fechas utilizada para análisis temporales y generación de medidas como el Fill Rate mensual.</li>
         </ul>
     </div>
+
 
 
 

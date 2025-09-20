@@ -347,7 +347,57 @@
         </p>
     </div>
 
+    <!-- Continuación Sección 6 - Power Apps: Registro de Entregas -->
+    
+    <div class="seccion" id="powerapps-entrega">
+        <h2>Flujo 2: Registro de Entregas (Responsable: Auxiliar de Almacén o Logística)</h2>
+    
+        <p>
+            El proceso de entrega se inicia desde la pantalla principal de la aplicación. 
+            El <strong>auxiliar de almacén o logística</strong> es el encargado de registrar correctamente los productos entregados, verificando antes 
+            la disponibilidad en inventario y completando la información de seguimiento logístico.
+        </p>
+    
+        <p>
+            En la primera pantalla, se accede al <strong>formulario de registro del detalle de entrega</strong>, donde se selecciona el producto 
+            correspondiente al pedido. En el lado izquierdo, se visualiza el stock disponible por producto y almacén, 
+            lo cual permite validar si la entrega podrá realizarse de forma completa.
+        </p>
+    
+        <p>
+            Esta pantalla también contiene un formulario con los campos de <code>detalle_entrega_id</code>, <code>entrega_id</code>, 
+            <code>producto_id</code> y <code>cantidad_entregada</code>, los cuales deben ser completados. Algunos campos se autocompletan 
+            para facilitar el proceso.
+        </p>
+    
+        <!-- Imagen de registro del detalle de la entrega -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="5.Power_apps/entrega_1.png" 
+                 alt="Pantalla de registro de detalle de entrega" 
+                 style="max-width: 90%; height: auto; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        </div>
+    
+        <p>
+            Luego de registrar el detalle de la entrega, se procede al <strong>formulario principal de entrega</strong>. 
+            En esta nueva pantalla se ingresan los datos del repartidor, la fecha de entrega y el código del pedido correspondiente. 
+            Además, el usuario debe indicar si la entrega fue completa (<code>S</code>) o incompleta (<code>N</code>) 
+            según la validación previa de stock.
+        </p>
+    
+        <p>
+            Esta información se graba en las tablas <code>G5_Entregas</code> y <code>G5_Detalle_Entrega</code> respectivamente. 
+            El proceso concluye al presionar el botón <strong>“Terminar entrega”</strong>.
+        </p>
+    
+        <!-- Imagen de registro general de entrega -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="5.Power_apps/entrega_2.png" 
+                 alt="Pantalla de registro general de entrega" 
+                 style="max-width: 90%; height: auto; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        </div>
+    </div>
 
+    
 
 </body>
 </html>

@@ -223,6 +223,53 @@
     </div>
 
 
+    <div class="seccion" id="powerapps">
+        <h2>6. Power Apps y Flujo Operativo</h2>
+    
+        <p>
+            Uno de los pilares del proyecto fue la implementación de una aplicación operativa en Power Apps que permita registrar, consultar y actualizar información clave como pedidos, entregas, inventario y datos maestros. 
+            A continuación, se muestra el diagrama de flujo que resume el funcionamiento lógico detrás de la aplicación.
+        </p>
+    
+        <!-- Imagen del diagrama de flujo centrada -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="5.Power_apps/_Diagrama de flujo-G5 (1).png" 
+                 alt="Diagrama de flujo Power Apps" 
+                 style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        </div>
+    
+        <p>
+            El diagrama anterior define los 4 principales procesos habilitados en Power Apps:
+        </p>
+    
+        <ul>
+            <li><strong>Registro de Pedido Nuevo:</strong> 
+                Se valida si el cliente ya existe. En caso contrario, se registra uno nuevo. Luego se verifica si el producto está registrado. 
+                Si no existe, se cancela el pedido; si existe, se registra en las tablas <code>G5_Pedidos</code> y <code>G5_Detalle_Pedidos</code>.
+            </li>
+    
+            <li><strong>Registro de Entrega:</strong> 
+                Se ingresan los datos de la entrega en <code>G5_Entregas</code> y <code>G5_Detalle_Entrega</code>, verificando si el stock es suficiente. 
+                Dependiendo de ello, se marca la entrega como completa (S) o incompleta (N).
+            </li>
+    
+            <li><strong>Actualización de Inventario:</strong> 
+                Flujo independiente que permite ajustar en tiempo real la cantidad disponible de productos en la tabla <code>G5_Inventario</code>.
+            </li>
+    
+            <li><strong>Actualización de Tablas Maestras:</strong> 
+                Permite registrar o modificar información en las tablas <code>G5_Clientes</code>, <code>G5_Proveedores</code>, 
+                <code>G5_Productos</code> y <code>G5_Almacen</code>.
+            </li>
+        </ul>
+    
+        <p>
+            Este flujo permite que múltiples usuarios puedan interactuar con el sistema desde una misma interfaz operativa, 
+            garantizando que los datos estén sincronizados con el Data Warehouse en Microsoft Fabric.
+        </p>
+    </div>
+    
+
 
 
 </body>

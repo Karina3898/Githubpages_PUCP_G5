@@ -269,6 +269,83 @@
         </p>
     </div>
     
+    <div class="seccion" id="powerapps">
+        <h2>6. Power Apps y Flujo Operativo</h2>
+    
+        <p>
+            Para facilitar la gestión de pedidos, entregas, inventario y tablas maestras, se diseñó una aplicación en Power Apps basada en el flujo lógico previamente definido. 
+            Esta aplicación está dirigida a diferentes perfiles dentro de la empresa, en este caso, el <strong>Asistente de Logística</strong> es el responsable de registrar los pedidos realizados por los clientes.
+        </p>
+    
+        <!-- Imagen principal: Menú de la app -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="5.Power_apps/app_principal.png" 
+                 alt="Pantalla principal de Power Apps" 
+                 style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;">
+        </div>
+    
+        <p>
+            Desde esta pantalla principal, el usuario puede elegir entre cuatro flujos operativos:
+            <strong>Registrar pedido, Registrar entrega, Registrar inventario</strong> y <strong>Actualizar tablas maestras</strong>.
+            A continuación, se detalla el proceso de <strong>Registro de pedidos</strong>.
+        </p>
+    
+        <h3>Flujo de registro de pedidos</h3>
+    
+        <p>
+            El proceso inicia al seleccionar la opción <strong>Registrar pedido</strong>. Aparecerá una ventana emergente (Imagen 2) que recuerda al usuario verificar si el cliente ya existe en la base de datos.
+            En caso no exista, deberá ser registrado.
+        </p>
+    
+        <!-- Imagen 2 -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="5.Power_apps/pedido_1.png" 
+                 alt="Paso 1: Confirmar cliente" 
+                 style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;">
+        </div>
+    
+        <p>
+            En la siguiente pantalla (Imagen 3), se consulta si el cliente ya existe. Si no se encuentra, se procede a registrar al nuevo cliente en la base de datos con sus respectivos campos:
+            <em>nombre_cliente, cliente_id, categoría, dirección</em>.
+        </p>
+    
+        <!-- Imagen 3 -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="5.Power_apps/pedido_2.png" 
+                 alt="Registro de cliente nuevo" 
+                 style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;">
+        </div>
+    
+        <p>
+            Una vez validado el cliente, se accede al formulario para registrar el nuevo pedido (Imagen 4).
+            Algunos campos como el <strong>ID del pedido</strong> y el <strong>ID del cliente</strong> son autocompletados para facilitar el proceso. También se agregan notas laterales que ayudan al operador.
+        </p>
+    
+        <!-- Imagen 4 -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="5.Power_apps/pedido_3.png" 
+                 alt="Formulario de registro de pedido" 
+                 style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;">
+        </div>
+    
+        <p>
+            Finalmente, se completa el formulario de <strong>detalle del pedido</strong> (Imagen 5), donde se busca y selecciona el producto correspondiente.
+            En caso el producto no exista, el operador debe regresar y eliminar el pedido para evitar inconsistencias, ya que este no puede registrar nuevos productos.
+            Si el producto existe, se procede a ingresar la cantidad solicitada y finalizar el pedido.
+        </p>
+    
+        <!-- Imagen 5 -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="5.Power_apps/pedido_4.png" 
+                 alt="Formulario de detalle del pedido" 
+                 style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;">
+        </div>
+    
+        <p>
+            Este flujo garantiza el correcto registro de los pedidos en las tablas <strong>Pedidos</strong> y <strong>Detalle_Pedidos</strong>,
+            manteniendo la integridad de los datos y asegurando la trazabilidad dentro del sistema.
+        </p>
+    </div>
 
 
 

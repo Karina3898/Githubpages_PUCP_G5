@@ -397,6 +397,41 @@
         </div>
     </div>
 
+    <!-- Sub-sección: Registro de Inventario (Power Apps) -->
+    <div class="seccion">
+        <h3>Flujo 3: Registro de Inventario (Power Apps)</h3>
+    
+        <!-- Imagen del formulario de inventario -->
+        <div style="text-align: center; margin-bottom: 25px;">
+            <img src="5.Power_apps/inventario.png" 
+                 alt="Pantalla de registro de inventario" 
+                 style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+        </div>
+    
+        <p>
+            Este flujo es utilizado por el <strong>Auxiliar de Logística</strong> para registrar la actualización de inventario
+            por producto y almacén. Desde la pantalla de ingreso se visualizan datos clave para la validación, incluyendo el 
+            <strong>último inventario registrado</strong> y la <strong>última entrega realizada</strong>, lo cual permite evaluar 
+            correctamente el stock actualizado.
+        </p>
+    
+        <p>
+            En el panel izquierdo, el usuario puede consultar la información del producto y almacén seleccionado, así como los valores históricos. 
+            En el formulario del lado derecho se debe completar el ID del inventario, el código del producto, almacén, cantidad y fecha de actualización.
+        </p>
+    
+        <p>
+            La aplicación valida que tanto el <code>producto_id</code> como el <code>almacen_id</code> existan previamente. 
+            Además, impide registrar inventarios con <code>inventario_id</code> duplicado, evitando inconsistencias en la base de datos.
+        </p>
+    
+        <p>
+            Al presionar el botón <strong>“Terminar registro de inventario”</strong>, se envía la información a la tabla <code>G5_Inventario</code>,
+            completando el proceso de actualización.
+        </p>
+    </div>
+
+
     
 
 </body>

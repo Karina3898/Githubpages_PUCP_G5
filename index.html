@@ -513,6 +513,128 @@
         </p>
     </div>
     
+     <h2>7. Power BI</h2>
+    
+    <h3>Modelo de datos en Power BI</h3>
+    <p>
+      El modelo de datos fue construido en Power BI a partir de las tablas publicadas desde el entorno de Microsoft Fabric. Las relaciones se establecen entre las tablas de hechos y dimensiones mediante claves primarias y foráneas. La estructura responde a un esquema en estrella, permitiendo eficiencia en los análisis.
+    </p>
+    <p>
+      Dentro de este modelo, se incluye una tabla de fechas (<em>Calendario</em>) para análisis temporales y una tabla de medidas que contiene indicadores calculados como el porcentaje de Fill Rate, cantidad entregada, cantidad pendiente, entre otros.
+    </p>
+    <p>
+      Este modelo es administrado por el <strong>Analista de Inteligencia de Negocios</strong>, quien se encarga de estructurar y validar los datos antes de la construcción del dashboard.
+    </p>
+    <img src="6.PowerBI/Modelo de datos_bi.png" alt="Modelo de datos Power BI" width="100%">
+    
+    <hr>
+    
+    <h3>Interfaz general de Power BI</h3>
+    <p>
+      Con el modelo de datos ya estructurado, se procede a crear el reporte directamente desde el entorno de Power BI en Microsoft Fabric. La interfaz está organizada por secciones y preguntas que permiten explorar tanto el contexto del negocio como los resultados del análisis.
+    </p>
+    <p>
+      Esta estructura permite que el <strong>Jefe de Logística</strong> y demás tomadores de decisión naveguen fácilmente entre páginas y accedan a visualizaciones clave.
+    </p>
+    <img src="6.PowerBI/BI_0.png" alt="Interfaz general Power BI" width="100%">
+    
+    <hr>
+    
+    <h3>Caso de negocio</h3>
+    <p>
+      La siguiente visualización presenta un resumen del objetivo, estrategia y análisis costo-beneficio del proyecto:
+    </p>
+    <ul>
+      <li><strong>Objetivo:</strong> Incrementar el Fill Rate mensual de 92% a 97% en un año.</li>
+      <li><strong>Estrategia:</strong> Optimizar inventario, planificar la demanda, monitorear entregas y generar alertas por baja rotación.</li>
+      <li><strong>Costo-beneficio:</strong> Una inversión de S/ 7,000 genera un retorno proyectado de S/ 1,836,000 anuales.</li>
+    </ul>
+    <img src="6.PowerBI/BI_1.png" alt="Caso de negocio" width="100%">
+    
+    <hr>
+    
+    <h3>Definición del indicador</h3>
+    <p>
+      Esta vista define el indicador principal del proyecto:
+    </p>
+    <ul>
+      <li><strong>Fill Rate (%)</strong> = (Pedidos entregados completos y a tiempo / Total de pedidos) × 100</li>
+      <li>Se mide en porcentaje, de forma mensual.</li>
+      <li>Cada punto porcentual de mejora representa S/ 60,000 en ingresos mensuales recuperados.</li>
+    </ul>
+    <img src="6.PowerBI/BI_2.png" alt="Definición del indicador" width="100%">
+    
+    <hr>
+    
+    <h3>Dashboard principal</h3>
+    <p>
+      Aquí se visualiza el <strong>valor actual del Fill Rate mensual</strong>: <strong>91.69%</strong> al 31 de mayo de 2025, clasificado como nivel amarillo.
+    </p>
+    <p>
+      El gráfico tipo velocímetro permite al <strong>Jefe de Logística</strong> monitorear el cumplimiento en tiempo real. Se incluye además un filtro de fechas para realizar análisis históricos o proyectados.
+    </p>
+    <img src="6.PowerBI/BI_3.png" alt="Dashboard principal" width="100%">
+    
+    <hr>
+    
+    <h3>Reporte de evolución del Fill Rate</h3>
+    <p>
+      Esta visualización muestra el avance del Fill Rate frente al objetivo de 97%:
+    </p>
+    <ul>
+      <li>Línea roja: Fill Rate actual (92% estable).</li>
+      <li>Línea azul: Fill Rate proyectado (ascenso progresivo hasta 97% en abril 2026).</li>
+      <li>Incluye hitos de implementación y seguimiento.</li>
+    </ul>
+    <p>
+      Este panel es consultado tanto por el <strong>Gerente de Operaciones</strong> como por el <strong>Equipo de Planeamiento Estratégico</strong>.
+    </p>
+    <img src="6.PowerBI/BI_4.png" alt="Evolución Fill Rate" width="100%">
+    
+    <hr>
+    
+    <h3>Análisis 1: Mejor valor mensual del Fill Rate (enero - mayo 2025)</h3>
+    <p>
+      Este análisis responde a la pregunta: <strong>¿Cuál fue el mejor valor del Fill Rate mensual en Lima durante los primeros 5 meses del 2025?</strong>
+    </p>
+    <ul>
+      <li>El valor máximo fue de <strong>95% en marzo 2025</strong>.</li>
+      <li>El mínimo fue de 87% en febrero 2025, evidenciando alta variabilidad.</li>
+    </ul>
+    <p>
+      Este análisis es útil para el <strong>Supervisor de Distribución</strong>, encargado de hacer seguimiento al rendimiento logístico por periodo.
+    </p>
+    
+    <table>
+      <tr>
+        <td><img src="6.PowerBI/BI_5.png" alt="Gráfico Fill Rate mensual" width="480px"></td>
+        <td><img src="6.PowerBI/BI_detalle51.png" alt="Detalle mensual Fill Rate" width="480px"></td>
+      </tr>
+    </table>
+    
+    <hr>
+    
+    <h3>Análisis 2: Almacén con mayor desempeño promedio</h3>
+    <p>
+      Esta vista analiza: <strong>¿Qué almacén tuvo el mayor promedio de Fill Rate en los primeros 5 meses del 2025?</strong>
+    </p>
+    <ul>
+      <li><strong>Almacén Lima Sur</strong> lidera con un promedio de <strong>91.60%</strong>.</li>
+      <li>Se evidencian diferencias entre almacenes, útil para identificar buenas prácticas replicables.</li>
+    </ul>
+    <p>
+      Este análisis es clave para el <strong>Encargado de Centro de Distribución</strong> de cada zona.
+    </p>
+    
+    <table>
+      <tr>
+        <td><img src="6.PowerBI/BI_6.png" alt="Gráfico por almacén" width="480px"></td>
+        <td><img src="6.PowerBI/BI_61.png" alt="Detalle almacén Lima Sur" width="480px"></td>
+      </tr>
+    </table>
+    
+    <hr>
+
     
 
     

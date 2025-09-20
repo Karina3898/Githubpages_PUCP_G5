@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Farmacias Limeñas - Proyecto Fill Rate</title>
-    <style>
-        body {
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Farmacias Limeñas - Proyecto Fill Rate
+  </title>
+  <style>
+   body {
             font-family: Arial, sans-serif;
             margin: 40px;
             background-color: #f9f9f9;
@@ -29,789 +31,1419 @@
         .seccion {
             margin-bottom: 50px;
         }
-    </style>
-</head>
-<body>
-
-    <div class="seccion" id="inicio">
-        <h1>Farmacias Limeñas - Proyecto de Análisis del Fill Rate</h1>
-
-        <!-- Imagen de la empresa centrada con tamaño reducido -->
-        <div style="text-align: center; margin-top: 20px;">
-            <img src="1.Inicio/Imagen_Empresa.png" 
-                 alt="Imagen de Farmacias Limeñas" 
-                 style="max-width: 40%; height: auto; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        </div>
-
-        <h2>Presentación General</h2>
-        <p>
-            Este proyecto busca implementar una solución tecnológica integral para la empresa ficticia <strong>Farmacias Limeñas</strong>, 
+  </style>
+ </head>
+ <body>
+  <div class="seccion" id="inicio">
+   <h1>
+    Farmacias Limeñas - Proyecto de Análisis del Fill Rate
+   </h1>
+   <!-- Imagen de la empresa centrada con tamaño reducido -->
+   <div style="text-align: center; margin-top: 20px;">
+    <img alt="Imagen de Farmacias Limeñas" src="1.Inicio/Imagen_Empresa.png" style="max-width: 40%; height: auto; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+   </div>
+   <h2>
+    Presentación General
+   </h2>
+   <p style="text-align: justify">
+    Este proyecto busca implementar una solución tecnológica integral para la empresa ficticia
+    <strong>
+     Farmacias Limeñas
+    </strong>
+    , 
             dedicada a la comercialización y distribución de productos farmacéuticos en Lima Metropolitana. 
             A través de herramientas como SQL Azure, Microsoft Fabric, Power BI, Power Apps y Power Automate, se construyó una arquitectura 
-            de datos que permite analizar el <strong>Fill Rate</strong>, un indicador clave para medir la eficiencia operativa 
+            de datos que permite analizar el
+    <strong>
+     Fill Rate
+    </strong>
+    , un indicador clave para medir la eficiencia operativa 
             de la cadena de suministro.
-        </p>
-
-        <p>
-            La solución fue diseñada para brindar una trazabilidad completa de los pedidos y entregas, 
+   </p>
+   <p style="text-align: justify">
+    La solución fue diseñada para brindar una trazabilidad completa de los pedidos y entregas, 
             permitiendo una toma de decisiones más rápida y basada en datos. El proyecto también incorpora automatizaciones 
             para la actualización diaria de la base de datos, generación de alertas y visualización mediante dashboard operativos.
-        </p>
-
-        <p>
-            A lo largo de esta página web se describen todas las etapas del proceso, desde la conexión con la base de datos SQL 
+   </p>
+   <p style="text-align: justify">
+    A lo largo de esta página web se describen todas las etapas del proceso, desde la conexión con la base de datos SQL 
             hasta la implementación de automatizaciones y paneles interactivos. Esta solución está orientada a facilitar la gestión 
             y mejora del indicador Fill Rate, permitiendo identificar ineficiencias y mejorar el servicio al cliente.
-        </p>
-    </div>
-
-        <div class="seccion" id="arquitectura">
-        <h2>Arquitectura del Proyecto</h2>
-        <p>
-            La arquitectura del proyecto fue diseñada para integrar múltiples herramientas en la nube con el fin de 
-            automatizar y facilitar la medición del <strong>Fill Rate</strong>. Esta solución combina el uso de una base 
+   </p>
+  </div>
+  <div class="seccion" id="arquitectura">
+   <h2>
+    Arquitectura del Proyecto
+   </h2>
+   <p style="text-align: justify">
+    La arquitectura del proyecto fue diseñada para integrar múltiples herramientas en la nube con el fin de 
+            automatizar y facilitar la medición del
+    <strong>
+     Fill Rate
+    </strong>
+    . Esta solución combina el uso de una base 
             de datos en SQL Azure, procesamiento automático en Microsoft Fabric, aplicaciones operativas en Power Apps, 
             flujos de automatización con Power Automate y visualizaciones con Power BI.
-        </p>
-
-        <p>
-            Cada componente cumple un rol específico dentro del flujo de datos. Desde la carga de información diaria 
+   </p>
+   <p style="text-align: justify">
+    Cada componente cumple un rol específico dentro del flujo de datos. Desde la carga de información diaria 
             hasta la generación de reportes automáticos y dashboards interactivos, la arquitectura fue pensada para lograr 
             eficiencia, trazabilidad y control operativo.
-        </p>
-
-        <ol>
-            <li><strong>Origen:</strong> Archivos Excel con datos de pedidos, entregas, productos y almacenes.</li>
-            <li><strong>SQL Azure:</strong> Carga y normalización de datos en base de datos relacional en la nube.</li>
-            <li><strong>Fabric - Data Warehouse:</strong> Importación a un entorno analítico para uso en Power BI.</li>
-            <li><strong>Pipeline:</strong> Automatización diaria para actualizar las tablas desde SQL a Fabric.</li>
-            <li><strong>Notebook en PySpark:</strong> Envío de resumen de pedidos diarios al correo.</li>
-            <li><strong>Power Apps:</strong> Aplicaciones para registrar y modificar pedidos, entregas e inventario.</li>
-            <li><strong>Power Automate:</strong> Generación automática de reportes semanales vía correo.</li>
-            <li><strong>Power BI:</strong> Dashboard de seguimiento de desempeño logístico.</li>
-        </ol>
-
-        <!-- Imagen de la arquitectura del proyecto -->
-        <div style="text-align: center; margin-top: 20px;">
-            <img src="2.Arquitectura/Arquitectura_proyecto.png" 
-                 alt="Diagrama de Arquitectura del Proyecto" 
-                 style="max-width: 80%; height: auto; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-            <p style="font-size: 14px; color: #555;">Figura: Arquitectura técnica del proyecto Fill Rate</p>
-        </div>
-    </div>
-
-    <div class="seccion" id="modelo-datos">
-        <h2>3. Diseño del Modelo de Datos</h2>
-    
-        <p>
-            A continuación, se presenta el modelo de datos relacional utilizado para el análisis del Fill Rate. 
+   </p>
+   <ol>
+    <li>
+     <strong>
+      Origen:
+     </strong>
+     Archivos Excel con datos de pedidos, entregas, productos y almacenes.
+    </li>
+    <li>
+     <strong>
+      SQL Azure:
+     </strong>
+     Carga y normalización de datos en base de datos relacional en la nube.
+    </li>
+    <li>
+     <strong>
+      Fabric - Data Warehouse:
+     </strong>
+     Importación a un entorno analítico para uso en Power BI.
+    </li>
+    <li>
+     <strong>
+      Pipeline:
+     </strong>
+     Automatización diaria para actualizar las tablas desde SQL a Fabric.
+    </li>
+    <li>
+     <strong>
+      Notebook en PySpark:
+     </strong>
+     Envío de resumen de pedidos diarios al correo.
+    </li>
+    <li>
+     <strong>
+      Power Apps:
+     </strong>
+     Aplicaciones para registrar y modificar pedidos, entregas e inventario.
+    </li>
+    <li>
+     <strong>
+      Power Automate:
+     </strong>
+     Generación automática de reportes semanales vía correo.
+    </li>
+    <li>
+     <strong>
+      Power BI:
+     </strong>
+     Dashboard de seguimiento de desempeño logístico.
+    </li>
+   </ol>
+   <!-- Imagen de la arquitectura del proyecto -->
+   <div style="text-align: center; margin-top: 20px;">
+    <img alt="Diagrama de Arquitectura del Proyecto" src="2.Arquitectura/Arquitectura_proyecto.png" style="max-width: 80%; height: auto; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+    <p style="font-size: 14px; color: #555;;text-align: justify">
+     Figura: Arquitectura técnica del proyecto Fill Rate
+    </p>
+   </div>
+  </div>
+  <div class="seccion" id="modelo-datos">
+   <h2>
+    3. Diseño del Modelo de Datos
+   </h2>
+   <p style="text-align: justify">
+    A continuación, se presenta el modelo de datos relacional utilizado para el análisis del Fill Rate. 
             Las tablas fueron importadas desde Azure SQL a Microsoft Fabric y modeladas en un entorno de Data Warehouse, 
             permitiendo establecer relaciones clave entre pedidos, entregas, inventario y entidades maestras como productos y clientes.
-        </p>
-    
-        <!-- Imagen del modelo de datos -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="3.Modelo/Modelo de datos-Grupo5.png" 
-                 alt="Modelo de Datos" 
-                 style="max-width: 80%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-        </div>
-    
-        <!-- Introducción a la descripción de tablas -->
-        <p>
-            El modelo está compuesto por varias tablas interrelacionadas que permiten capturar tanto la información de pedidos como de entregas, inventario y datos maestros. 
+   </p>
+   <!-- Imagen del modelo de datos -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Modelo de Datos" src="3.Modelo/Modelo de datos-Grupo5.png" style="max-width: 80%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);"/>
+   </div>
+   <!-- Introducción a la descripción de tablas -->
+   <p style="text-align: justify">
+    El modelo está compuesto por varias tablas interrelacionadas que permiten capturar tanto la información de pedidos como de entregas, inventario y datos maestros. 
             A continuación, se describe brevemente el propósito de cada una:
-        </p>
-    
-        <!-- Descripción de tablas con viñetas -->
-        <ul style="line-height: 1.8; font-size: 16px;">
-            <li><strong>G5_Clientes:</strong> Contiene información de las boticas o puntos de venta, incluyendo ID del cliente, nombre, dirección y categoría.</li>
-            <li><strong>G5_Productos:</strong> Incluye todos los productos disponibles, su nombre, precio unitario y proveedor asociado.</li>
-            <li><strong>G5_Proveedores:</strong> Datos básicos de los proveedores, como nombre y contacto.</li>
-            <li><strong>G5_Almacen:</strong> Registro de almacenes físicos, con ciudad, dirección y persona encargada.</li>
-            <li><strong>G5_Inventario:</strong> Muestra el stock disponible por producto y por almacén, a nivel de fechas específicas.</li>
-            <li><strong>G5_Pedidos:</strong> Contiene los pedidos realizados por los clientes, con su respectiva fecha y producto solicitado.</li>
-            <li><strong>G5_Detalle_Pedidos:</strong> Detalle por producto y cantidad de cada pedido registrado.</li>
-            <li><strong>G5_Entregas:</strong> Registra cuándo y desde qué almacén se realizó una entrega, si fue completa o no, y quién la gestionó.</li>
-            <li><strong>G5_Detalle_Entrega:</strong> Detalle de la cantidad efectivamente entregada para cada producto.</li>
-            <li><strong>Calendario:</strong> Tabla maestra de fechas utilizada para análisis temporales y generación de medidas como el Fill Rate mensual.</li>
-        </ul>
-    </div>
-    
-    <div class="seccion" id="notebook">
-        <h2>📘 Sección 4: Notebook en PySpark</h2>
-    
-        <p>
-            Una parte clave del proceso automatizado fue el desarrollo de un notebook utilizando <strong>PySpark</strong>, 
+   </p>
+   <!-- Descripción de tablas con viñetas -->
+   <ul style="line-height: 1.8; font-size: 16px;">
+    <li>
+     <strong>
+      G5_Clientes:
+     </strong>
+     Contiene información de las boticas o puntos de venta, incluyendo ID del cliente, nombre, dirección y categoría.
+    </li>
+    <li>
+     <strong>
+      G5_Productos:
+     </strong>
+     Incluye todos los productos disponibles, su nombre, precio unitario y proveedor asociado.
+    </li>
+    <li>
+     <strong>
+      G5_Proveedores:
+     </strong>
+     Datos básicos de los proveedores, como nombre y contacto.
+    </li>
+    <li>
+     <strong>
+      G5_Almacen:
+     </strong>
+     Registro de almacenes físicos, con ciudad, dirección y persona encargada.
+    </li>
+    <li>
+     <strong>
+      G5_Inventario:
+     </strong>
+     Muestra el stock disponible por producto y por almacén, a nivel de fechas específicas.
+    </li>
+    <li>
+     <strong>
+      G5_Pedidos:
+     </strong>
+     Contiene los pedidos realizados por los clientes, con su respectiva fecha y producto solicitado.
+    </li>
+    <li>
+     <strong>
+      G5_Detalle_Pedidos:
+     </strong>
+     Detalle por producto y cantidad de cada pedido registrado.
+    </li>
+    <li>
+     <strong>
+      G5_Entregas:
+     </strong>
+     Registra cuándo y desde qué almacén se realizó una entrega, si fue completa o no, y quién la gestionó.
+    </li>
+    <li>
+     <strong>
+      G5_Detalle_Entrega:
+     </strong>
+     Detalle de la cantidad efectivamente entregada para cada producto.
+    </li>
+    <li>
+     <strong>
+      Calendario:
+     </strong>
+     Tabla maestra de fechas utilizada para análisis temporales y generación de medidas como el Fill Rate mensual.
+    </li>
+   </ul>
+  </div>
+  <div class="seccion" id="notebook">
+   <h2>
+    📘 Sección 4: Notebook en PySpark
+   </h2>
+   <p style="text-align: justify">
+    Una parte clave del proceso automatizado fue el desarrollo de un notebook utilizando
+    <strong>
+     PySpark
+    </strong>
+    , 
             que se ejecuta al final del pipeline diario creado en Microsoft Fabric. 
-            Este notebook tiene como propósito principal <strong>consultar la cantidad total de pedidos realizados durante el día</strong> 
-            y enviar dicha información por correo electrónico al usuario.
-        </p>
-    
-        <!-- Imagen del notebook -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="4.Notebook/notebook.png" 
-                 alt="Código del notebook en PySpark" 
-                 style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-        </div>
-    
-        <p>
-            Esta automatización es parte de la estrategia para mantener informada a la operación sin necesidad de intervención manual, 
+            Este notebook tiene como propósito principal
+    <strong>
+     consultar la cantidad total de pedidos realizados durante el día
+    </strong>
+    y enviar dicha información por correo electrónico al usuario.
+   </p>
+   <!-- Imagen del notebook -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Código del notebook en PySpark" src="4.Notebook/notebook.png" style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
+   </div>
+   <p style="text-align: justify">
+    Esta automatización es parte de la estrategia para mantener informada a la operación sin necesidad de intervención manual, 
             promoviendo la toma de decisiones basadas en datos en tiempo real.
-        </p>
-    
-        <h3>🔄 Flujo del Proceso</h3>
-        <ol>
-            <li><strong>Consulta de datos:</strong> El notebook se conecta al Data Warehouse en Fabric y realiza una consulta SQL que cuenta los pedidos registrados en la fecha actual.</li>
-            <li><strong>Formateo de resultados:</strong> Se transforma la información a un formato legible.</li>
-            <li><strong>Notificación vía correo electrónico:</strong> Se envía un correo automático con los resultados, utilizando un servidor SMTP (en este caso, Gmail).</li>
-        </ol>
-    
-        <!-- Imagen del correo enviado -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="4.Notebook/correo_notebook.png" 
-                 alt="Correo automático enviado desde el notebook" 
-                 style="max-width: 70%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-        </div>
-    
-        <p>
-            Este notebook se configura con la cuenta de Microsoft Fabric 
-            <strong>g05@tqt7l.onmicrosoft.com</strong> y envía correos a la cuenta personal del usuario 
-            <strong>karyj98@hotmail.com</strong>.
-        </p>
-    </div>
-
-    <!-- SECCIÓN 5: Automatización en Fabric (Pipeline) -->
-    <div class="seccion" id="automatizacion-fabric">
-        <h2>🧩 Automatización en Fabric (Pipeline)</h2>
-    
-        <p>
-            La automatización del flujo de datos es una parte fundamental del proyecto de análisis del <strong>Fill Rate</strong> en <em>Farmacias Limeñas</em>. 
-            Para lograr que la información esté siempre actualizada, se configuró un <strong>pipeline automático</strong> dentro de Microsoft Fabric llamado <code>pl_tablas</code>.
-        </p>
-    
-        <p>
-            Este pipeline tiene como objetivo central la <strong>actualización diaria de las tablas del Data Warehouse</strong>, asegurando que la información más reciente 
+   </p>
+   <h3>
+    🔄 Flujo del Proceso
+   </h3>
+   <ol>
+    <li>
+     <strong>
+      Consulta de datos:
+     </strong>
+     El notebook se conecta al Data Warehouse en Fabric y realiza una consulta SQL que cuenta los pedidos registrados en la fecha actual.
+    </li>
+    <li>
+     <strong>
+      Formateo de resultados:
+     </strong>
+     Se transforma la información a un formato legible.
+    </li>
+    <li>
+     <strong>
+      Notificación vía correo electrónico:
+     </strong>
+     Se envía un correo automático con los resultados, utilizando un servidor SMTP (en este caso, Gmail).
+    </li>
+   </ol>
+   <!-- Imagen del correo enviado -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Correo automático enviado desde el notebook" src="4.Notebook/correo_notebook.png" style="max-width: 70%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
+   </div>
+   <p style="text-align: justify">
+    Este notebook se configura con la cuenta de Microsoft Fabric
+    <strong>
+     g05@tqt7l.onmicrosoft.com
+    </strong>
+    y envía correos a la cuenta personal del usuario
+    <strong>
+     karyj98@hotmail.com
+    </strong>
+    .
+   </p>
+  </div>
+  <!-- SECCIÓN 5: Automatización en Fabric (Pipeline) -->
+  <div class="seccion" id="automatizacion-fabric">
+   <h2>
+    🧩 Automatización en Fabric (Pipeline)
+   </h2>
+   <p style="text-align: justify">
+    La automatización del flujo de datos es una parte fundamental del proyecto de análisis del
+    <strong>
+     Fill Rate
+    </strong>
+    en
+    <em>
+     Farmacias Limeñas
+    </em>
+    . 
+            Para lograr que la información esté siempre actualizada, se configuró un
+    <strong>
+     pipeline automático
+    </strong>
+    dentro de Microsoft Fabric llamado
+    <code>
+     pl_tablas
+    </code>
+    .
+   </p>
+   <p style="text-align: justify">
+    Este pipeline tiene como objetivo central la
+    <strong>
+     actualización diaria de las tablas del Data Warehouse
+    </strong>
+    , asegurando que la información más reciente 
             esté disponible para los dashboards de Power BI, el notebook PySpark y los procesos automatizados posteriores.
-        </p>
-    
-        <h3>📌 Características del Pipeline</h3>
-        <ul>
-            <li><strong>Nombre del pipeline:</strong> <code>pl_tablas</code></li>
-            <li><strong>Frecuencia de ejecución:</strong> Diario a las <strong>8:00 PM</strong></li>
-            <li><strong>Herramienta usada:</strong> Microsoft Fabric - Data Factory</li>
-            <li><strong>Tipo de tareas:</strong>
-                <ul>
-                    <li>Actualiza las tablas importadas desde Azure SQL hacia Fabric Data Warehouse</li>
-                    <li>Ejecuta automáticamente el <strong>Notebook de PySpark</strong> al finalizar</li>
-                    <li>No realiza carga desde fuentes externas, sino sincronización y limpieza de las tablas ya integradas</li>
-                </ul>
-            </li>
-        </ul>
-    
-        <h3>📈 Flujo del Pipeline</h3>
-        <p>
-            El pipeline sigue una estructura secuencial donde cada tabla es procesada individualmente mediante <strong>Data Flows</strong>, 
+   </p>
+   <h3>
+    📌 Características del Pipeline
+   </h3>
+   <ul>
+    <li>
+     <strong>
+      Nombre del pipeline:
+     </strong>
+     <code>
+      pl_tablas
+     </code>
+    </li>
+    <li>
+     <strong>
+      Frecuencia de ejecución:
+     </strong>
+     Diario a las
+     <strong>
+      8:00 PM
+     </strong>
+    </li>
+    <li>
+     <strong>
+      Herramienta usada:
+     </strong>
+     Microsoft Fabric - Data Factory
+    </li>
+    <li>
+     <strong>
+      Tipo de tareas:
+     </strong>
+     <ul>
+      <li>
+       Actualiza las tablas importadas desde Azure SQL hacia Fabric Data Warehouse
+      </li>
+      <li>
+       Ejecuta automáticamente el
+       <strong>
+        Notebook de PySpark
+       </strong>
+       al finalizar
+      </li>
+      <li>
+       No realiza carga desde fuentes externas, sino sincronización y limpieza de las tablas ya integradas
+      </li>
+     </ul>
+    </li>
+   </ul>
+   <h3>
+    📈 Flujo del Pipeline
+   </h3>
+   <p style="text-align: justify">
+    El pipeline sigue una estructura secuencial donde cada tabla es procesada individualmente mediante
+    <strong>
+     Data Flows
+    </strong>
+    , 
             y al final del flujo se llama automáticamente al notebook que genera y envía un resumen diario de los pedidos registrados.
-        </p>
-    
-        <!-- Imagen del pipeline -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="2.pipeline/pipeline.png" 
-                 alt="Pipeline de actualización en Microsoft Fabric" 
-                 style="max-width: 95%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        </div>
-    </div>
-
-
-    <div class="seccion" id="powerapps">
-        <h2>6. Power Apps y Flujo Operativo</h2>
-    
-        <p>
-            Uno de los pilares del proyecto fue la implementación de una aplicación operativa en Power Apps que permita registrar, consultar y actualizar información clave como pedidos, entregas, inventario y datos maestros. 
+   </p>
+   <!-- Imagen del pipeline -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Pipeline de actualización en Microsoft Fabric" src="2.pipeline/pipeline.png" style="max-width: 95%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+   </div>
+  </div>
+  <div class="seccion" id="powerapps">
+   <h2>
+    6. Power Apps y Flujo Operativo
+   </h2>
+   <p style="text-align: justify">
+    Uno de los pilares del proyecto fue la implementación de una aplicación operativa en Power Apps que permita registrar, consultar y actualizar información clave como pedidos, entregas, inventario y datos maestros. 
             A continuación, se muestra el diagrama de flujo que resume el funcionamiento lógico detrás de la aplicación.
-        </p>
-    
-        <!-- Imagen del diagrama de flujo centrada -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/Diagrama_flujo.png" 
-                 alt="Diagrama de flujo Power Apps" 
-                 style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-        </div>
-    
-        <p>
-            El diagrama anterior define los 4 principales procesos habilitados en Power Apps:
-        </p>
-    
-        <ul>
-            <li><strong>Registro de Pedido Nuevo:</strong> 
-                Se valida si el cliente ya existe. En caso contrario, se registra uno nuevo. Luego se verifica si el producto está registrado. 
-                Si no existe, se cancela el pedido; si existe, se registra en las tablas <code>G5_Pedidos</code> y <code>G5_Detalle_Pedidos</code>.
-            </li>
-    
-            <li><strong>Registro de Entrega:</strong> 
-                Se ingresan los datos de la entrega en <code>G5_Entregas</code> y <code>G5_Detalle_Entrega</code>, verificando si el stock es suficiente. 
+   </p>
+   <!-- Imagen del diagrama de flujo centrada -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Diagrama de flujo Power Apps" src="5.Power_apps/Diagrama_flujo.png" style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"/>
+   </div>
+   <p style="text-align: justify">
+    El diagrama anterior define los 4 principales procesos habilitados en Power Apps:
+   </p>
+   <ul>
+    <li>
+     <strong>
+      Registro de Pedido Nuevo:
+     </strong>
+     Se valida si el cliente ya existe. En caso contrario, se registra uno nuevo. Luego se verifica si el producto está registrado. 
+                Si no existe, se cancela el pedido; si existe, se registra en las tablas
+     <code>
+      G5_Pedidos
+     </code>
+     y
+     <code>
+      G5_Detalle_Pedidos
+     </code>
+     .
+    </li>
+    <li>
+     <strong>
+      Registro de Entrega:
+     </strong>
+     Se ingresan los datos de la entrega en
+     <code>
+      G5_Entregas
+     </code>
+     y
+     <code>
+      G5_Detalle_Entrega
+     </code>
+     , verificando si el stock es suficiente. 
                 Dependiendo de ello, se marca la entrega como completa (S) o incompleta (N).
-            </li>
-    
-            <li><strong>Actualización de Inventario:</strong> 
-                Flujo independiente que permite ajustar en tiempo real la cantidad disponible de productos en la tabla <code>G5_Inventario</code>.
-            </li>
-    
-            <li><strong>Actualización de Tablas Maestras:</strong> 
-                Permite registrar o modificar información en las tablas <code>G5_Clientes</code>, <code>G5_Proveedores</code>, 
-                <code>G5_Productos</code> y <code>G5_Almacen</code>.
-            </li>
-        </ul>
-    
-        <p>
-            Este flujo permite que múltiples usuarios puedan interactuar con el sistema desde una misma interfaz operativa, 
+    </li>
+    <li>
+     <strong>
+      Actualización de Inventario:
+     </strong>
+     Flujo independiente que permite ajustar en tiempo real la cantidad disponible de productos en la tabla
+     <code>
+      G5_Inventario
+     </code>
+     .
+    </li>
+    <li>
+     <strong>
+      Actualización de Tablas Maestras:
+     </strong>
+     Permite registrar o modificar información en las tablas
+     <code>
+      G5_Clientes
+     </code>
+     ,
+     <code>
+      G5_Proveedores
+     </code>
+     ,
+     <code>
+      G5_Productos
+     </code>
+     y
+     <code>
+      G5_Almacen
+     </code>
+     .
+    </li>
+   </ul>
+   <p style="text-align: justify">
+    Este flujo permite que múltiples usuarios puedan interactuar con el sistema desde una misma interfaz operativa, 
             garantizando que los datos estén sincronizados con el Data Warehouse en Microsoft Fabric.
-        </p>
-    </div>
-    
-    <div class="seccion" id="powerapps">
-        <h2>6. Power Apps y Flujo Operativo</h2>
-    
-        <p>
-            Para facilitar la gestión de pedidos, entregas, inventario y tablas maestras, se diseñó una aplicación en Power Apps basada en el flujo lógico previamente definido. 
-            Esta aplicación está dirigida a diferentes perfiles dentro de la empresa, en este caso, el <strong>Asistente de Logística</strong> es el responsable de registrar los pedidos realizados por los clientes.
-        </p>
-    
-        <!-- Imagen principal: Menú de la app -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/app_principal.png" 
-                 alt="Pantalla principal de Power Apps" 
-                 style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;">
-        </div>
-    
-        <p>
-            Desde esta pantalla principal, el usuario puede elegir entre cuatro flujos operativos:
-            <strong>Registrar pedido, Registrar entrega, Registrar inventario</strong> y <strong>Actualizar tablas maestras</strong>.
-            A continuación, se detalla el proceso de <strong>Registro de pedidos</strong>.
-        </p>
-    
-        <h3>Flujo de registro de pedidos</h3>
-    
-        <p>
-            El proceso inicia al seleccionar la opción <strong>Registrar pedido</strong>. Aparecerá una ventana emergente (Imagen 2) que recuerda al usuario verificar si el cliente ya existe en la base de datos.
+   </p>
+  </div>
+  <div class="seccion" id="powerapps">
+   <h2>
+    6. Power Apps y Flujo Operativo
+   </h2>
+   <p style="text-align: justify">
+    Para facilitar la gestión de pedidos, entregas, inventario y tablas maestras, se diseñó una aplicación en Power Apps basada en el flujo lógico previamente definido. 
+            Esta aplicación está dirigida a diferentes perfiles dentro de la empresa, en este caso, el
+    <strong>
+     Asistente de Logística
+    </strong>
+    es el responsable de registrar los pedidos realizados por los clientes.
+   </p>
+   <!-- Imagen principal: Menú de la app -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Pantalla principal de Power Apps" src="5.Power_apps/app_principal.png" style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
+   </div>
+   <p style="text-align: justify">
+    Desde esta pantalla principal, el usuario puede elegir entre cuatro flujos operativos:
+    <strong>
+     Registrar pedido, Registrar entrega, Registrar inventario
+    </strong>
+    y
+    <strong>
+     Actualizar tablas maestras
+    </strong>
+    .
+            A continuación, se detalla el proceso de
+    <strong>
+     Registro de pedidos
+    </strong>
+    .
+   </p>
+   <h3>
+    Flujo de registro de pedidos
+   </h3>
+   <p style="text-align: justify">
+    El proceso inicia al seleccionar la opción
+    <strong>
+     Registrar pedido
+    </strong>
+    . Aparecerá una ventana emergente (Imagen 2) que recuerda al usuario verificar si el cliente ya existe en la base de datos.
             En caso no exista, deberá ser registrado.
-        </p>
-    
-        <!-- Imagen 2 -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/pedido_1.png" 
-                 alt="Paso 1: Confirmar cliente" 
-                 style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;">
-        </div>
-    
-        <p>
-            En la siguiente pantalla (Imagen 3), se consulta si el cliente ya existe. Si no se encuentra, se procede a registrar al nuevo cliente en la base de datos con sus respectivos campos:
-            <em>nombre_cliente, cliente_id, categoría, dirección</em>.
-        </p>
-    
-        <!-- Imagen 3 -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/pedido_2.png" 
-                 alt="Registro de cliente nuevo" 
-                 style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;">
-        </div>
-    
-        <p>
-            Una vez validado el cliente, se accede al formulario para registrar el nuevo pedido (Imagen 4).
-            Algunos campos como el <strong>ID del pedido</strong> y el <strong>ID del cliente</strong> son autocompletados para facilitar el proceso. También se agregan notas laterales que ayudan al operador.
-        </p>
-    
-        <!-- Imagen 4 -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/pedido_3.png" 
-                 alt="Formulario de registro de pedido" 
-                 style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;">
-        </div>
-    
-        <p>
-            Finalmente, se completa el formulario de <strong>detalle del pedido</strong> (Imagen 5), donde se busca y selecciona el producto correspondiente.
+   </p>
+   <!-- Imagen 2 -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Paso 1: Confirmar cliente" src="5.Power_apps/pedido_1.png" style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
+   </div>
+   <p style="text-align: justify">
+    En la siguiente pantalla (Imagen 3), se consulta si el cliente ya existe. Si no se encuentra, se procede a registrar al nuevo cliente en la base de datos con sus respectivos campos:
+    <em>
+     nombre_cliente, cliente_id, categoría, dirección
+    </em>
+    .
+   </p>
+   <!-- Imagen 3 -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Registro de cliente nuevo" src="5.Power_apps/pedido_2.png" style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
+   </div>
+   <p style="text-align: justify">
+    Una vez validado el cliente, se accede al formulario para registrar el nuevo pedido (Imagen 4).
+            Algunos campos como el
+    <strong>
+     ID del pedido
+    </strong>
+    y el
+    <strong>
+     ID del cliente
+    </strong>
+    son autocompletados para facilitar el proceso. También se agregan notas laterales que ayudan al operador.
+   </p>
+   <!-- Imagen 4 -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Formulario de registro de pedido" src="5.Power_apps/pedido_3.png" style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
+   </div>
+   <p style="text-align: justify">
+    Finalmente, se completa el formulario de
+    <strong>
+     detalle del pedido
+    </strong>
+    (Imagen 5), donde se busca y selecciona el producto correspondiente.
             En caso el producto no exista, el operador debe regresar y eliminar el pedido para evitar inconsistencias, ya que este no puede registrar nuevos productos.
             Si el producto existe, se procede a ingresar la cantidad solicitada y finalizar el pedido.
-        </p>
-    
-        <!-- Imagen 5 -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/pedido_4.png" 
-                 alt="Formulario de detalle del pedido" 
-                 style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;">
-        </div>
-    
-        <p>
-            Este flujo garantiza el correcto registro de los pedidos en las tablas <strong>Pedidos</strong> y <strong>Detalle_Pedidos</strong>,
+   </p>
+   <!-- Imagen 5 -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Formulario de detalle del pedido" src="5.Power_apps/pedido_4.png" style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
+   </div>
+   <p style="text-align: justify">
+    Este flujo garantiza el correcto registro de los pedidos en las tablas
+    <strong>
+     Pedidos
+    </strong>
+    y
+    <strong>
+     Detalle_Pedidos
+    </strong>
+    ,
             manteniendo la integridad de los datos y asegurando la trazabilidad dentro del sistema.
-        </p>
-    </div>
-
-    <!-- Continuación Sección 6 - Power Apps: Registro de Entregas -->
-    
-    <div class="seccion" id="powerapps-entrega">
-        <h2>Flujo 2: Registro de Entregas (Responsable: Auxiliar de Almacén o Logística)</h2>
-    
-        <p>
-            El proceso de entrega se inicia desde la pantalla principal de la aplicación. 
-            El <strong>auxiliar de almacén o logística</strong> es el encargado de registrar correctamente los productos entregados, verificando antes 
+   </p>
+  </div>
+  <!-- Continuación Sección 6 - Power Apps: Registro de Entregas -->
+  <div class="seccion" id="powerapps-entrega">
+   <h2>
+    Flujo 2: Registro de Entregas (Responsable: Auxiliar de Almacén o Logística)
+   </h2>
+   <p style="text-align: justify">
+    El proceso de entrega se inicia desde la pantalla principal de la aplicación. 
+            El
+    <strong>
+     auxiliar de almacén o logística
+    </strong>
+    es el encargado de registrar correctamente los productos entregados, verificando antes 
             la disponibilidad en inventario y completando la información de seguimiento logístico.
-        </p>
-    
-        <p>
-            En la primera pantalla, se accede al <strong>formulario de registro del detalle de entrega</strong>, donde se selecciona el producto 
+   </p>
+   <p style="text-align: justify">
+    En la primera pantalla, se accede al
+    <strong>
+     formulario de registro del detalle de entrega
+    </strong>
+    , donde se selecciona el producto 
             correspondiente al pedido. En el lado izquierdo, se visualiza el stock disponible por producto y almacén, 
             lo cual permite validar si la entrega podrá realizarse de forma completa.
-        </p>
-    
-        <p>
-            Esta pantalla también contiene un formulario con los campos de <code>detalle_entrega_id</code>, <code>entrega_id</code>, 
-            <code>producto_id</code> y <code>cantidad_entregada</code>, los cuales deben ser completados. Algunos campos se autocompletan 
+   </p>
+   <p style="text-align: justify">
+    Esta pantalla también contiene un formulario con los campos de
+    <code>
+     detalle_entrega_id
+    </code>
+    ,
+    <code>
+     entrega_id
+    </code>
+    ,
+    <code>
+     producto_id
+    </code>
+    y
+    <code>
+     cantidad_entregada
+    </code>
+    , los cuales deben ser completados. Algunos campos se autocompletan 
             para facilitar el proceso.
-        </p>
-    
-        <!-- Imagen de registro del detalle de la entrega -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/entrega_1.png" 
-                 alt="Pantalla de registro de detalle de entrega" 
-                 style="max-width: 90%; height: auto; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-        </div>
-    
-        <p>
-            Luego de registrar el detalle de la entrega, se procede al <strong>formulario principal de entrega</strong>. 
+   </p>
+   <!-- Imagen de registro del detalle de la entrega -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Pantalla de registro de detalle de entrega" src="5.Power_apps/entrega_1.png" style="max-width: 90%; height: auto; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
+   </div>
+   <p style="text-align: justify">
+    Luego de registrar el detalle de la entrega, se procede al
+    <strong>
+     formulario principal de entrega
+    </strong>
+    . 
             En esta nueva pantalla se ingresan los datos del repartidor, la fecha de entrega y el código del pedido correspondiente. 
-            Además, el usuario debe indicar si la entrega fue completa (<code>S</code>) o incompleta (<code>N</code>) 
+            Además, el usuario debe indicar si la entrega fue completa (
+    <code>
+     S
+    </code>
+    ) o incompleta (
+    <code>
+     N
+    </code>
+    ) 
             según la validación previa de stock.
-        </p>
-    
-        <p>
-            Esta información se graba en las tablas <code>G5_Entregas</code> y <code>G5_Detalle_Entrega</code> respectivamente. 
-            El proceso concluye al presionar el botón <strong>“Terminar entrega”</strong>.
-        </p>
-    
-        <!-- Imagen de registro general de entrega -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/entrega_2.png" 
-                 alt="Pantalla de registro general de entrega" 
-                 style="max-width: 90%; height: auto; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-        </div>
-    </div>
-
-    <!-- Sub-sección: Registro de Inventario (Power Apps) -->
-    <div class="seccion">
-        <h3>Flujo 3: Registro de Inventario (Power Apps)</h3>
-    
-        <!-- Imagen del formulario de inventario -->
-        <div style="text-align: center; margin-bottom: 25px;">
-            <img src="5.Power_apps/inventario.png" 
-                 alt="Pantalla de registro de inventario" 
-                 style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-        </div>
-    
-        <p>
-            Este flujo es utilizado por el <strong>Auxiliar de Logística</strong> para registrar la actualización de inventario
-            por producto y almacén. Desde la pantalla de ingreso se visualizan datos clave para la validación, incluyendo el 
-            <strong>último inventario registrado</strong> y la <strong>última entrega realizada</strong>, lo cual permite evaluar 
+   </p>
+   <p style="text-align: justify">
+    Esta información se graba en las tablas
+    <code>
+     G5_Entregas
+    </code>
+    y
+    <code>
+     G5_Detalle_Entrega
+    </code>
+    respectivamente. 
+            El proceso concluye al presionar el botón
+    <strong>
+     “Terminar entrega”
+    </strong>
+    .
+   </p>
+   <!-- Imagen de registro general de entrega -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Pantalla de registro general de entrega" src="5.Power_apps/entrega_2.png" style="max-width: 90%; height: auto; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
+   </div>
+  </div>
+  <!-- Sub-sección: Registro de Inventario (Power Apps) -->
+  <div class="seccion">
+   <h3>
+    Flujo 3: Registro de Inventario (Power Apps)
+   </h3>
+   <!-- Imagen del formulario de inventario -->
+   <div style="text-align: center; margin-bottom: 25px;">
+    <img alt="Pantalla de registro de inventario" src="5.Power_apps/inventario.png" style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);"/>
+   </div>
+   <p style="text-align: justify">
+    Este flujo es utilizado por el
+    <strong>
+     Auxiliar de Logística
+    </strong>
+    para registrar la actualización de inventario
+            por producto y almacén. Desde la pantalla de ingreso se visualizan datos clave para la validación, incluyendo el
+    <strong>
+     último inventario registrado
+    </strong>
+    y la
+    <strong>
+     última entrega realizada
+    </strong>
+    , lo cual permite evaluar 
             correctamente el stock actualizado.
-        </p>
-    
-        <p>
-            En el panel izquierdo, el usuario puede consultar la información del producto y almacén seleccionado, así como los valores históricos. 
+   </p>
+   <p style="text-align: justify">
+    En el panel izquierdo, el usuario puede consultar la información del producto y almacén seleccionado, así como los valores históricos. 
             En el formulario del lado derecho se debe completar el ID del inventario, el código del producto, almacén, cantidad y fecha de actualización.
-        </p>
-    
-        <p>
-            La aplicación valida que tanto el <code>producto_id</code> como el <code>almacen_id</code> existan previamente. 
-            Además, impide registrar inventarios con <code>inventario_id</code> duplicado, evitando inconsistencias en la base de datos.
-        </p>
-    
-        <p>
-            Al presionar el botón <strong>“Terminar registro de inventario”</strong>, se envía la información a la tabla <code>G5_Inventario</code>,
+   </p>
+   <p style="text-align: justify">
+    La aplicación valida que tanto el
+    <code>
+     producto_id
+    </code>
+    como el
+    <code>
+     almacen_id
+    </code>
+    existan previamente. 
+            Además, impide registrar inventarios con
+    <code>
+     inventario_id
+    </code>
+    duplicado, evitando inconsistencias en la base de datos.
+   </p>
+   <p style="text-align: justify">
+    Al presionar el botón
+    <strong>
+     “Terminar registro de inventario”
+    </strong>
+    , se envía la información a la tabla
+    <code>
+     G5_Inventario
+    </code>
+    ,
             completando el proceso de actualización.
-        </p>
-    </div>
-
-    <!-- SECCIÓN 6: Power Apps - Tablas Maestras -->
-    
-    <div class="seccion" id="powerapps-maestras">
-        <h2>Flujo de Actualización de Tablas Maestras</h2>
-    
-        <p>
-            En esta parte del sistema, el <strong>Administrador de datos maestros</strong> tiene la responsabilidad 
-            de mantener actualizadas las entidades clave del sistema: <em>Clientes, Proveedores, Productos y Almacenes</em>. 
+   </p>
+  </div>
+  <!-- SECCIÓN 6: Power Apps - Tablas Maestras -->
+  <div class="seccion" id="powerapps-maestras">
+   <h2>
+    Flujo de Actualización de Tablas Maestras
+   </h2>
+   <p style="text-align: justify">
+    En esta parte del sistema, el
+    <strong>
+     Administrador de datos maestros
+    </strong>
+    tiene la responsabilidad 
+            de mantener actualizadas las entidades clave del sistema:
+    <em>
+     Clientes, Proveedores, Productos y Almacenes
+    </em>
+    . 
             Estas tablas alimentan todos los procesos operativos y su correcta gestión es vital para asegurar que los pedidos 
             y entregas se puedan registrar adecuadamente.
-        </p>
-    
-        <!-- Imagen 1: Pantalla principal de tablas maestras -->
-        <div style="text-align: center; margin: 20px 0;">
-            <img src="5.Power_apps/maestras_0.png" alt="Pantalla principal de tablas maestras" style="max-width: 90%; height: auto;">
-        </div>
-        <p>
-            Esta pantalla actúa como menú principal para el mantenimiento de las tablas maestras. Desde aquí, el usuario puede elegir 
+   </p>
+   <!-- Imagen 1: Pantalla principal de tablas maestras -->
+   <div style="text-align: center; margin: 20px 0;">
+    <img alt="Pantalla principal de tablas maestras" src="5.Power_apps/maestras_0.png" style="max-width: 90%; height: auto;"/>
+   </div>
+   <p style="text-align: justify">
+    Esta pantalla actúa como menú principal para el mantenimiento de las tablas maestras. Desde aquí, el usuario puede elegir 
             si desea registrar un nuevo cliente, proveedor, producto o almacén.
-        </p>
-    
-        <!-- Clientes -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/maestras_2.png" alt="Gestión de clientes" style="max-width: 90%; height: auto;">
-        </div>
-        <p>
-            Al seleccionar la opción <strong>Registrar cliente</strong>, se accede a la pantalla donde se visualiza el listado actual de clientes, 
+   </p>
+   <!-- Clientes -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Gestión de clientes" src="5.Power_apps/maestras_2.png" style="max-width: 90%; height: auto;"/>
+   </div>
+   <p style="text-align: justify">
+    Al seleccionar la opción
+    <strong>
+     Registrar cliente
+    </strong>
+    , se accede a la pantalla donde se visualiza el listado actual de clientes, 
             permitiendo también su edición o eliminación. Para registrar uno nuevo, se utiliza el botón "+".
-        </p>
-    
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/maestras_21.png" alt="Registro de nuevo cliente" style="max-width: 90%; height: auto;">
-        </div>
-        <p>
-            Esta pantalla permite registrar un nuevo cliente con sus campos básicos: ID, nombre, dirección y categoría (como distrito). 
+   </p>
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Registro de nuevo cliente" src="5.Power_apps/maestras_21.png" style="max-width: 90%; height: auto;"/>
+   </div>
+   <p style="text-align: justify">
+    Esta pantalla permite registrar un nuevo cliente con sus campos básicos: ID, nombre, dirección y categoría (como distrito). 
             Es esencial validar que no haya duplicados antes de ingresar.
-        </p>
-    
-        <!-- Proveedores -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/maestras_3.png" alt="Gestión de proveedores" style="max-width: 90%; height: auto;">
-        </div>
-        <p>
-            En la sección de <strong>Proveedores</strong>, el sistema permite consultar rápidamente los registros actuales, y 
-            usar el botón <strong>"Nuevo"</strong> para registrar uno adicional en la misma pantalla.
-        </p>
-    
-        <!-- Productos -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/maestras_4.png" alt="Gestión de productos" style="max-width: 90%; height: auto;">
-        </div>
-        <p>
-            En la opción <strong>Ingresar nuevo producto</strong>, se listan todos los productos registrados junto con su precio 
+   </p>
+   <!-- Proveedores -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Gestión de proveedores" src="5.Power_apps/maestras_3.png" style="max-width: 90%; height: auto;"/>
+   </div>
+   <p style="text-align: justify">
+    En la sección de
+    <strong>
+     Proveedores
+    </strong>
+    , el sistema permite consultar rápidamente los registros actuales, y 
+            usar el botón
+    <strong>
+     "Nuevo"
+    </strong>
+    para registrar uno adicional en la misma pantalla.
+   </p>
+   <!-- Productos -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Gestión de productos" src="5.Power_apps/maestras_4.png" style="max-width: 90%; height: auto;"/>
+   </div>
+   <p style="text-align: justify">
+    En la opción
+    <strong>
+     Ingresar nuevo producto
+    </strong>
+    , se listan todos los productos registrados junto con su precio 
             unitario y proveedor. Para ingresar un nuevo producto, se utiliza el botón "+".
-        </p>
-    
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/maestras_41.png" alt="Formulario de nuevo producto" style="max-width: 90%; height: auto;">
-        </div>
-        <p>
-            Aquí se ingresan los datos básicos del producto: nombre, código, precio y proveedor asociado. Esta información es 
+   </p>
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Formulario de nuevo producto" src="5.Power_apps/maestras_41.png" style="max-width: 90%; height: auto;"/>
+   </div>
+   <p style="text-align: justify">
+    Aquí se ingresan los datos básicos del producto: nombre, código, precio y proveedor asociado. Esta información es 
             clave para vincular con las entregas y pedidos.
-        </p>
-    
-        <!-- Almacenes -->
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/maestras_5.png" alt="Gestión de almacenes" style="max-width: 90%; height: auto;">
-        </div>
-        <p>
-            En la sección de <strong>Almacenes</strong>, se muestra la información registrada de cada almacén, incluyendo 
+   </p>
+   <!-- Almacenes -->
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Gestión de almacenes" src="5.Power_apps/maestras_5.png" style="max-width: 90%; height: auto;"/>
+   </div>
+   <p style="text-align: justify">
+    En la sección de
+    <strong>
+     Almacenes
+    </strong>
+    , se muestra la información registrada de cada almacén, incluyendo 
             su ubicación y persona encargada. Para registrar un nuevo almacén, se utiliza el botón "+".
-        </p>
-    
-        <div style="text-align: center; margin: 30px 0;">
-            <img src="5.Power_apps/maestras_51.png" alt="Registro de nuevo almacén" style="max-width: 90%; height: auto;">
-        </div>
-        <p>
-            Esta pantalla permite registrar los datos del nuevo almacén: nombre, ubicación, dirección y nombre del encargado. 
+   </p>
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Registro de nuevo almacén" src="5.Power_apps/maestras_51.png" style="max-width: 90%; height: auto;"/>
+   </div>
+   <p style="text-align: justify">
+    Esta pantalla permite registrar los datos del nuevo almacén: nombre, ubicación, dirección y nombre del encargado. 
             Esto permite que los procesos de inventario y entregas se mantengan correctamente trazados por ubicación física.
-        </p>
+   </p>
+  </div>
+  <h2>
+   7. Power BI
+  </h2>
+  <h3>
+   Modelo de datos en Power BI
+  </h3>
+  <p style="text-align: justify">
+   El modelo de datos fue construido en Power BI a partir de las tablas publicadas desde el entorno de Microsoft Fabric. Las relaciones se establecen entre las tablas de hechos y dimensiones mediante claves primarias y foráneas. La estructura responde a un esquema en estrella, permitiendo eficiencia en los análisis.
+  </p>
+  <p style="text-align: justify">
+   Dentro de este modelo, se incluye una tabla de fechas (
+   <em>
+    Calendario
+   </em>
+   ) para análisis temporales y una tabla de medidas que contiene indicadores calculados como el porcentaje de Fill Rate, cantidad entregada, cantidad pendiente, entre otros.
+  </p>
+  <p style="text-align: justify">
+   Este modelo es administrado por el
+   <strong>
+    Analista de Inteligencia de Negocios
+   </strong>
+   , quien se encarga de estructurar y validar los datos antes de la construcción del dashboard.
+  </p>
+  <div style="text-align: center; margin: 30px 0;">
+   <img alt="Modelo de datos Power BI" src="6.PowerBI/Modelo de datos_bi.png" width="100%"/>
+  </div>
+  <h3>
+   Interfaz general de Power BI
+  </h3>
+  <p style="text-align: justify">
+   Con el modelo de datos ya estructurado, se procede a crear el reporte directamente desde el entorno de Power BI en Microsoft Fabric. La interfaz está organizada por secciones y preguntas que permiten explorar tanto el contexto del negocio como los resultados del análisis.
+  </p>
+  <p style="text-align: justify">
+   Esta estructura permite que el
+   <strong>
+    Jefe de Logística
+   </strong>
+   y demás tomadores de decisión naveguen fácilmente entre páginas y accedan a visualizaciones clave.
+  </p>
+  <div style="text-align: center; margin: 30px 0;">
+   <img alt="Interfaz general Power BI" src="6.PowerBI/BI_0.png" width="100%"/>
+  </div>
+  <h3>
+   Caso de negocio
+  </h3>
+  <p style="text-align: justify">
+   La siguiente visualización presenta un resumen del objetivo, estrategia y análisis costo-beneficio del proyecto:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     Objetivo:
+    </strong>
+    Incrementar el Fill Rate mensual de 92% a 97% en un año.
+   </li>
+   <li>
+    <strong>
+     Estrategia:
+    </strong>
+    Optimizar inventario, planificar la demanda, monitorear entregas y generar alertas por baja rotación.
+   </li>
+   <li>
+    <strong>
+     Costo-beneficio:
+    </strong>
+    Una inversión de S/ 7,000 genera un retorno proyectado de S/ 1,836,000 anuales.
+   </li>
+  </ul>
+  <div style="text-align: center; margin: 30px 0;">
+   <img alt="Caso de negocio" src="6.PowerBI/BI_1.png" width="100%"/>
+  </div>
+  <h3>
+   Definición del indicador
+  </h3>
+  <p style="text-align: justify">
+   Esta vista define el indicador principal del proyecto:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     Fill Rate (%)
+    </strong>
+    = (Pedidos entregados completos y a tiempo / Total de pedidos) × 100
+   </li>
+   <li>
+    Se mide en porcentaje, de forma mensual.
+   </li>
+   <li>
+    Cada punto porcentual de mejora representa S/ 60,000 en ingresos mensuales recuperados.
+   </li>
+  </ul>
+  <div style="text-align: center; margin: 30px 0;">
+   <img alt="Definición del indicador" src="6.PowerBI/BI_2.png" width="100%"/>
+  </div>
+  <h3>
+   Dashboard principal
+  </h3>
+  <p style="text-align: justify">
+   Aquí se visualiza el
+   <strong>
+    valor actual del Fill Rate mensual
+   </strong>
+   :
+   <strong>
+    91.69%
+   </strong>
+   al 31 de mayo de 2025, clasificado como nivel amarillo.
+  </p>
+  <p style="text-align: justify">
+   El gráfico tipo velocímetro permite al
+   <strong>
+    Jefe de Logística
+   </strong>
+   monitorear el cumplimiento en tiempo real. Se incluye además un filtro de fechas para realizar análisis históricos o proyectados.
+  </p>
+  <div style="text-align: center; margin: 30px 0;">
+   <img alt="Dashboard principal" src="6.PowerBI/BI_3.png" width="100%"/>
+  </div>
+  <h3>
+   Reporte de evolución del Fill Rate
+  </h3>
+  <p style="text-align: justify">
+   Esta visualización muestra el avance del Fill Rate frente al objetivo de 97%:
+  </p>
+  <ul>
+   <li>
+    Línea roja: Fill Rate actual (92% estable).
+   </li>
+   <li>
+    Línea azul: Fill Rate proyectado (ascenso progresivo hasta 97% en abril 2026).
+   </li>
+   <li>
+    Incluye hitos de implementación y seguimiento.
+   </li>
+  </ul>
+  <p style="text-align: justify">
+   Este panel es consultado tanto por el
+   <strong>
+    Gerente de Operaciones
+   </strong>
+   como por el
+   <strong>
+    Equipo de Planeamiento Estratégico
+   </strong>
+   .
+  </p>
+  <div style="text-align: center; margin: 30px 0;">
+   <img alt="Evolución Fill Rate" src="6.PowerBI/BI_4.png" width="100%"/>
+  </div>
+  <!-- Análisis por pares centrado -->
+  <h3>
+   Análisis 1: Mejor valor mensual del Fill Rate (enero - mayo 2025)
+  </h3>
+  <p style="text-align: justify">
+   Este análisis responde a la pregunta:
+   <strong>
+    ¿Cuál fue el mejor valor del Fill Rate mensual en Lima durante los primeros 5 meses del 2025?
+   </strong>
+  </p>
+  <ul>
+   <li>
+    El valor máximo fue de
+    <strong>
+     95% en marzo 2025
+    </strong>
+    .
+   </li>
+   <li>
+    El mínimo fue de 87% en febrero 2025, evidenciando alta variabilidad.
+   </li>
+  </ul>
+  <p style="text-align: justify">
+   Este análisis es útil para el
+   <strong>
+    Supervisor de Distribución
+   </strong>
+   , encargado de hacer seguimiento al rendimiento logístico por periodo.
+  </p>
+  <div style="text-align:center;">
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Gráfico Fill Rate mensual" src="6.PowerBI/BI_5.png" style="width:45%; margin-right:10px;"/>
+   </div>
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Detalle mensual Fill Rate" src="6.PowerBI/BI_detalle51.png" style="width:45%;"/>
+   </div>
+  </div>
+  <h3>
+   Análisis 2: Almacén con mayor desempeño promedio
+  </h3>
+  <p style="text-align: justify">
+   Esta vista analiza:
+   <strong>
+    ¿Qué almacén tuvo el mayor promedio de Fill Rate en los primeros 5 meses del 2025?
+   </strong>
+  </p>
+  <ul>
+   <li>
+    <strong>
+     Almacén Lima Sur
+    </strong>
+    lidera con un promedio de
+    <strong>
+     91.60%
+    </strong>
+    .
+   </li>
+   <li>
+    Se evidencian diferencias entre almacenes, útil para identificar buenas prácticas replicables.
+   </li>
+  </ul>
+  <p style="text-align: justify">
+   Este análisis es clave para el
+   <strong>
+    Encargado de Centro de Distribución
+   </strong>
+   de cada zona.
+  </p>
+  <div style="text-align:center;">
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Gráfico por almacén" src="6.PowerBI/BI_6.png" style="width:45%; margin-right:10px;"/>
+   </div>
+   <div style="text-align: center; margin: 30px 0;">
+    <img alt="Detalle almacén Lima Sur" src="6.PowerBI/BI_61.png" style="width:45%;"/>
+   </div>
+  </div>
+  <hr/>
+  <!-- PREGUNTA 3 -->
+  <div style="margin-bottom: 30px;">
+   <h2>
+    Clientes con mayor promedio de Fill Rate
+   </h2>
+   <p style="max-width: 900px; text-align: justify;;text-align: justify">
+    En la vista de la izquierda se muestra un gráfico de barras donde se identifica el
+    <strong>
+     top 2 de clientes (boticas)
+    </strong>
+    con mayor cumplimiento de entregas completas en los primeros cinco meses del 2025.
+    <strong>
+     Botica Lince Farma
+    </strong>
+    y
+    <strong>
+     Botica Ate Moderna
+    </strong>
+    destacan con un
+    <strong>
+     Fill Rate del 96.77%
+    </strong>
+    , superando el promedio general del indicador. 
+        A la derecha, en la hoja de detalle, se encuentra la tabla con el desglose de todos los pedidos de
+    <em>
+     Botica Ate Moderna
+    </em>
+    , incluyendo el mes, almacén, encargado, y el estado del pedido (
+    <code>
+     PedidosCompletos
+    </code>
+    = 1 indica entrega completa). 
+        Esta información es especialmente útil para el
+    <strong>
+     Jefe de Atención a Clientes
+    </strong>
+    , quien puede identificar buenas prácticas en estas relaciones comerciales.
+   </p>
+   <div style="display: flex; justify-content: center; gap: 20px;">
+    <div style="text-align: center; margin: 30px 0;">
+     <img alt="Fill Rate por Cliente" src="6.PowerBI/BI_7.png" width="45%"/>
     </div>
-    
-     <h2>7. Power BI</h2>
-    
-    <h3>Modelo de datos en Power BI</h3>
-    <p>
-      El modelo de datos fue construido en Power BI a partir de las tablas publicadas desde el entorno de Microsoft Fabric. Las relaciones se establecen entre las tablas de hechos y dimensiones mediante claves primarias y foráneas. La estructura responde a un esquema en estrella, permitiendo eficiencia en los análisis.
-    </p>
-    <p>
-      Dentro de este modelo, se incluye una tabla de fechas (<em>Calendario</em>) para análisis temporales y una tabla de medidas que contiene indicadores calculados como el porcentaje de Fill Rate, cantidad entregada, cantidad pendiente, entre otros.
-    </p>
-    <p>
-      Este modelo es administrado por el <strong>Analista de Inteligencia de Negocios</strong>, quien se encarga de estructurar y validar los datos antes de la construcción del dashboard.
-    </p>
-    <img src="6.PowerBI/Modelo de datos_bi.png" alt="Modelo de datos Power BI" width="100%">
-    
-    <hr>
-    
-    <h3>Interfaz general de Power BI</h3>
-    <p>
-      Con el modelo de datos ya estructurado, se procede a crear el reporte directamente desde el entorno de Power BI en Microsoft Fabric. La interfaz está organizada por secciones y preguntas que permiten explorar tanto el contexto del negocio como los resultados del análisis.
-    </p>
-    <p>
-      Esta estructura permite que el <strong>Jefe de Logística</strong> y demás tomadores de decisión naveguen fácilmente entre páginas y accedan a visualizaciones clave.
-    </p>
-    <img src="6.PowerBI/BI_0.png" alt="Interfaz general Power BI" width="100%">
-    
-    <hr>
-    
-    <h3>Caso de negocio</h3>
-    <p>
-      La siguiente visualización presenta un resumen del objetivo, estrategia y análisis costo-beneficio del proyecto:
-    </p>
-    <ul>
-      <li><strong>Objetivo:</strong> Incrementar el Fill Rate mensual de 92% a 97% en un año.</li>
-      <li><strong>Estrategia:</strong> Optimizar inventario, planificar la demanda, monitorear entregas y generar alertas por baja rotación.</li>
-      <li><strong>Costo-beneficio:</strong> Una inversión de S/ 7,000 genera un retorno proyectado de S/ 1,836,000 anuales.</li>
-    </ul>
-    <img src="6.PowerBI/BI_1.png" alt="Caso de negocio" width="100%">
-    
-    <hr>
-    
-    <h3>Definición del indicador</h3>
-    <p>
-      Esta vista define el indicador principal del proyecto:
-    </p>
-    <ul>
-      <li><strong>Fill Rate (%)</strong> = (Pedidos entregados completos y a tiempo / Total de pedidos) × 100</li>
-      <li>Se mide en porcentaje, de forma mensual.</li>
-      <li>Cada punto porcentual de mejora representa S/ 60,000 en ingresos mensuales recuperados.</li>
-    </ul>
-    <img src="6.PowerBI/BI_2.png" alt="Definición del indicador" width="100%">
-    
-    <hr>
-    
-    <h3>Dashboard principal</h3>
-    <p>
-      Aquí se visualiza el <strong>valor actual del Fill Rate mensual</strong>: <strong>91.69%</strong> al 31 de mayo de 2025, clasificado como nivel amarillo.
-    </p>
-    <p>
-      El gráfico tipo velocímetro permite al <strong>Jefe de Logística</strong> monitorear el cumplimiento en tiempo real. Se incluye además un filtro de fechas para realizar análisis históricos o proyectados.
-    </p>
-    <img src="6.PowerBI/BI_3.png" alt="Dashboard principal" width="100%">
-    
-    <hr>
-    
-    <h3>Reporte de evolución del Fill Rate</h3>
-    <p>
-      Esta visualización muestra el avance del Fill Rate frente al objetivo de 97%:
-    </p>
-    <ul>
-      <li>Línea roja: Fill Rate actual (92% estable).</li>
-      <li>Línea azul: Fill Rate proyectado (ascenso progresivo hasta 97% en abril 2026).</li>
-      <li>Incluye hitos de implementación y seguimiento.</li>
-    </ul>
-    <p>
-      Este panel es consultado tanto por el <strong>Gerente de Operaciones</strong> como por el <strong>Equipo de Planeamiento Estratégico</strong>.
-    </p>
-    <img src="6.PowerBI/BI_4.png" alt="Evolución Fill Rate" width="100%">
-    
-    <hr>
-    
-    <!-- Análisis por pares centrado -->
-    
-    <h3>Análisis 1: Mejor valor mensual del Fill Rate (enero - mayo 2025)</h3>
-    <p>
-      Este análisis responde a la pregunta: <strong>¿Cuál fue el mejor valor del Fill Rate mensual en Lima durante los primeros 5 meses del 2025?</strong>
-    </p>
-    <ul>
-      <li>El valor máximo fue de <strong>95% en marzo 2025</strong>.</li>
-      <li>El mínimo fue de 87% en febrero 2025, evidenciando alta variabilidad.</li>
-    </ul>
-    <p>
-      Este análisis es útil para el <strong>Supervisor de Distribución</strong>, encargado de hacer seguimiento al rendimiento logístico por periodo.
-    </p>
-    
-    <div style="text-align:center;">
-      <img src="6.PowerBI/BI_5.png" alt="Gráfico Fill Rate mensual" style="width:45%; margin-right:10px;">
-      <img src="6.PowerBI/BI_detalle51.png" alt="Detalle mensual Fill Rate" style="width:45%;">
+    <div style="text-align: center; margin: 30px 0;">
+     <img alt="Detalle Cliente Botica Ate Moderna" src="6.PowerBI/BI_71.png" width="45%"/>
     </div>
-    
-    <hr>
-    
-    <h3>Análisis 2: Almacén con mayor desempeño promedio</h3>
-    <p>
-      Esta vista analiza: <strong>¿Qué almacén tuvo el mayor promedio de Fill Rate en los primeros 5 meses del 2025?</strong>
-    </p>
-    <ul>
-      <li><strong>Almacén Lima Sur</strong> lidera con un promedio de <strong>91.60%</strong>.</li>
-      <li>Se evidencian diferencias entre almacenes, útil para identificar buenas prácticas replicables.</li>
-    </ul>
-    <p>
-      Este análisis es clave para el <strong>Encargado de Centro de Distribución</strong> de cada zona.
-    </p>
-    
-    <div style="text-align:center;">
-      <img src="6.PowerBI/BI_6.png" alt="Gráfico por almacén" style="width:45%; margin-right:10px;">
-      <img src="6.PowerBI/BI_61.png" alt="Detalle almacén Lima Sur" style="width:45%;">
-    </div>
-    
-    <hr>
-
-
-    <!-- PREGUNTA 3 -->
-    <div style="margin-bottom: 30px;">
-      <h2>Clientes con mayor promedio de Fill Rate</h2>
-      <p style="max-width: 900px; text-align: justify;">
-        En la vista de la izquierda se muestra un gráfico de barras donde se identifica el <strong>top 2 de clientes (boticas)</strong> con mayor cumplimiento de entregas completas en los primeros cinco meses del 2025. 
-        <strong>Botica Lince Farma</strong> y <strong>Botica Ate Moderna</strong> destacan con un <strong>Fill Rate del 96.77%</strong>, superando el promedio general del indicador. 
-        A la derecha, en la hoja de detalle, se encuentra la tabla con el desglose de todos los pedidos de <em>Botica Ate Moderna</em>, incluyendo el mes, almacén, encargado, y el estado del pedido (<code>PedidosCompletos</code> = 1 indica entrega completa). 
-        Esta información es especialmente útil para el <strong>Jefe de Atención a Clientes</strong>, quien puede identificar buenas prácticas en estas relaciones comerciales.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 20px;">
-        <img src="6.PowerBI/BI_7.png" alt="Fill Rate por Cliente" width="45%">
-        <img src="6.PowerBI/BI_71.png" alt="Detalle Cliente Botica Ate Moderna" width="45%">
-      </div>
-    </div>
-    
-    <!-- PREGUNTA 4 -->
-    <div style="margin-bottom: 30px;">
-      <h2>Producto con menor cumplimiento de entregas</h2>
-      <p style="max-width: 900px; text-align: justify;">
-        El gráfico de la izquierda presenta los productos con menor índice de cumplimiento (Fill Rate). 
-        Se observa que la <strong>Amoxicilina 500mg</strong> es el producto con más fallas en entrega completa, con un <strong>Fill Rate del 78.05%</strong>. 
+   </div>
+  </div>
+  <!-- PREGUNTA 4 -->
+  <div style="margin-bottom: 30px;">
+   <h2>
+    Producto con menor cumplimiento de entregas
+   </h2>
+   <p style="max-width: 900px; text-align: justify;;text-align: justify">
+    El gráfico de la izquierda presenta los productos con menor índice de cumplimiento (Fill Rate). 
+        Se observa que la
+    <strong>
+     Amoxicilina 500mg
+    </strong>
+    es el producto con más fallas en entrega completa, con un
+    <strong>
+     Fill Rate del 78.05%
+    </strong>
+    . 
         La imagen de la derecha muestra la hoja de detalle con todos los registros relacionados a ese producto: cliente, almacén, cantidad entregada y monto de venta. 
-        Este análisis permite al <strong>Analista de Abastecimiento</strong> priorizar ajustes de stock y mejorar la previsión de productos críticos.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 20px;">
-        <img src="6.PowerBI/BI_8.png" alt="Fill Rate por Producto" width="45%">
-        <img src="6.PowerBI/BI_81.png" alt="Detalle Producto Amoxicilina" width="45%">
-      </div>
+        Este análisis permite al
+    <strong>
+     Analista de Abastecimiento
+    </strong>
+    priorizar ajustes de stock y mejorar la previsión de productos críticos.
+   </p>
+   <div style="display: flex; justify-content: center; gap: 20px;">
+    <div style="text-align: center; margin: 30px 0;">
+     <img alt="Fill Rate por Producto" src="6.PowerBI/BI_8.png" width="45%"/>
     </div>
-    
-    <!-- PREGUNTA 5 -->
-    <div style="margin-bottom: 30px;">
-      <h2>Tiempo promedio entre pedido y entrega</h2>
-      <p style="max-width: 900px; text-align: justify;">
-        El gráfico de línea de la izquierda analiza el <strong>tiempo promedio en días entre el registro del pedido y su entrega</strong> para los primeros cinco meses de 2025. 
-        Se observa que el promedio general fue de <strong>2 días</strong>, con un pico de <strong>3 días en marzo</strong>, posiblemente reflejando una sobrecarga operativa.
+    <div style="text-align: center; margin: 30px 0;">
+     <img alt="Detalle Producto Amoxicilina" src="6.PowerBI/BI_81.png" width="45%"/>
+    </div>
+   </div>
+  </div>
+  <!-- PREGUNTA 5 -->
+  <div style="margin-bottom: 30px;">
+   <h2>
+    Tiempo promedio entre pedido y entrega
+   </h2>
+   <p style="max-width: 900px; text-align: justify;;text-align: justify">
+    El gráfico de línea de la izquierda analiza el
+    <strong>
+     tiempo promedio en días entre el registro del pedido y su entrega
+    </strong>
+    para los primeros cinco meses de 2025. 
+        Se observa que el promedio general fue de
+    <strong>
+     2 días
+    </strong>
+    , con un pico de
+    <strong>
+     3 días en marzo
+    </strong>
+    , posiblemente reflejando una sobrecarga operativa.
         A la derecha, la hoja de detalle presenta cada pedido con su fecha de pedido y entrega, útil para detectar retrasos puntuales. 
-        Este análisis debe ser gestionado por el <strong>Supervisor de Logística</strong> para optimizar el flujo de entregas.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 20px;">
-        <img src="6.PowerBI/BI_9.png" alt="Tiempo promedio de entrega" width="45%">
-        <img src="6.PowerBI/BI_91.png" alt="Detalle tiempos de entrega por pedido" width="45%">
-      </div>
+        Este análisis debe ser gestionado por el
+    <strong>
+     Supervisor de Logística
+    </strong>
+    para optimizar el flujo de entregas.
+   </p>
+   <div style="display: flex; justify-content: center; gap: 20px;">
+    <div style="text-align: center; margin: 30px 0;">
+     <img alt="Tiempo promedio de entrega" src="6.PowerBI/BI_9.png" width="45%"/>
     </div>
-    
-    <!-- PREGUNTA 6 -->
-    <div style="margin-bottom: 30px;">
-      <h2>Cantidad total de productos pedidos y entregados</h2>
-      <p style="max-width: 900px; text-align: justify;">
-        La visualización de la izquierda muestra la evolución mensual de la <strong>cantidad total de productos entregados</strong> durante los primeros meses del 2025. 
-        En total, se entregaron <strong>5,822 productos</strong>, destacando el mes de marzo con <strong>1,195 unidades</strong>.
+    <div style="text-align: center; margin: 30px 0;">
+     <img alt="Detalle tiempos de entrega por pedido" src="6.PowerBI/BI_91.png" width="45%"/>
+    </div>
+   </div>
+  </div>
+  <!-- PREGUNTA 6 -->
+  <div style="margin-bottom: 30px;">
+   <h2>
+    Cantidad total de productos pedidos y entregados
+   </h2>
+   <p style="max-width: 900px; text-align: justify;;text-align: justify">
+    La visualización de la izquierda muestra la evolución mensual de la
+    <strong>
+     cantidad total de productos entregados
+    </strong>
+    durante los primeros meses del 2025. 
+        En total, se entregaron
+    <strong>
+     5,822 productos
+    </strong>
+    , destacando el mes de marzo con
+    <strong>
+     1,195 unidades
+    </strong>
+    .
         La imagen de detalle (derecha) presenta una tabla con los pedidos correspondientes, lo cual permite verificar consistencia de los datos. 
-        Este análisis es valioso para el <strong>Planificador de la Demanda</strong>, quien puede anticiparse a futuros picos de consumo.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 20px;">
-        <img src="6.PowerBI/BI_10.png" alt="Cantidad de productos entregados" width="45%">
-        <img src="6.PowerBI/BI_101.png" alt="Detalle de productos entregados" width="45%">
-      </div>
+        Este análisis es valioso para el
+    <strong>
+     Planificador de la Demanda
+    </strong>
+    , quien puede anticiparse a futuros picos de consumo.
+   </p>
+   <div style="display: flex; justify-content: center; gap: 20px;">
+    <div style="text-align: center; margin: 30px 0;">
+     <img alt="Cantidad de productos entregados" src="6.PowerBI/BI_10.png" width="45%"/>
     </div>
-    
-    <!-- PREGUNTA 7 -->
-    <div style="margin-bottom: 30px;">
-      <h2>Facturación mensual con Fill Rate menor a 100%</h2>
-      <p style="max-width: 900px; text-align: justify;">
-        La vista de la izquierda analiza la <strong>facturación mensual (en soles)</strong> durante los primeros cinco meses de 2025, en un escenario con Fill Rate menor a 100%. 
-        El mes de mayor facturación fue febrero con <strong>S/ 138 mil</strong>, mientras que abril tuvo el valor más bajo con <strong>S/ 125 mil</strong>. 
+    <div style="text-align: center; margin: 30px 0;">
+     <img alt="Detalle de productos entregados" src="6.PowerBI/BI_101.png" width="45%"/>
+    </div>
+   </div>
+  </div>
+  <!-- PREGUNTA 7 -->
+  <div style="margin-bottom: 30px;">
+   <h2>
+    Facturación mensual con Fill Rate menor a 100%
+   </h2>
+   <p style="max-width: 900px; text-align: justify;;text-align: justify">
+    La vista de la izquierda analiza la
+    <strong>
+     facturación mensual (en soles)
+    </strong>
+    durante los primeros cinco meses de 2025, en un escenario con Fill Rate menor a 100%. 
+        El mes de mayor facturación fue febrero con
+    <strong>
+     S/ 138 mil
+    </strong>
+    , mientras que abril tuvo el valor más bajo con
+    <strong>
+     S/ 125 mil
+    </strong>
+    . 
         A la derecha, la tabla de detalle desglosa los pedidos, cantidades entregadas y el total vendido por botica. 
-        Esta información resulta crítica para el <strong>Gerente de Operaciones</strong>, quien puede correlacionar fallas logísticas con impactos financieros.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 20px;">
-        <img src="6.PowerBI/BI_11.png" alt="Ventas mensuales" width="45%">
-        <img src="6.PowerBI/BI_111.png" alt="Detalle de ventas completas" width="45%">
-      </div>
+        Esta información resulta crítica para el
+    <strong>
+     Gerente de Operaciones
+    </strong>
+    , quien puede correlacionar fallas logísticas con impactos financieros.
+   </p>
+   <div style="display: flex; justify-content: center; gap: 20px;">
+    <div style="text-align: center; margin: 30px 0;">
+     <img alt="Ventas mensuales" src="6.PowerBI/BI_11.png" width="45%"/>
     </div>
-
-      <!-- Pregunta 8 -->
-    <div style="text-align: left;">
-      <h3><b>¿Cuál fue el cliente que mayor facturación le generó a la empresa cuando el INDICADOR MENSUAL DE FILL RATE DE LOS ALMACENES DE LIMA DE “FARMACIAS LIMEÑAS” fue igual a 100% en los primeros 5 meses del 2025?</b></h3>
+    <div style="text-align: center; margin: 30px 0;">
+     <img alt="Detalle de ventas completas" src="6.PowerBI/BI_111.png" width="45%"/>
     </div>
-    <div style="text-align: center;">
-      <img src="6.PowerBI/BI_12.png" width="700">
-      <img src="6.PowerBI/BI_121.png" width="700">
-    </div>
-    <div style="text-align: left;">
-      <p>El cliente que generó la mayor facturación a Farmacias Limeñas fue <b>Botica San Miguel</b> con un monto total de <b>S/ 56,285</b> durante los primeros 5 meses del 2025. Esto se observa claramente en la visualización de barras, mientras que la hoja de detalle permite validar que se realizaron 186 pedidos completos, distribuidos en diferentes almacenes.</p>
-      <p><i>Responsable del análisis: Analista de Business Intelligence</i></p>
-    </div>
-    
-    <!-- Pregunta 9 -->
-    <div style="text-align: left;">
-      <h3><b>Considerando el almacén con mayor INDICADOR MENSUAL DE FILL RATE DE LOS ALMACENES DE LIMA DE “FARMACIAS LIMEÑAS”, ¿Cuáles son los 4 productos con mayor venta en soles en ese almacén de enero a mayo del 2025?</b></h3>
-    </div>
-    <div style="text-align: center;">
-      <img src="6.PowerBI/BI_13.png" width="700">
-      <img src="6.PowerBI/BI_131.png" width="700">
-    </div>
-    <div style="text-align: left;">
-      <p>El <b>almacén Lima Sur</b> fue el que obtuvo el mayor Fill Rate. Dentro de este, los productos con mayor facturación fueron: <b>Atorvastatina 10mg (S/ 55 mil)</b>, <b>Furosemida 40mg (S/ 52 mil)</b>, <b>Salbutamol Inhalador (S/ 51 mil)</b> y <b>Metformina 850mg (S/ 49 mil)</b>. En la hoja de detalle se evidencia la trazabilidad de cada uno de estos pedidos, incluyendo montos individuales y cantidad entregada.</p>
-      <p><i>Responsable del análisis: Analista de Business Intelligence</i></p>
-    </div>
-    
-    <!-- Pregunta 10 -->
-    <div style="text-align: left;">
-      <h3><b>¿Cuáles son las 3 boticas con menor INDICADOR MENSUAL DE FILL RATE DE LOS ALMACENES DE LIMA DE “FARMACIAS LIMEÑAS” debido a que no se ha cumplido con la entrega de pedidos en los primeros 5 meses del 2025?</b></h3>
-    </div>
-    <div style="text-align: center;">
-      <img src="6.PowerBI/BI_14.png" width="700">
-      <img src="6.PowerBI/BI_141.png" width="700">
-    </div>
-    <div style="text-align: left;">
-      <p>Las tres boticas con menor cumplimiento de entregas fueron: <b>Botica Los Olivos (86%)</b>, <b>Botica Breña (75%)</b> y <b>Botica Comas Salud (71%)</b>. En la hoja de detalle se observa que estas boticas, a pesar de tener entregas completas individuales, tuvieron pedidos cancelados o no completados que afectaron su indicador de Fill Rate.</p>
-      <p><i>Responsable del análisis: Analista de Business Intelligence</i></p>
-    </div>
-    
-    <!-- Cierre resumen -->
-    <div style="text-align: left; margin-top: 30px;">
-      <p><b>Resumen:</b> Esta sección permitió identificar claramente a los clientes y productos más y menos eficientes en términos de facturación y cumplimiento de pedidos. Se concluye que una mejor trazabilidad por almacén y cliente puede facilitar una estrategia de mejora en la operación logística.</p>
-    </div>
-     
-     <h2>📬 Automatización con Power Automate</h2>
-    
-    <p>
-    En esta sección se muestra cómo se ha utilizado <strong>Power Automate</strong> para automatizar el envío diario del reporte de indicadores de Fill Rate de Farmacias Limeñas. Esta automatización permite que el usuario reciba cada mañana el archivo PDF con el dashboard actualizado, sin necesidad de intervención manual.
-    </p>
-    
-    <p>
-    El flujo ha sido programado para ejecutarse automáticamente todos los días a las <strong>11:00 AM</strong>. A continuación, se presenta el diseño del flujo implementado:
-    </p>
-    
-    <div style="text-align: center;">
-      <img src="8.PowerAutomate/flujo_PA.png" alt="Flujo Power Automate" width="400">
-    </div>
-    
-    <br>
-    
-    <ul>
-      <li><strong>⏰ Recurrence:</strong> Disparador programado para que se ejecute todos los días a las 11:00 AM.</li>
-      <li><strong>🔁 Actualizar un conjunto de datos:</strong> Refresca los datos del reporte de Power BI.</li>
-      <li><strong>📤 Exportar a archivo:</strong> Genera el reporte en formato PDF directamente desde Power BI.</li>
-      <li><strong>📧 Enviar correo electrónico (V2):</strong> Envía automáticamente el reporte generado al usuario correspondiente.</li>
-    </ul>
-    
-    <p>
-    Este flujo fue desarrollado por el responsable de la automatización de reportes y monitoreo: <strong>Analista de Inteligencia de Negocios</strong>.
-    </p>
-    
-    <p>
-    A continuación, se muestra un ejemplo del correo recibido en la bandeja de entrada del usuario tras la ejecución del flujo:
-    </p>
-    
-    <div style="text-align: center;">
-      <img src="8.PowerAutomate/correo_power_automate.png" alt="Correo automático Power Automate" width="500">
-    </div>
-    
-    <br>
-    
-    <p>
-    El remitente corresponde a la cuenta corporativa de Microsoft Fabric <code>g05@tqt7l.onmicrosoft.com</code> y se envía a la dirección personal del usuario <code>karyj98@hotmail.com</code>.
-    </p>
-    
-    <p>
-    Este tipo de automatización optimiza los tiempos de respuesta y facilita el seguimiento diario del indicador clave del proyecto: el <strong>Fill Rate</strong>.
-    </p>
-           
-    <h2>✅ Conclusiones del Proyecto</h2>
-    
-    <p>
-    El proyecto <strong>“Optimización del Fill Rate para Farmacias Limeñas”</strong> logró integrar exitosamente diversas herramientas tecnológicas para transformar por completo la gestión operativa y analítica del proceso logístico. Desde la captura y validación de pedidos en Power Apps hasta la actualización automatizada del modelo en Microsoft Fabric, se construyó un flujo sólido y eficiente que garantiza información actualizada en tiempo real. A través de un modelo de datos estructurado y la automatización de cálculos en notebooks PySpark, se permitió calcular de forma precisa indicadores clave como el Fill Rate, asegurando trazabilidad y confiabilidad en cada etapa del proceso. El dashboard en Power BI facilitó el análisis visual, permitiendo identificar oportunidades de mejora en almacenes, productos y clientes, así como comprender la relación entre el cumplimiento de entregas y la facturación mensual.
-    </p>
-    
-    <p>
-    Además, se estableció un sistema automatizado de reporte diario mediante Power Automate, que distribuye informes actualizados a las partes responsables sin intervención manual, lo que demuestra una clara apuesta por la eficiencia y la continuidad operativa. Todo este ecosistema digital ha permitido a la empresa simular cómo una cadena farmacéutica podría adoptar decisiones basadas en datos confiables, mejorando tanto el servicio al cliente como el control interno. En resumen, este proyecto no solo ha cumplido con el objetivo de optimizar el Fill Rate, sino que también ha demostrado cómo la integración tecnológica puede aportar valor real, escalable y sostenible en entornos logísticos altamente sensibles como el de la distribución farmacéutica.
-    </p>
-
-    
-
-</body>
+   </div>
+  </div>
+  <!-- Pregunta 8 -->
+  <div style="text-align: left;">
+   <h3>
+    <b>
+     ¿Cuál fue el cliente que mayor facturación le generó a la empresa cuando el INDICADOR MENSUAL DE FILL RATE DE LOS ALMACENES DE LIMA DE “FARMACIAS LIMEÑAS” fue igual a 100% en los primeros 5 meses del 2025?
+    </b>
+   </h3>
+  </div>
+  <div style="text-align: center;">
+   <img src="6.PowerBI/BI_12.png" width="700"/>
+   <img src="6.PowerBI/BI_121.png" width="700"/>
+  </div>
+  <div style="text-align: left;">
+   <p style="text-align: justify">
+    El cliente que generó la mayor facturación a Farmacias Limeñas fue
+    <b>
+     Botica San Miguel
+    </b>
+    con un monto total de
+    <b>
+     S/ 56,285
+    </b>
+    durante los primeros 5 meses del 2025. Esto se observa claramente en la visualización de barras, mientras que la hoja de detalle permite validar que se realizaron 186 pedidos completos, distribuidos en diferentes almacenes.
+   </p>
+   <p style="text-align: justify">
+    <i>
+     Responsable del análisis: Analista de Business Intelligence
+    </i>
+   </p>
+  </div>
+  <!-- Pregunta 9 -->
+  <div style="text-align: left;">
+   <h3>
+    <b>
+     Considerando el almacén con mayor INDICADOR MENSUAL DE FILL RATE DE LOS ALMACENES DE LIMA DE “FARMACIAS LIMEÑAS”, ¿Cuáles son los 4 productos con mayor venta en soles en ese almacén de enero a mayo del 2025?
+    </b>
+   </h3>
+  </div>
+  <div style="text-align: center;">
+   <img src="6.PowerBI/BI_13.png" width="700"/>
+   <img src="6.PowerBI/BI_131.png" width="700"/>
+  </div>
+  <div style="text-align: left;">
+   <p style="text-align: justify">
+    El
+    <b>
+     almacén Lima Sur
+    </b>
+    fue el que obtuvo el mayor Fill Rate. Dentro de este, los productos con mayor facturación fueron:
+    <b>
+     Atorvastatina 10mg (S/ 55 mil)
+    </b>
+    ,
+    <b>
+     Furosemida 40mg (S/ 52 mil)
+    </b>
+    ,
+    <b>
+     Salbutamol Inhalador (S/ 51 mil)
+    </b>
+    y
+    <b>
+     Metformina 850mg (S/ 49 mil)
+    </b>
+    . En la hoja de detalle se evidencia la trazabilidad de cada uno de estos pedidos, incluyendo montos individuales y cantidad entregada.
+   </p>
+   <p style="text-align: justify">
+    <i>
+     Responsable del análisis: Analista de Business Intelligence
+    </i>
+   </p>
+  </div>
+  <!-- Pregunta 10 -->
+  <div style="text-align: left;">
+   <h3>
+    <b>
+     ¿Cuáles son las 3 boticas con menor INDICADOR MENSUAL DE FILL RATE DE LOS ALMACENES DE LIMA DE “FARMACIAS LIMEÑAS” debido a que no se ha cumplido con la entrega de pedidos en los primeros 5 meses del 2025?
+    </b>
+   </h3>
+  </div>
+  <div style="text-align: center;">
+   <img src="6.PowerBI/BI_14.png" width="700"/>
+   <img src="6.PowerBI/BI_141.png" width="700"/>
+  </div>
+  <div style="text-align: left;">
+   <p style="text-align: justify">
+    Las tres boticas con menor cumplimiento de entregas fueron:
+    <b>
+     Botica Los Olivos (86%)
+    </b>
+    ,
+    <b>
+     Botica Breña (75%)
+    </b>
+    y
+    <b>
+     Botica Comas Salud (71%)
+    </b>
+    . En la hoja de detalle se observa que estas boticas, a pesar de tener entregas completas individuales, tuvieron pedidos cancelados o no completados que afectaron su indicador de Fill Rate.
+   </p>
+   <p style="text-align: justify">
+    <i>
+     Responsable del análisis: Analista de Business Intelligence
+    </i>
+   </p>
+  </div>
+  <!-- Cierre resumen -->
+  <div style="text-align: left; margin-top: 30px;">
+   <p style="text-align: justify">
+    <b>
+     Resumen:
+    </b>
+    Esta sección permitió identificar claramente a los clientes y productos más y menos eficientes en términos de facturación y cumplimiento de pedidos. Se concluye que una mejor trazabilidad por almacén y cliente puede facilitar una estrategia de mejora en la operación logística.
+   </p>
+  </div>
+  <h2>
+   📬 Automatización con Power Automate
+  </h2>
+  <p style="text-align: justify">
+   En esta sección se muestra cómo se ha utilizado
+   <strong>
+    Power Automate
+   </strong>
+   para automatizar el envío diario del reporte de indicadores de Fill Rate de Farmacias Limeñas. Esta automatización permite que el usuario reciba cada mañana el archivo PDF con el dashboard actualizado, sin necesidad de intervención manual.
+  </p>
+  <p style="text-align: justify">
+   El flujo ha sido programado para ejecutarse automáticamente todos los días a las
+   <strong>
+    11:00 AM
+   </strong>
+   . A continuación, se presenta el diseño del flujo implementado:
+  </p>
+  <div style="text-align: center;">
+   <img alt="Flujo Power Automate" src="8.PowerAutomate/flujo_PA.png" width="400"/>
+  </div>
+  <br/>
+  <ul>
+   <li>
+    <strong>
+     ⏰ Recurrence:
+    </strong>
+    Disparador programado para que se ejecute todos los días a las 11:00 AM.
+   </li>
+   <li>
+    <strong>
+     🔁 Actualizar un conjunto de datos:
+    </strong>
+    Refresca los datos del reporte de Power BI.
+   </li>
+   <li>
+    <strong>
+     📤 Exportar a archivo:
+    </strong>
+    Genera el reporte en formato PDF directamente desde Power BI.
+   </li>
+   <li>
+    <strong>
+     📧 Enviar correo electrónico (V2):
+    </strong>
+    Envía automáticamente el reporte generado al usuario correspondiente.
+   </li>
+  </ul>
+  <p style="text-align: justify">
+   Este flujo fue desarrollado por el responsable de la automatización de reportes y monitoreo:
+   <strong>
+    Analista de Inteligencia de Negocios
+   </strong>
+   .
+  </p>
+  <p style="text-align: justify">
+   A continuación, se muestra un ejemplo del correo recibido en la bandeja de entrada del usuario tras la ejecución del flujo:
+  </p>
+  <div style="text-align: center;">
+   <img alt="Correo automático Power Automate" src="8.PowerAutomate/correo_power_automate.png" width="500"/>
+  </div>
+  <br/>
+  <p style="text-align: justify">
+   El remitente corresponde a la cuenta corporativa de Microsoft Fabric
+   <code>
+    g05@tqt7l.onmicrosoft.com
+   </code>
+   y se envía a la dirección personal del usuario
+   <code>
+    karyj98@hotmail.com
+   </code>
+   .
+  </p>
+  <p style="text-align: justify">
+   Este tipo de automatización optimiza los tiempos de respuesta y facilita el seguimiento diario del indicador clave del proyecto: el
+   <strong>
+    Fill Rate
+   </strong>
+   .
+  </p>
+  <h2>
+   ✅ Conclusiones del Proyecto
+  </h2>
+  <p style="text-align: justify">
+   El proyecto
+   <strong>
+    “Optimización del Fill Rate para Farmacias Limeñas”
+   </strong>
+   logró integrar exitosamente diversas herramientas tecnológicas para transformar por completo la gestión operativa y analítica del proceso logístico. Desde la captura y validación de pedidos en Power Apps hasta la actualización automatizada del modelo en Microsoft Fabric, se construyó un flujo sólido y eficiente que garantiza información actualizada en tiempo real. A través de un modelo de datos estructurado y la automatización de cálculos en notebooks PySpark, se permitió calcular de forma precisa indicadores clave como el Fill Rate, asegurando trazabilidad y confiabilidad en cada etapa del proceso. El dashboard en Power BI facilitó el análisis visual, permitiendo identificar oportunidades de mejora en almacenes, productos y clientes, así como comprender la relación entre el cumplimiento de entregas y la facturación mensual.
+  </p>
+  <p style="text-align: justify">
+   Además, se estableció un sistema automatizado de reporte diario mediante Power Automate, que distribuye informes actualizados a las partes responsables sin intervención manual, lo que demuestra una clara apuesta por la eficiencia y la continuidad operativa. Todo este ecosistema digital ha permitido a la empresa simular cómo una cadena farmacéutica podría adoptar decisiones basadas en datos confiables, mejorando tanto el servicio al cliente como el control interno. En resumen, este proyecto no solo ha cumplido con el objetivo de optimizar el Fill Rate, sino que también ha demostrado cómo la integración tecnológica puede aportar valor real, escalable y sostenible en entornos logísticos altamente sensibles como el de la distribución farmacéutica.
+  </p>
+ </body>
 </html>
+
 
 
 </body>

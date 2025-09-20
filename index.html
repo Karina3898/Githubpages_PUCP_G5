@@ -753,7 +753,51 @@
       <p><b>Resumen:</b> Esta sección permitió identificar claramente a los clientes y productos más y menos eficientes en términos de facturación y cumplimiento de pedidos. Se concluye que una mejor trazabilidad por almacén y cliente puede facilitar una estrategia de mejora en la operación logística.</p>
     </div>
      
-        
+     <h2>📬 Automatización con Power Automate</h2>
+    
+    <p>
+    En esta sección se muestra cómo se ha utilizado <strong>Power Automate</strong> para automatizar el envío diario del reporte de indicadores de Fill Rate de Farmacias Limeñas. Esta automatización permite que el usuario reciba cada mañana el archivo PDF con el dashboard actualizado, sin necesidad de intervención manual.
+    </p>
+    
+    <p>
+    El flujo ha sido programado para ejecutarse automáticamente todos los días a las <strong>11:00 AM</strong>. A continuación, se presenta el diseño del flujo implementado:
+    </p>
+    
+    <div style="text-align: center;">
+      <img src="8.PowerAutomate/flujo_PA.png" alt="Flujo Power Automate" width="400">
+    </div>
+    
+    <br>
+    
+    <ul>
+      <li><strong>⏰ Recurrence:</strong> Disparador programado para que se ejecute todos los días a las 11:00 AM.</li>
+      <li><strong>🔁 Actualizar un conjunto de datos:</strong> Refresca los datos del reporte de Power BI.</li>
+      <li><strong>📤 Exportar a archivo:</strong> Genera el reporte en formato PDF directamente desde Power BI.</li>
+      <li><strong>📧 Enviar correo electrónico (V2):</strong> Envía automáticamente el reporte generado al usuario correspondiente.</li>
+    </ul>
+    
+    <p>
+    Este flujo fue desarrollado por el responsable de la automatización de reportes y monitoreo: <strong>Analista de Inteligencia de Negocios</strong>.
+    </p>
+    
+    <p>
+    A continuación, se muestra un ejemplo del correo recibido en la bandeja de entrada del usuario tras la ejecución del flujo:
+    </p>
+    
+    <div style="text-align: center;">
+      <img src="8.PowerAutomate/correo_power_automate.png" alt="Correo automático Power Automate" width="500">
+    </div>
+    
+    <br>
+    
+    <p>
+    El remitente corresponde a la cuenta corporativa de Microsoft Fabric <code>g05@tqt7l.onmicrosoft.com</code> y se envía a la dirección personal del usuario <code>karyj98@hotmail.com</code>.
+    </p>
+    
+    <p>
+    Este tipo de automatización optimiza los tiempos de respuesta y facilita el seguimiento diario del indicador clave del proyecto: el <strong>Fill Rate</strong>.
+    </p>
+           
 
     
 

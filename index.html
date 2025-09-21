@@ -85,35 +85,94 @@
     <li>Optimizar la cadena de suministro identificando ineficiencias y mejorando el nivel de servicio al cliente.</li>
 </ul>
 
+<!-- ================== HERRAMIENTAS TECNOLÓGICAS ================== -->
+<div class="seccion" id="herramientas">
+  <h2>🛠️ Herramientas Tecnológicas</h2>
+  <p>
+    Para el desarrollo de este proyecto se emplearon diversas herramientas de Microsoft Cloud y aplicaciones de apoyo que 
+    permitieron integrar, transformar y visualizar los datos de manera eficiente:
+  </p>
+
+  <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+    <thead>
+      <tr style="background-color: #f5f5f5;">
+        <th style="padding: 10px; text-align: left;">Tecnología</th>
+        <th style="padding: 10px; text-align: left;">Función Principal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🔹 Azure SQL</td>
+        <td>Almacenamiento relacional en la nube para centralizar y normalizar los datos.</td>
+      </tr>
+      <tr style="background-color: #f9f9f9;">
+        <td>🔸 Microsoft Fabric</td>
+        <td>Procesamiento, integración y orquestación de datos mediante pipelines y notebooks.</td>
+      </tr>
+      <tr>
+        <td>📊 Power BI</td>
+        <td>Creación de dashboards interactivos y reportes dinámicos para el análisis de indicadores.</td>
+      </tr>
+      <tr style="background-color: #f9f9f9;">
+        <td>📱 Power Apps</td>
+        <td>Registro operativo de pedidos, entregas, inventario y actualización de tablas maestras.</td>
+      </tr>
+      <tr>
+        <td>📝 Lucidchart</td>
+        <td>Diseño de diagramas de flujo y modelos de arquitectura para documentar los procesos.</td>
+      </tr>
+      <tr style="background-color: #f9f9f9;">
+        <td>⚡ Power Automate</td>
+        <td>Automatización de reportes y envío de información periódica vía correo electrónico.</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr style="margin-top: 30px; margin-bottom: 30px; border: 0; border-top: 1px solid #ddd;">
+</div>
+
+<!-- ================== ARQUITECTURA DEL PROYECTO ================== -->
 <div class="seccion" id="arquitectura">
-<h2>2. Arquitectura del Proyecto</h2>
-<p>
-            La arquitectura del proyecto fue diseñada para integrar múltiples herramientas en la nube con el fin de 
-            automatizar y facilitar la medición del <strong>Fill Rate</strong>. Esta solución combina el uso de una base 
-            de datos en SQL Azure, procesamiento automático en Microsoft Fabric, aplicaciones operativas en Power Apps, 
-            flujos de automatización con Power Automate y visualizaciones con Power BI.
-        </p>
-<p>
-            Cada componente cumple un rol específico dentro del flujo de datos. Desde la carga de información diaria 
-            hasta la generación de reportes automáticos y dashboards interactivos, la arquitectura fue pensada para lograr 
-            eficiencia, trazabilidad y control operativo.
-        </p>
-<ol>
-<li><strong>Origen:</strong> Archivos Excel con datos de pedidos, entregas, productos y almacenes.</li>
-<li><strong>SQL Azure:</strong> Carga y normalización de datos en base de datos relacional en la nube.</li>
-<li><strong>Fabric - Data Warehouse:</strong> Importación a un entorno analítico para uso en Power BI.</li>
-<li><strong>Pipeline:</strong> Automatización diaria para actualizar las tablas desde SQL a Fabric.</li>
-<li><strong>Notebook en PySpark:</strong> Envío de resumen de pedidos diarios al correo.</li>
-<li><strong>Power Apps:</strong> Aplicaciones para registrar y modificar pedidos, entregas e inventario.</li>
-<li><strong>Power Automate:</strong> Generación automática de reportes semanales vía correo.</li>
-<li><strong>Power BI:</strong> Dashboard de seguimiento de desempeño logístico.</li>
-</ol>
-<!-- Imagen de la arquitectura del proyecto -->
-<div style="text-align: center; margin-top: 20px;">
-<img alt="Diagrama de Arquitectura del Proyecto" src="2.Arquitectura/Arquitectura_proyecto.png" style="max-width: 80%; height: auto; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-<p style="font-size: 14px; color: #555;">Figura: Arquitectura técnica del proyecto Fill Rate</p>
+  <h2>🏗️ Arquitectura del Proyecto</h2>
+  <p>
+    La arquitectura del proyecto fue diseñada para integrar múltiples herramientas en la nube con el fin de 
+    automatizar y facilitar la medición del <strong>Fill Rate</strong>. Esta solución combina el uso de una base 
+    de datos en SQL Azure, procesamiento automático en Microsoft Fabric, aplicaciones operativas en Power Apps, 
+    flujos de automatización con Power Automate y visualizaciones con Power BI.
+  </p>
+
+  <!-- Imagen del diagrama -->
+  <div style="text-align: center; margin: 25px 0;">
+    <img alt="Diagrama de Arquitectura del Proyecto" src="2.Arquitectura/Arquitectura_proyecto.png" 
+         style="max-width: 80%; height: auto; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+    <p style="font-size: 14px; color: #555;">Figura: Arquitectura técnica del proyecto Fill Rate</p>
+  </div>
+
+  <!-- Subcapas -->
+  <h3>📂 Data Sources</h3>
+  <p>El origen de los datos proviene principalmente de archivos Excel que contienen información de pedidos, entregas, productos y almacenes. Estos archivos constituyen la base inicial del ecosistema de datos.</p>
+
+  <h3>🗄️ Data Layer</h3>
+  <p>Con Azure SQL, los datos son cargados y normalizados en una base de datos relacional en la nube. Este nivel garantiza consistencia y prepara la información para los procesos ETL posteriores.</p>
+
+  <h3>📱 Application Layer</h3>
+  <p>Mediante Power Apps, los usuarios registran y actualizan pedidos, entregas e inventarios. Para su desarrollo, se definió un diagrama de flujo que guía la interacción y asegura la correcta trazabilidad de las operaciones.</p>
+
+  <h3>⚙️ ETL Layer</h3>
+  <p>El flujo de datos es orquestado con Microsoft Fabric a través de Pipelines y Notebooks en PySpark. Estos procesos automatizan la ingesta, validan la información y generan notificaciones al correo electrónico.</p>
+
+  <h3>🏢 Data Warehouse Layer</h3>
+  <p>La información consolidada se almacena en un Data Warehouse de Microsoft Fabric. Este repositorio central permite realizar análisis avanzados y servir como base para la generación de reportes confiables en Power BI.</p>
+
+  <h3>⚡ Automate Layer</h3>
+  <p>Con Power Automate se gestionan flujos automáticos que exportan reportes y los distribuyen a los responsables mediante correo electrónico o archivos Excel, asegurando la actualización constante de la información.</p>
+
+  <h3>📊 Presentation Layer</h3>
+  <p>Power BI es la capa de visualización que transforma los datos en dashboards interactivos y reportes dinámicos, permitiendo un análisis intuitivo de indicadores y facilitando la toma de decisiones.</p>
+
+  <h3>👥 User Access</h3>
+  <p>El acceso a la arquitectura está organizado por roles. Cada usuario es responsable de una parte del proceso: analistas gestionan SQL Azure, desarrolladores administran pipelines y notebooks, y personal operativo usa Power Apps para registrar datos.</p>
 </div>
-</div>
+
 <div class="seccion" id="modelo-datos">
 <h2>3. Diseño del Modelo de Datos</h2>
 <p>

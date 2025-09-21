@@ -855,61 +855,82 @@
   <hr/>
 
   <!-- Sub-sección: Power Automate -->
-  <h2>🤖 Automatización con Power Automate</h2>
+<div class="seccion" id="power-automate">
+  <h2>🏢 Data Warehouse Layer – Capa de Almacén de Datos</h2>
   <p>
-    Dentro de esta capa también se implementó un flujo en <strong>Power Automate</strong> para automatizar 
-    el envío diario del reporte de indicadores de Fill Rate de Farmacias Limeñas. 
-    Esta automatización permite que el usuario reciba cada mañana un archivo PDF con el dashboard actualizado, 
-    sin necesidad de intervención manual.
+    En esta capa se centraliza toda la información proveniente de las tablas creadas en <strong>Microsoft Fabric</strong>, 
+    consolidando el modelo de datos que permite analizar el <strong>Fill Rate</strong>, pedidos, entregas, inventario 
+    y facturación. Además, se desarrollaron medidas calculadas y dimensiones adicionales que enriquecen los análisis 
+    en Power BI y permiten mayor flexibilidad en los reportes.
   </p>
-  <p>
-    El flujo ha sido programado para ejecutarse automáticamente todos los días a las <strong>11:00 AM</strong>. 
-    A continuación, se presenta el diseño del flujo implementado:
-  </p>
-
-  <div style="text-align: center; margin: 20px 0;">
-    <img alt="Flujo Power Automate" src="8.PowerAutomate/flujo_PA.png" width="500" 
-         style="border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"/>
-  </div>
-
   <hr/>
 
-  <!-- Sub-subsecciones del flujo -->
-  <h3>⏰ Recurrence</h3>
-  <p>Disparador programado para que se ejecute todos los días a las 11:00 AM.</p>
-
-  <h3>🔁 Actualizar un conjunto de datos</h3>
-  <p>Refresca los datos del reporte de Power BI, garantizando que el dashboard esté siempre con información reciente.</p>
-
-  <h3>📤 Exportar a archivo</h3>
-  <p>Genera automáticamente el reporte en formato PDF directamente desde Power BI.</p>
-
-  <h3>📧 Enviar correo electrónico (V2)</h3>
-  <p>Envía automáticamente el reporte generado al usuario correspondiente.</p>
-
+  <h3>📦 Tablas y Consultas Almacenadas</h3>
+  <p>
+    El Data Warehouse almacena las tablas principales (<em>Pedidos, Detalle de Pedidos, Entregas, Detalle de Entrega, 
+    Clientes, Productos, Proveedores, Almacén, Inventario</em> y <em>Calendario</em>) junto con queries adicionales 
+    que permiten generar campos derivados como <code>días_transcurridos</code> o <code>cumplimiento_total</code>.
+  </p>
   <hr/>
 
+  <h3>⚙️ Funcionalidades Claves</h3>
+  <ul>
+    <li><strong>Modelado de datos:</strong> relaciones en estrella entre hechos y dimensiones para optimizar el análisis.</li>
+    <li><strong>Medidas calculadas:</strong> Fill Rate (%), ventas generadas, nivel de cumplimiento.</li>
+    <li><strong>Dimensiones agregadas:</strong> días transcurridos, cumplimiento total, periodos de análisis.</li>
+  </ul>
+  <hr/>
+
+  <h3>🤖 Automatización con Power Automate</h3>
   <p>
-    Este flujo fue desarrollado por el <strong>Analista de Inteligencia de Negocios</strong>, 
-    responsable de la automatización de reportes y monitoreo.
-  </p>
-  <p>
-    A continuación, se muestra un ejemplo del correo recibido en la bandeja de entrada del usuario tras la ejecución del flujo:
+    Se implementaron dos flujos automáticos en <strong>Power Automate</strong>, que permiten mantener actualizados los 
+    reportes y enviar información clave a los usuarios sin intervención manual.
   </p>
 
-  <div style="text-align: center; margin: 20px 0;">
-    <img alt="Correo automático Power Automate" src="8.PowerAutomate/correo_power_automate.png" width="500" 
-         style="border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"/>
+  <!-- Flujo 1 -->
+  <h4>📌 Flujo 1: Envío diario de reporte PDF</h4>
+  <p>
+    Este flujo se ejecuta todos los días a las <strong>11:00 AM</strong> y tiene como propósito enviar al usuario 
+    un reporte en formato PDF generado desde Power BI con el dashboard actualizado.
+  </p>
+  <div style="text-align: center;">
+    <img alt="Flujo Power Automate 1" src="8.PowerAutomate/flujo_PA.png" width="400"/>
   </div>
+  <ul>
+    <li>⏰ <strong>Recurrence:</strong> Disparador programado diario a las 11:00 AM.</li>
+    <li>🔁 <strong>Actualizar un conjunto de datos:</strong> Refresca la información en Power BI.</li>
+    <li>📤 <strong>Exportar a archivo:</strong> Genera el reporte PDF desde Power BI.</li>
+    <li>📧 <strong>Enviar correo electrónico (V2):</strong> Envía el reporte al usuario correspondiente.</li>
+  </ul>
+  <div style="text-align: center; margin: 20px 0;">
+    <img alt="Correo automático Flujo 1" src="8.PowerAutomate/correo_power_automate.png" width="500"/>
+  </div>
+  <hr/>
 
+  <!-- Flujo 2 -->
+  <h4>📌 Flujo 2: Envío diario de resumen en Excel</h4>
   <p>
-    El remitente corresponde a la cuenta corporativa de Microsoft Fabric 
-    <code>g05@tqt7l.onmicrosoft.com</code> y se envía a la dirección personal del usuario 
-    <code>karyj98@hotmail.com</code>.  
-    Este tipo de automatización optimiza los tiempos de respuesta y facilita el seguimiento diario del indicador 
-    clave del proyecto: el <strong>Fill Rate</strong>.
+    Este segundo flujo también se ejecuta diariamente a las <strong>11:00 AM</strong>, pero en lugar de un PDF, genera 
+    y comparte un archivo de <strong>Excel</strong> con el resumen de pedidos por cliente en el día. 
+    El archivo se actualiza automáticamente y se comparte mediante un vínculo seguro en la nube.
   </p>
+  <div style="text-align: center;">
+    <img alt="Flujo Power Automate 2" src="8.PowerAutomate/flujo_PA1.png" width="400"/>
+  </div>
+  <ul>
+    <li>⏰ <strong>Recurrence:</strong> Disparador programado diario a las 11:00 AM.</li>
+    <li>🔁 <strong>Actualizar un conjunto de datos:</strong> Refresca la información en Power BI.</li>
+    <li>📊 <strong>Obtener tablas (V2):</strong> Recupera la información de pedidos almacenados.</li>
+    <li>🖥️ <strong>Ejecutar consulta SQL (V2):</strong> Obtiene los pedidos diarios por cliente.</li>
+    <li>📑 <strong>Agregar una fila a una tabla:</strong> Genera el resumen en formato Excel.</li>
+    <li>🔗 <strong>Crear un vínculo para compartir:</strong> Habilita acceso al archivo generado.</li>
+    <li>📧 <strong>Enviar correo electrónico (V2):</strong> Envía automáticamente el vínculo del archivo al usuario.</li>
+  </ul>
+  <div style="text-align: center; margin: 20px 0;">
+    <img alt="Correo automático Flujo 2" src="8.PowerAutomate/correo_power_automate1.png" width="500"/>
+  </div>
 </div>
+
 
     
     <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">

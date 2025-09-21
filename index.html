@@ -180,13 +180,17 @@
   <h2>📊 Presentation Layer</h2>
   <p>Power BI es la capa de visualización que transforma los datos en dashboards interactivos y reportes dinámicos, permitiendo un análisis intuitivo de indicadores y facilitando la toma de decisiones.</p>
 
-  <h3>👥 User Access</h3>
+  <h2>👥 User Access</h2>
   <p>El acceso a la arquitectura está organizado por roles. Cada usuario es responsable de una parte del proceso: analistas gestionan SQL Azure, desarrolladores administran pipelines y notebooks, y personal operativo usa Power Apps para registrar datos.</p>
 </div>
 
 <!-- ================== DATA LAYER - CAPA DE DATOS ================== -->
 <div class="seccion" id="modelo-datos">
-  <h2>🗄️ Data Layer - Capa de Datos</h2>
+ <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
+    
+<h2 style="text-align:left; font-size:1.8em; margin-top:40px;">
+    <span style="font-size:1.2em; margin-right:10px;">🗄️</span> Data Layer - Capa de Datos
+    
   <p>
     En esta capa se diseñaron y consolidaron las bases de datos necesarias para el análisis del 
     <strong>Fill Rate</strong>. Estas tablas permiten capturar, organizar y relacionar la información 
@@ -196,7 +200,7 @@
   <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
 
   <!-- MODELO DE DATOS -->
-  <h3>📐 Modelo de Datos SQL</h3>
+  <h2>📐 Modelo de Datos SQL</h2>
   <p>
     El modelo de datos fue implementado en Azure SQL y modelado dentro de Microsoft Fabric 
     para integrarse en un entorno de <em>Data Warehouse</em>. Esto permitió establecer relaciones clave 
@@ -214,48 +218,52 @@
   <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
 
   <!-- TABLAS DEL MODELO -->
-  <h3>📂 Tablas del Modelo</h3>
+  <h2>📂 Tablas del Modelo</h2>
   <p>
     El modelo está compuesto por diversas tablas que cumplen funciones específicas para la trazabilidad 
     de los pedidos, el control de inventarios y la gestión de entregas. A continuación, se describe cada 
     una de ellas:
   </p>
 
-  <h4>👥 G5_Clientes</h4>
+  <h3>👥 G5_Clientes</h3>
   <p>Contiene información de las boticas o puntos de venta, incluyendo ID del cliente, nombre, dirección y categoría.</p>
 
-  <h4>💊 G5_Productos</h4>
+  <h3>💊 G5_Productos</h3>
   <p>Incluye todos los productos disponibles, su nombre, precio unitario y proveedor asociado.</p>
 
-  <h4>🚚 G5_Proveedores</h4>
+  <h3>🚚 G5_Proveedores</h3>
   <p>Datos básicos de los proveedores, como nombre y contacto.</p>
 
-  <h4>🏢 G5_Almacen</h4>
+  <h3>🏢 G5_Almacen</h3>
   <p>Registro de almacenes físicos, con ciudad, dirección y persona encargada.</p>
 
-  <h4>📦 G5_Inventario</h4>
+  <h3>📦 G5_Inventario</h3>
   <p>Muestra el stock disponible por producto y por almacén, a nivel de fechas específicas.</p>
 
-  <h4>📝 G5_Pedidos</h4>
+  <h3>📝 G5_Pedidos</h3>
   <p>Contiene los pedidos realizados por los clientes, con su respectiva fecha y producto solicitado.</p>
 
-  <h4>📑 G5_Detalle_Pedidos</h4>
+  <h3>📑 G5_Detalle_Pedidos</h3>
   <p>Detalle por producto y cantidad de cada pedido registrado.</p>
 
-  <h4>🚛 G5_Entregas</h4>
+  <h3>🚛 G5_Entregas</h3>
   <p>Registra cuándo y desde qué almacén se realizó una entrega, si fue completa o no, y quién la gestionó.</p>
 
-  <h4>📋 G5_Detalle_Entrega</h4>
+  <h3>📋 G5_Detalle_Entrega</h3>
   <p>Detalle de la cantidad efectivamente entregada para cada producto.</p>
 
-  <h4>📅 Calendario</h4>
+  <h3>📅 Calendario</h3>
   <p>Tabla maestra de fechas utilizada para análisis temporales y generación de medidas como el Fill Rate mensual.</p>
 
   <hr style="margin-top: 30px; border: 0; border-top: 1px solid #ddd;">
 </div>
 <!-- ================== ETL LAYER - CAPA DE EXTRACCIÓN, TRANSFORMACIÓN Y CARGA ================== -->
 <div class="seccion" id="etl-layer">
-  <h2>⚙️ ETL Layer - Capa de Extracción, Transformación y Carga</h2>
+  <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
+    
+<h2 style="text-align:left; font-size:1.8em; margin-top:40px;">
+    <span style="font-size:1.2em; margin-right:10px;">⚙️</span> ETL Layer - Capa de Extracción, Transformación y Carga
+       
   <p>
     En esta capa se gestionan los procesos de <strong>ingesta, transformación y carga</strong> de datos, 
     asegurando que la información esté siempre actualizada y disponible para los diferentes análisis del proyecto. 
@@ -265,7 +273,7 @@
   <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
 
   <!-- ORIGEN DE DATOS -->
-  <h3>📂 Origen de Datos</h3>
+  <h2>📂 Origen de Datos</h2>
   <p>
     Los datos utilizados en esta etapa provienen de tablas consolidadas en Azure SQL y replicadas en Microsoft Fabric. 
     Estas incluyen información de <strong>pedidos, entregas, productos, inventarios y clientes</strong>, las cuales constituyen 
@@ -274,7 +282,7 @@
   <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
 
   <!-- NOTEBOOK -->
-  <h3>📓 Notebook en PySpark</h3>
+  <h2>📓 Notebook en PySpark</h2>
   <p>
     Una parte clave del proceso automatizado fue el desarrollo de un <strong>notebook en PySpark</strong>, 
     que se ejecuta al final del pipeline diario en Microsoft Fabric. 
@@ -289,15 +297,15 @@
                 box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
   </div>
 
-  <h4>🔄 Flujo del Proceso</h4>
+  <h3>🔄 Flujo del Proceso</h3>
 
-  <h5>📊 Consulta de Datos</h5>
+  <h3>📊 Consulta de Datos</h3>
   <p>El notebook se conecta al <em>Data Warehouse</em> en Fabric y realiza una consulta SQL para contar los pedidos registrados en la fecha actual.</p>
 
-  <h5>📝 Formateo de Resultados</h5>
+  <h3>📝 Formateo de Resultados</h3>
   <p>La información obtenida se transforma en un formato legible para que pueda ser interpretada rápidamente por los usuarios finales.</p>
 
-  <h5>📧 Notificación Vía Correo</h5>
+  <h3>📧 Notificación Vía Correo</h3>
   <p>Se envía un correo automático con los resultados, utilizando un servidor SMTP configurado en Fabric.</p>
 
   <!-- Imagen del correo enviado -->
@@ -315,6 +323,7 @@
   <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
 
   <!-- PIPELINE -->
+    
   <h3>🔄 Pipeline en Microsoft Fabric</h3>
   <p>
     La automatización del flujo de datos se gestiona mediante un <strong>pipeline en Microsoft Fabric</strong> 
@@ -322,31 +331,31 @@
     y ejecutar el notebook PySpark al finalizar.
   </p>
 
-  <h4>📌 Características del Pipeline</h4>
+  <h3>📌 Características del Pipeline</h3>
 
-  <h5>🏷️ Nombre</h5>
+  <h3>🏷️ Nombre</h3>
   <p><code>pl_tablas</code></p>
 
-  <h5>⏰ Frecuencia de Ejecución</h5>
+  <h3>⏰ Frecuencia de Ejecución</h3>
   <p>Diario a las <strong>8:00 PM</strong></p>
 
-  <h5>🛠️ Herramienta Usada</h5>
+  <h3>🛠️ Herramienta Usada</h3>
   <p>Microsoft Fabric - Data Factory</p>
 
-  <h5>⚡ Tipo de Tareas</h5>
+  <h3>⚡ Tipo de Tareas</h3>
   <ul>
     <li>Actualiza las tablas importadas desde Azure SQL hacia Fabric Data Warehouse.</li>
     <li>Ejecuta automáticamente el <strong>Notebook de PySpark</strong> al finalizar.</li>
     <li>No realiza carga desde fuentes externas, sino sincronización y limpieza de tablas ya integradas.</li>
   </ul>
 
-  <h4>📈 Flujo del Pipeline</h4>
+  <h3>📈 Flujo del Pipeline</h3>
   <p>
     El pipeline sigue una estructura secuencial donde cada tabla es procesada individualmente mediante 
     <strong>Data Flows</strong>, y al final se ejecuta el notebook que genera y envía el reporte diario.
   </p>
 
-  <h5>📥 Extracción</h5>
+  <h3>📥 Extracción</h3>
   <p>
     Durante la fase de extracción, el pipeline actualiza las siguientes tablas principales:
     <em>Clientes, Pedidos, Detalle_Pedidos, Entregas, Detalle_Entrega, Inventario, Productos y Proveedores</em>.
@@ -365,9 +374,12 @@
 
     
 <div class="seccion" id="powerapps">
-    <h2>📱 Application Layer – Capa de Aplicación</h2>
-
-    <h3>🔄 Diagrama de Flujo del Proceso</h3>
+      <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
+    
+<h2 style="text-align:left; font-size:1.8em; margin-top:40px;">
+    <span style="font-size:1.2em; margin-right:10px;">📱</span> Application Layer – Capa de Aplicación
+       
+    <h2>🔄 Diagrama de Flujo del Proceso</h2>
     
     <p>
         Uno de los pilares del proyecto fue la implementación de una aplicación operativa en Power Apps que permite 
@@ -385,19 +397,19 @@
     
     <!-- ================= FLUJO 0 ================= -->
     <div class="subseccion">
-        <h3>Flujo 0: Pantalla de Inicio</h3>
+        <h2>Flujo 0: Pantalla de Inicio</h2>
         <p>
             La pantalla principal de la aplicación actúa como menú de navegación para los distintos flujos 
             (Pedidos, Entregas, Inventario y Tablas Maestras).
         </p>
 
-        <h4>🎯 Propósito</h4>
+        <h3>🎯 Propósito</h3>
         <ul>
             <li>Centralizar en un solo punto el acceso a todos los procesos de la aplicación.</li>
             <li>Permitir que cada rol (ventas, logística, administración) elija el flujo que le corresponde.</li>
             <li>Facilitar la navegación entre procesos de forma intuitiva.</li>
         </ul>
-        <h4>⚡ Funcionalidades</h4>
+        <h3>⚡ Funcionalidades</h3>
         <ul>
             <li>Menú interactivo con accesos a los flujos de <em>Pedidos, Entregas, Inventario</em> y <em>Tablas Maestras</em>.</li>
             <li>Identificación clara del responsable de cada flujo.</li>
@@ -411,11 +423,11 @@
 
     <!-- ================= FLUJO 1: PEDIDOS ================= -->
     <div class="subseccion">
-        <h3>Flujo 1: Registro de Pedidos (Responsable: Asistente de Ventas)</h3>
+        <h2>Flujo 1: Registro de Pedidos (Responsable: Asistente de Ventas)</h2>
         
 
 
-        <h4>🎯 Propósito</h4>
+        <h3>🎯 Propósito</h3>
         <ul>
             <li>Asegurar que todos los pedidos estén asociados a clientes válidos.</li>
             <li>Garantizar que los productos solicitados existan en la base de datos.</li>
@@ -423,7 +435,7 @@
             <li>Servir como punto de entrada al cálculo posterior del Fill Rate.</li>
         </ul>
 
-        <h4>⚡ Funcionalidades</h4>
+        <h3>⚡ Funcionalidades</h3>
         <ul>
             <li>Validación de cliente: si no existe, se abre un formulario para registrarlo (Imagen 2 y 3).</li>
             <li>Formulario de pedidos con campos autocompletados como ID de pedido y cliente (Imagen 4).</li>
@@ -440,11 +452,11 @@
 
     <!-- ================= FLUJO 2: ENTREGAS ================= -->
     <div class="subseccion">
-        <h3>Flujo 2: Registro de Entregas (Responsable: Auxiliar de Logística)</h3>
+        <h2>Flujo 2: Registro de Entregas (Responsable: Auxiliar de Logística)</h2>
         
 
 
-        <h4>🎯 Propósito</h4>
+        <h3>🎯 Propósito</h3>
         <ul>
             <li>Garantizar que todas las entregas sean registradas en forma estandarizada.</li>
             <li>Determinar si los pedidos se cumplen de forma completa (S) o incompleta (N).</li>
@@ -452,7 +464,7 @@
             <li>Apoyar directamente el cálculo del Fill Rate al marcar la condición de cumplimiento.</li>
         </ul>
 
-        <h4>⚡ Funcionalidades</h4>
+        <h3>⚡ Funcionalidades</h3>
         <ul>
             <li>Formulario de registro de detalle de entrega con cantidad entregada (Imagen 1).</li>
             <li>Visualización previa de stock disponible por producto y almacén.</li>
@@ -468,15 +480,15 @@
 
     <!-- ================= FLUJO 3: INVENTARIO ================= -->
     <div class="subseccion">
-        <h3>Flujo 3: Registro de Inventario (Responsable: Operador de Logística)</h3>
+        <h2>Flujo 3: Registro de Inventario (Responsable: Operador de Logística)</h2>
 
-        <h4>🎯 Propósito</h4>
+        <h3>🎯 Propósito</h3>
         <ul>
             <li>Actualizar en tiempo real las cantidades de inventario por producto y almacén.</li>
             <li>Evitar quiebres de stock mediante un control más oportuno.</li>
             <li>Validar la coherencia entre entregas y existencias actuales.</li>
         </ul>
-        <h4>⚡ Funcionalidades</h4>
+        <h3>⚡ Funcionalidades</h3>
         <ul>
             <li>Consulta del último inventario ingresado.</li>
             <li>Validación automática de IDs de inventario, producto y almacén.</li>
@@ -490,11 +502,11 @@
 
     <!-- ================= FLUJO 4: TABLAS MAESTRAS ================= -->
     <div class="subseccion">
-        <h3>Flujo 4: Actualización de Tablas Maestras (Responsable: Administrador de Datos)</h3>
+        <h2>Flujo 4: Actualización de Tablas Maestras (Responsable: Administrador de Datos)</h2>
         
 
 
-        <h4>🎯 Propósito</h4>
+        <h3>🎯 Propósito</h3>
         <ul>
             <li>Centralizar la gestión de clientes, proveedores, productos y almacenes.</li>
             <li>Evitar inconsistencias y duplicados en los registros básicos del sistema.</li>
@@ -502,7 +514,7 @@
             <li>Permitir un mantenimiento ágil y continuo de la base de datos maestra.</li>
         </ul>
 
-        <h4>⚡ Funcionalidades</h4>
+        <h3>⚡ Funcionalidades</h3>
         <ul>
             <li><strong>Clientes:</strong> Listado, edición, eliminación y registro de nuevos clientes con validación de duplicados.</li>
             <li><strong>Proveedores:</strong> Consulta rápida y creación de nuevos proveedores en la misma pantalla.</li>
@@ -519,9 +531,12 @@
 </div>
 
 
+  <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
     
-<h2>📊 Dashboard en Power BI</h2>
-<h3>🗄️ Modelo de datos en Power BI</h3>
+<h2 style="text-align:left; font-size:1.8em; margin-top:40px;">
+    <span style="font-size:1.2em; margin-right:10px;">📊</span> Dashboard en Power BI
+        
+<h2>🗄️ Modelo de datos en Power BI</h2>
 
 <p>
       El modelo de datos fue construido en Power BI a partir de las tablas publicadas desde el entorno de Microsoft Fabric. Las relaciones se establecen entre las tablas de hechos y dimensiones mediante claves primarias y foráneas. La estructura responde a un esquema en estrella, permitiendo eficiencia en los análisis.
@@ -536,7 +551,7 @@
 <img alt="Modelo de datos Power BI" src="6.PowerBI/Modelo de datos_bi.png" style="max-width: 90%; height: auto; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
 </div>
 <hr/>
-<h3>🖥️ Interfaz general de Power BI</h3>
+<h2>🖥️ Interfaz general de Power BI</h2>
 <p>
       Con el modelo de datos ya estructurado, se procede a crear el reporte directamente desde el entorno de Power BI en Microsoft Fabric. La interfaz está organizada por secciones y preguntas que permiten explorar tanto el contexto del negocio como los resultados del análisis.
     </p>
@@ -547,7 +562,7 @@
 <img alt="Interfaz general Power BI" src="6.PowerBI/BI_0.png" style="max-width: 90%; height: auto; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
 </div>
 <hr/>
-<h3>💼 Caso de negocio</h3>
+<h2>💼 Caso de negocio</h2>
 <p>
       La siguiente visualización presenta un resumen del objetivo, estrategia y análisis costo-beneficio del proyecto:
     </p>
@@ -560,7 +575,7 @@
 <img alt="Caso de negocio" src="6.PowerBI/BI_1.png" style="max-width: 90%; height: auto; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
 </div>
 <hr/>
-<h3>📊 Definición del indicador</h3>
+<h2>📊 Definición del indicador</h2>
 <p>
       Esta vista define el indicador principal del proyecto:
     </p>
@@ -573,7 +588,7 @@
 <img alt="Definición del indicador" src="6.PowerBI/BI_2.png" style="max-width: 90%; height: auto; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
 </div>
 <hr/>
-<h3>📈 Dashboard principal</h3>
+<h2>📈 Dashboard principal</h2>
 <p>
       Aquí se visualiza el <strong>valor actual del Fill Rate mensual</strong>: <strong>91.69%</strong> al 31 de mayo de 2025, clasificado como nivel amarillo.
     </p>
@@ -585,7 +600,7 @@
 </div>
     
 <hr/>
-<h3>⏳ Reporte de evolución del Fill Rate</h3>
+<h2>⏳ Reporte de evolución del Fill Rate</h2>
 <p>
       Esta visualización muestra el avance del Fill Rate frente al objetivo de 97%:
     </p>
@@ -602,7 +617,7 @@
 </div>    
 <hr/>
 <!-- Análisis por pares centrado -->
-<h3>🔍 Análisis 1: Mejor valor mensual del Fill Rate (enero - mayo 2025)</h3>
+<h2>🔍 Análisis 1: Mejor valor mensual del Fill Rate (enero - mayo 2025)</h2>
 <p>
       Este análisis responde a la pregunta: <strong>¿Cuál fue el mejor valor del Fill Rate mensual en Lima durante los primeros 5 meses del 2025?</strong>
 </p>
@@ -621,7 +636,7 @@
     
 </div>
 <hr/>
-<h3>🔍 Análisis 2: Almacén con mayor desempeño promedio</h3>
+<h2>🔍 Análisis 2: Almacén con mayor desempeño promedio</h2>
 <p>
       Esta vista analiza: <strong>¿Qué almacén tuvo el mayor promedio de Fill Rate en los primeros 5 meses del 2025?</strong>
 </p>
@@ -639,7 +654,7 @@
 <hr/>
 <!-- PREGUNTA 3 -->
 <div style="margin-bottom: 30px;">
-<h3>🔍 Análisis 3: Clientes con mayor promedio de Fill Rate</h3>
+<h2>🔍 Análisis 3: Clientes con mayor promedio de Fill Rate</h2>
 <p>
       Esta vista analiza: <strong>¿Cuáles fueron los clientes (boticas) con mayor cumplimiento de entregas completas en los primeros cinco meses del 2025?</strong>
 </p>
@@ -658,7 +673,7 @@
 </div>
 <!-- PREGUNTA 4 -->
 <div style="margin-bottom: 30px;">
-<h3>🔍 Análisis 4: Producto con menor cumplimiento de entregas</h3>
+<h2>🔍 Análisis 4: Producto con menor cumplimiento de entregas</h2>
 <p>
       Esta vista analiza: <strong>¿Qué producto tuvo el menor índice de cumplimiento (Fill Rate) en los primeros meses del 2025?</strong>
 </p>
@@ -677,7 +692,7 @@
 </div>
 <!-- PREGUNTA 5 -->
 <div style="margin-bottom: 30px;">
-<h3>🔍 Análisis 5: Tiempo promedio entre pedido y entrega</h3>
+<h2>🔍 Análisis 5: Tiempo promedio entre pedido y entrega</h2>
 <p>
       Esta vista analiza: <strong>¿Cuál fue el tiempo promedio en días entre el registro del pedido y su entrega en los primeros cinco meses del 2025?</strong>
 </p>
@@ -696,7 +711,7 @@
 </div>
 <!-- PREGUNTA 6 -->
 <div style="margin-bottom: 30px;">
-<h3>🔍 Análisis 6: Cantidad total de productos pedidos y entregados</h3>
+<h2>🔍 Análisis 6: Cantidad total de productos pedidos y entregados</h2>
 <p>
       Esta vista analiza: <strong>¿Cuál fue la cantidad total de productos entregados en los primeros meses del 2025?</strong>
 </p>
@@ -715,7 +730,7 @@
 </div>
 <!-- PREGUNTA 7 -->
 <div style="margin-bottom: 30px;">
-<h3>🔍 Análisis 7: Facturación mensual con Fill Rate menor a 100%</h3>
+<h2>🔍 Análisis 7: Facturación mensual con Fill Rate menor a 100%</h2>
 <p>
       Esta vista analiza: <strong>¿Cuál fue la facturación mensual (en soles) durante los primeros cinco meses del 2025 con Fill Rate menor a 100%?</strong>
 </p>
@@ -734,7 +749,7 @@
 </div>
 <!-- Pregunta 8 -->
 <div style="text-align: left;">
-<h3>🔍 Análisis 8: Almacenes con cumplimiento completo</h3>
+<h2>🔍 Análisis 8: Almacenes con cumplimiento completo</h2>
 <p>
       Esta vista analiza: <strong>¿Cuál fue el cliente que generó la mayor facturación a Farmacias Limeñas en los primeros cinco meses del 2025?</strong>
 </p>
@@ -753,7 +768,7 @@
 </div>
 <!-- Pregunta 9 -->
 <div style="text-align: left;">
-<h3>🔍 Análisis 9: Productos con mayores ventas</h3>
+<h2>🔍 Análisis 9: Productos con mayores ventas</h2>
 <p>
       Este análisis responde: <strong>¿Cuáles fueron los productos con mayor facturación dentro del almacén Lima Sur en los primeros meses de 2025?</strong>
 </p>
@@ -776,7 +791,7 @@
 </div>
 <!-- Pregunta 10 -->
 <div style="text-align: left;">
-<h3>🔍 Análisis 10: Clientes con bajo rendimiento</h3>
+<h2>🔍 Análisis 10: Clientes con bajo rendimiento</h2>
 <p>
       Este análisis identifica: <strong>¿Cuáles son las boticas con menor cumplimiento de entregas (Fill Rate) en los primeros meses del 2025?</strong>
 </p>

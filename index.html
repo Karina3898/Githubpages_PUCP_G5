@@ -242,73 +242,117 @@
 
   <hr style="margin-top: 30px; border: 0; border-top: 1px solid #ddd;">
 </div>
+<!-- ================== ETL LAYER - CAPA DE EXTRACCIÓN, TRANSFORMACIÓN Y CARGA ================== -->
+<div class="seccion" id="etl-layer">
+  <h2>⚙️ ETL Layer - Capa de Extracción, Transformación y Carga</h2>
+  <p>
+    En esta capa se gestionan los procesos de <strong>ingesta, transformación y carga</strong> de datos, 
+    asegurando que la información esté siempre actualizada y disponible para los diferentes análisis del proyecto. 
+    Aquí se integran el <em>notebook en PySpark</em> y el <em>pipeline en Microsoft Fabric</em>, que trabajan de manera 
+    conjunta para garantizar eficiencia, trazabilidad y control en el flujo de datos.
+  </p>
+  <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
 
-<div class="seccion" id="notebook">
-<h2>4. Notebook en PySpark</h2>
-<p>
-            Una parte clave del proceso automatizado fue el desarrollo de un notebook utilizando <strong>PySpark</strong>, 
-            que se ejecuta al final del pipeline diario creado en Microsoft Fabric. 
-            Este notebook tiene como propósito principal <strong>consultar la cantidad total de pedidos realizados durante el día</strong> 
-            y enviar dicha información por correo electrónico al usuario.
-        </p>
-<!-- Imagen del notebook -->
-<div style="text-align: center; margin: 30px 0;">
-<img alt="Código del notebook en PySpark" src="4.Notebook/notebook.png" style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
+  <!-- ORIGEN DE DATOS -->
+  <h3>📂 Origen de Datos</h3>
+  <p>
+    Los datos utilizados en esta etapa provienen de tablas consolidadas en Azure SQL y replicadas en Microsoft Fabric. 
+    Estas incluyen información de <strong>pedidos, entregas, productos, inventarios y clientes</strong>, las cuales constituyen 
+    la base sobre la cual se ejecutan los procesos de notebook y pipeline.
+  </p>
+  <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+
+  <!-- NOTEBOOK -->
+  <h3>📓 Notebook en PySpark</h3>
+  <p>
+    Una parte clave del proceso automatizado fue el desarrollo de un <strong>notebook en PySpark</strong>, 
+    que se ejecuta al final del pipeline diario en Microsoft Fabric. 
+    Este notebook tiene como propósito principal <strong>consultar la cantidad total de pedidos registrados durante el día</strong> 
+    y enviar dicha información automáticamente por correo electrónico al usuario.
+  </p>
+
+  <!-- Imagen del notebook -->
+  <div style="text-align: center; margin: 30px 0;">
+    <img alt="Código del notebook en PySpark" src="4.Notebook/notebook.png" 
+         style="max-width: 85%; height: auto; border-radius: 10px; 
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  </div>
+
+  <h4>🔄 Flujo del Proceso</h4>
+
+  <h5>📊 Consulta de Datos</h5>
+  <p>El notebook se conecta al <em>Data Warehouse</em> en Fabric y realiza una consulta SQL para contar los pedidos registrados en la fecha actual.</p>
+
+  <h5>📝 Formateo de Resultados</h5>
+  <p>La información obtenida se transforma en un formato legible para que pueda ser interpretada rápidamente por los usuarios finales.</p>
+
+  <h5>📧 Notificación Vía Correo</h5>
+  <p>Se envía un correo automático con los resultados, utilizando un servidor SMTP configurado en Fabric.</p>
+
+  <!-- Imagen del correo enviado -->
+  <div style="text-align: center; margin: 30px 0;">
+    <img alt="Correo automático enviado desde el notebook" src="4.Notebook/correo_notebook.png" 
+         style="max-width: 70%; height: auto; border-radius: 10px; 
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
+  </div>
+
+  <p>
+    Este notebook se configura con la cuenta de Microsoft Fabric 
+    <strong>g05@tqt7l.onmicrosoft.com</strong> y envía reportes diarios a la cuenta personal del usuario 
+    <strong>karyj98@hotmail.com</strong>.
+  </p>
+  <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+
+  <!-- PIPELINE -->
+  <h3>🔄 Pipeline en Microsoft Fabric</h3>
+  <p>
+    La automatización del flujo de datos se gestiona mediante un <strong>pipeline en Microsoft Fabric</strong> 
+    llamado <code>pl_tablas</code>, configurado para actualizar diariamente las tablas del Data Warehouse 
+    y ejecutar el notebook PySpark al finalizar.
+  </p>
+
+  <h4>📌 Características del Pipeline</h4>
+
+  <h5>🏷️ Nombre</h5>
+  <p><code>pl_tablas</code></p>
+
+  <h5>⏰ Frecuencia de Ejecución</h5>
+  <p>Diario a las <strong>8:00 PM</strong></p>
+
+  <h5>🛠️ Herramienta Usada</h5>
+  <p>Microsoft Fabric - Data Factory</p>
+
+  <h5>⚡ Tipo de Tareas</h5>
+  <ul>
+    <li>Actualiza las tablas importadas desde Azure SQL hacia Fabric Data Warehouse.</li>
+    <li>Ejecuta automáticamente el <strong>Notebook de PySpark</strong> al finalizar.</li>
+    <li>No realiza carga desde fuentes externas, sino sincronización y limpieza de tablas ya integradas.</li>
+  </ul>
+
+  <h4>📈 Flujo del Pipeline</h4>
+  <p>
+    El pipeline sigue una estructura secuencial donde cada tabla es procesada individualmente mediante 
+    <strong>Data Flows</strong>, y al final se ejecuta el notebook que genera y envía el reporte diario.
+  </p>
+
+  <h5>📥 Extracción</h5>
+  <p>
+    Durante la fase de extracción, el pipeline actualiza las siguientes tablas principales:
+    <em>Clientes, Pedidos, Detalle_Pedidos, Entregas, Detalle_Entrega, Inventario, Productos y Proveedores</em>.
+  </p>
+
+  <!-- Imagen del pipeline -->
+  <div style="text-align: center; margin: 30px 0;">
+    <img alt="Pipeline de actualización en Microsoft Fabric" src="2.pipeline/pipeline.png" 
+         style="max-width: 95%; height: auto; border-radius: 10px; 
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  </div>
+
+  <hr style="margin-top: 30px; border: 0; border-top: 1px solid #ddd;">
 </div>
-<p>
-            Esta automatización es parte de la estrategia para mantener informada a la operación sin necesidad de intervención manual, 
-            promoviendo la toma de decisiones basadas en datos en tiempo real.
-        </p>
-<h3>🔄 Flujo del Proceso</h3>
-<ol>
-<li><strong>Consulta de datos:</strong> El notebook se conecta al Data Warehouse en Fabric y realiza una consulta SQL que cuenta los pedidos registrados en la fecha actual.</li>
-<li><strong>Formateo de resultados:</strong> Se transforma la información a un formato legible.</li>
-<li><strong>Notificación vía correo electrónico:</strong> Se envía un correo automático con los resultados, utilizando un servidor SMTP (en este caso, Gmail).</li>
-</ol>
-<!-- Imagen del correo enviado -->
-<div style="text-align: center; margin: 30px 0;">
-<img alt="Correo automático enviado desde el notebook" src="4.Notebook/correo_notebook.png" style="max-width: 70%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
-</div>
-<p>
-            Este notebook se configura con la cuenta de Microsoft Fabric 
-            <strong>g05@tqt7l.onmicrosoft.com</strong> y envía correos a la cuenta personal del usuario 
-            <strong>karyj98@hotmail.com</strong>.
-        </p>
-</div>
-<!-- SECCIÓN 5: Automatización en Fabric (Pipeline) -->
-<div class="seccion" id="automatizacion-fabric">
-<h2>5. Automatización en Fabric (Pipeline)</h2>
-<p>
-            La automatización del flujo de datos es una parte fundamental del proyecto de análisis del <strong>Fill Rate</strong> en <em>Farmacias Limeñas</em>. 
-            Para lograr que la información esté siempre actualizada, se configuró un <strong>pipeline automático</strong> dentro de Microsoft Fabric llamado <code>pl_tablas</code>.
-        </p>
-<p>
-            Este pipeline tiene como objetivo central la <strong>actualización diaria de las tablas del Data Warehouse</strong>, asegurando que la información más reciente 
-            esté disponible para los dashboards de Power BI, el notebook PySpark y los procesos automatizados posteriores.
-        </p>
-<h3>📌 Características del Pipeline</h3>
-<ul>
-<li><strong>Nombre del pipeline:</strong> <code>pl_tablas</code></li>
-<li><strong>Frecuencia de ejecución:</strong> Diario a las <strong>8:00 PM</strong></li>
-<li><strong>Herramienta usada:</strong> Microsoft Fabric - Data Factory</li>
-<li><strong>Tipo de tareas:</strong>
-<ul>
-<li>Actualiza las tablas importadas desde Azure SQL hacia Fabric Data Warehouse</li>
-<li>Ejecuta automáticamente el <strong>Notebook de PySpark</strong> al finalizar</li>
-<li>No realiza carga desde fuentes externas, sino sincronización y limpieza de las tablas ya integradas</li>
-</ul>
-</li>
-</ul>
-<h3>📈 Flujo del Pipeline</h3>
-<p>
-            El pipeline sigue una estructura secuencial donde cada tabla es procesada individualmente mediante <strong>Data Flows</strong>, 
-            y al final del flujo se llama automáticamente al notebook que genera y envía un resumen diario de los pedidos registrados.
-        </p>
-<!-- Imagen del pipeline -->
-<div style="text-align: center; margin: 30px 0;">
-<img alt="Pipeline de actualización en Microsoft Fabric" src="2.pipeline/pipeline.png" style="max-width: 95%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-</div>
-</div>
+
+
+    
 <div class="seccion" id="powerapps">
 <h2>6. Power Apps y Flujo Operativo</h2>
 <p>

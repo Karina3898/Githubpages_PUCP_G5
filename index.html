@@ -815,41 +815,107 @@
 <p><b>✅ Resumen:</b> Esta sección permitió identificar claramente a los clientes y productos más y menos eficientes en términos de facturación y cumplimiento de pedidos. Se concluye que una mejor trazabilidad por almacén y cliente puede facilitar una estrategia de mejora en la operación logística.</p>
 </div>
 
-    
-<h2>8. Automatización con Power Automate</h2>
-<p>
-    En esta sección se muestra cómo se ha utilizado <strong>Power Automate</strong> para automatizar el envío diario del reporte de indicadores de Fill Rate de Farmacias Limeñas. Esta automatización permite que el usuario reciba cada mañana el archivo PDF con el dashboard actualizado, sin necesidad de intervención manual.
-    </p>
-<p>
-    El flujo ha sido programado para ejecutarse automáticamente todos los días a las <strong>11:00 AM</strong>. A continuación, se presenta el diseño del flujo implementado:
-    </p>
-<div style="text-align: center;">
-<img alt="Flujo Power Automate" src="8.PowerAutomate/flujo_PA.png" width="400"/>
-</div>
-<br/>
-<ul>
-<li><strong>⏰ Recurrence:</strong> Disparador programado para que se ejecute todos los días a las 11:00 AM.</li>
-<li><strong>🔁 Actualizar un conjunto de datos:</strong> Refresca los datos del reporte de Power BI.</li>
-<li><strong>📤 Exportar a archivo:</strong> Genera el reporte en formato PDF directamente desde Power BI.</li>
-<li><strong>📧 Enviar correo electrónico (V2):</strong> Envía automáticamente el reporte generado al usuario correspondiente.</li>
-</ul>
-<p>
-    Este flujo fue desarrollado por el responsable de la automatización de reportes y monitoreo: <strong>Analista de Inteligencia de Negocios</strong>.
-    </p>
-<p>
+<!-- SECCIÓN 8: Data Warehouse Layer -->
+<div class="seccion" id="datawarehouse">
+    <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
+  
+  <h2 style="text-align:left; font-size:1.8em; margin-top:40px;">
+    <span style="font-size:1.2em; margin-right:10px;">🏢</span> Data Warehouse Layer – Capa de Almacén de Datos
+      
+  <p>
+    En esta sección se describe cómo se organizan los datos dentro del Data Warehouse y cómo se complementa 
+    con procesos de automatización mediante <strong>Power Automate</strong>. 
+    Esta capa permite centralizar la información, generar cálculos avanzados y distribuir reportes de forma automática.
+  </p>
+
+  <hr/>
+
+  <!-- Sub-sección: Tablas y Modelo -->
+  <h2>🗄️ Tablas y Modelo</h2>
+  <p>
+    El Data Warehouse almacena todas las tablas maestras y de hechos necesarias para el análisis: 
+    <em>Pedidos, Detalle de Pedidos, Entregas, Detalle de Entregas, Clientes, Productos, Proveedores, Almacenes, Inventario y Calendario</em>.  
+    Adicionalmente, se incluyen <strong>queries de creación de columnas calculadas</strong> dentro de estas tablas para enriquecer los análisis.
+  </p>
+
+  <hr/>
+
+  <!-- Sub-sección: Funcionalidades Claves -->
+  <h2>⚙️ Funcionalidades Claves</h2>
+  <p>
+    El Data Warehouse no solo organiza la información, sino que también permite generar cálculos y medidas 
+    necesarias para dar soporte al análisis del Fill Rate.
+  </p>
+  <ul>
+    <li><strong>📊 Modelado de datos:</strong> Las relaciones entre las tablas responden a un esquema en estrella.</li>
+    <li><strong>🧮 Medidas calculadas:</strong> Fill Rate (%), Ventas generadas, Nivel de cumplimiento.</li>
+    <li><strong>📐 Dimensiones agregadas:</strong> Días transcurridos, Cumplimiento total y otros indicadores derivados.</li>
+  </ul>
+
+  <hr/>
+
+  <!-- Sub-sección: Power Automate -->
+  <h2>🤖 Automatización con Power Automate</h2>
+  <p>
+    Dentro de esta capa también se implementó un flujo en <strong>Power Automate</strong> para automatizar 
+    el envío diario del reporte de indicadores de Fill Rate de Farmacias Limeñas. 
+    Esta automatización permite que el usuario reciba cada mañana un archivo PDF con el dashboard actualizado, 
+    sin necesidad de intervención manual.
+  </p>
+  <p>
+    El flujo ha sido programado para ejecutarse automáticamente todos los días a las <strong>11:00 AM</strong>. 
+    A continuación, se presenta el diseño del flujo implementado:
+  </p>
+
+  <div style="text-align: center; margin: 20px 0;">
+    <img alt="Flujo Power Automate" src="8.PowerAutomate/flujo_PA.png" width="500" 
+         style="border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"/>
+  </div>
+
+  <hr/>
+
+  <!-- Sub-subsecciones del flujo -->
+  <h3>⏰ Recurrence</h3>
+  <p>Disparador programado para que se ejecute todos los días a las 11:00 AM.</p>
+
+  <h3>🔁 Actualizar un conjunto de datos</h3>
+  <p>Refresca los datos del reporte de Power BI, garantizando que el dashboard esté siempre con información reciente.</p>
+
+  <h3>📤 Exportar a archivo</h3>
+  <p>Genera automáticamente el reporte en formato PDF directamente desde Power BI.</p>
+
+  <h3>📧 Enviar correo electrónico (V2)</h3>
+  <p>Envía automáticamente el reporte generado al usuario correspondiente.</p>
+
+  <hr/>
+
+  <p>
+    Este flujo fue desarrollado por el <strong>Analista de Inteligencia de Negocios</strong>, 
+    responsable de la automatización de reportes y monitoreo.
+  </p>
+  <p>
     A continuación, se muestra un ejemplo del correo recibido en la bandeja de entrada del usuario tras la ejecución del flujo:
-    </p>
-<div style="text-align: center;">
-<img alt="Correo automático Power Automate" src="8.PowerAutomate/correo_power_automate.png" width="500"/>
+  </p>
+
+  <div style="text-align: center; margin: 20px 0;">
+    <img alt="Correo automático Power Automate" src="8.PowerAutomate/correo_power_automate.png" width="500" 
+         style="border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"/>
+  </div>
+
+  <p>
+    El remitente corresponde a la cuenta corporativa de Microsoft Fabric 
+    <code>g05@tqt7l.onmicrosoft.com</code> y se envía a la dirección personal del usuario 
+    <code>karyj98@hotmail.com</code>.  
+    Este tipo de automatización optimiza los tiempos de respuesta y facilita el seguimiento diario del indicador 
+    clave del proyecto: el <strong>Fill Rate</strong>.
+  </p>
 </div>
-<br/>
-<p>
-    El remitente corresponde a la cuenta corporativa de Microsoft Fabric <code>g05@tqt7l.onmicrosoft.com</code> y se envía a la dirección personal del usuario <code>karyj98@hotmail.com</code>.
-    </p>
-<p>
-    Este tipo de automatización optimiza los tiempos de respuesta y facilita el seguimiento diario del indicador clave del proyecto: el <strong>Fill Rate</strong>.
-    </p>
-<h2>9. Conclusiones</h2>
+
+    
+    <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
+  
+  <h2 style="text-align:left; font-size:1.8em; margin-top:40px;">
+    <span style="font-size:1.2em; margin-right:10px;">✔️</span> Conclusiones
 <p>
     El proyecto <strong>“Optimización del Fill Rate para Farmacias Limeñas”</strong> logró integrar exitosamente diversas herramientas tecnológicas para transformar por completo la gestión operativa y analítica del proceso logístico. Desde la captura y validación de pedidos en Power Apps hasta la actualización automatizada del modelo en Microsoft Fabric, se construyó un flujo sólido y eficiente que garantiza información actualizada en tiempo real. A través de un modelo de datos estructurado y la automatización de cálculos en notebooks PySpark, se permitió calcular de forma precisa indicadores clave como el Fill Rate, asegurando trazabilidad y confiabilidad en cada etapa del proceso. El dashboard en Power BI facilitó el análisis visual, permitiendo identificar oportunidades de mejora en almacenes, productos y clientes, así como comprender la relación entre el cumplimiento de entregas y la facturación mensual.
     </p>

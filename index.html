@@ -173,36 +173,76 @@
   <p>El acceso a la arquitectura está organizado por roles. Cada usuario es responsable de una parte del proceso: analistas gestionan SQL Azure, desarrolladores administran pipelines y notebooks, y personal operativo usa Power Apps para registrar datos.</p>
 </div>
 
+<!-- ================== DATA LAYER - CAPA DE DATOS ================== -->
 <div class="seccion" id="modelo-datos">
-<h2>3. Diseño del Modelo de Datos</h2>
-<p>
-            A continuación, se presenta el modelo de datos relacional utilizado para el análisis del Fill Rate. 
-            Las tablas fueron importadas desde Azure SQL a Microsoft Fabric y modeladas en un entorno de Data Warehouse, 
-            permitiendo establecer relaciones clave entre pedidos, entregas, inventario y entidades maestras como productos y clientes.
-        </p>
-<!-- Imagen del modelo de datos -->
-<div style="text-align: center; margin: 30px 0;">
-<img alt="Modelo de Datos" src="3.Modelo/Modelo de datos.png" style="max-width: 80%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);"/>
+  <h2>🗄️ Data Layer - Capa de Datos</h2>
+  <p>
+    En esta capa se diseñaron y consolidaron las bases de datos necesarias para el análisis del 
+    <strong>Fill Rate</strong>. Estas tablas permiten capturar, organizar y relacionar la información 
+    proveniente de pedidos, entregas, inventario y datos maestros, asegurando consistencia y 
+    trazabilidad en todo el flujo de información.
+  </p>
+  <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+
+  <!-- MODELO DE DATOS -->
+  <h3>📐 Modelo de Datos SQL</h3>
+  <p>
+    El modelo de datos fue implementado en Azure SQL y modelado dentro de Microsoft Fabric 
+    para integrarse en un entorno de <em>Data Warehouse</em>. Esto permitió establecer relaciones clave 
+    entre pedidos, entregas, inventario y entidades maestras, consolidando una estructura sólida 
+    para los análisis en Power BI.
+  </p>
+
+  <!-- Imagen del modelo de datos -->
+  <div style="text-align: center; margin: 30px 0;">
+    <img alt="Modelo de Datos" src="3.Modelo/Modelo de datos.png" 
+         style="max-width: 80%; height: auto; border-radius: 10px; 
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);"/>
+    <p style="font-size: 14px; color: #555;">Figura: Modelo relacional de las tablas utilizadas en el proyecto</p>
+  </div>
+  <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+
+  <!-- TABLAS DEL MODELO -->
+  <h3>📂 Tablas del Modelo</h3>
+  <p>
+    El modelo está compuesto por diversas tablas que cumplen funciones específicas para la trazabilidad 
+    de los pedidos, el control de inventarios y la gestión de entregas. A continuación, se describe cada 
+    una de ellas:
+  </p>
+
+  <h4>👥 G5_Clientes</h4>
+  <p>Contiene información de las boticas o puntos de venta, incluyendo ID del cliente, nombre, dirección y categoría.</p>
+
+  <h4>💊 G5_Productos</h4>
+  <p>Incluye todos los productos disponibles, su nombre, precio unitario y proveedor asociado.</p>
+
+  <h4>🚚 G5_Proveedores</h4>
+  <p>Datos básicos de los proveedores, como nombre y contacto.</p>
+
+  <h4>🏢 G5_Almacen</h4>
+  <p>Registro de almacenes físicos, con ciudad, dirección y persona encargada.</p>
+
+  <h4>📦 G5_Inventario</h4>
+  <p>Muestra el stock disponible por producto y por almacén, a nivel de fechas específicas.</p>
+
+  <h4>📝 G5_Pedidos</h4>
+  <p>Contiene los pedidos realizados por los clientes, con su respectiva fecha y producto solicitado.</p>
+
+  <h4>📑 G5_Detalle_Pedidos</h4>
+  <p>Detalle por producto y cantidad de cada pedido registrado.</p>
+
+  <h4>🚛 G5_Entregas</h4>
+  <p>Registra cuándo y desde qué almacén se realizó una entrega, si fue completa o no, y quién la gestionó.</p>
+
+  <h4>📋 G5_Detalle_Entrega</h4>
+  <p>Detalle de la cantidad efectivamente entregada para cada producto.</p>
+
+  <h4>📅 Calendario</h4>
+  <p>Tabla maestra de fechas utilizada para análisis temporales y generación de medidas como el Fill Rate mensual.</p>
+
+  <hr style="margin-top: 30px; border: 0; border-top: 1px solid #ddd;">
 </div>
-<!-- Introducción a la descripción de tablas -->
-<p>
-            El modelo está compuesto por varias tablas interrelacionadas que permiten capturar tanto la información de pedidos como de entregas, inventario y datos maestros. 
-            A continuación, se describe brevemente el propósito de cada una:
-        </p>
-<!-- Descripción de tablas con viñetas -->
-<ul style="line-height: 1.8; font-size: 16px;">
-<li><strong>G5_Clientes:</strong> Contiene información de las boticas o puntos de venta, incluyendo ID del cliente, nombre, dirección y categoría.</li>
-<li><strong>G5_Productos:</strong> Incluye todos los productos disponibles, su nombre, precio unitario y proveedor asociado.</li>
-<li><strong>G5_Proveedores:</strong> Datos básicos de los proveedores, como nombre y contacto.</li>
-<li><strong>G5_Almacen:</strong> Registro de almacenes físicos, con ciudad, dirección y persona encargada.</li>
-<li><strong>G5_Inventario:</strong> Muestra el stock disponible por producto y por almacén, a nivel de fechas específicas.</li>
-<li><strong>G5_Pedidos:</strong> Contiene los pedidos realizados por los clientes, con su respectiva fecha y producto solicitado.</li>
-<li><strong>G5_Detalle_Pedidos:</strong> Detalle por producto y cantidad de cada pedido registrado.</li>
-<li><strong>G5_Entregas:</strong> Registra cuándo y desde qué almacén se realizó una entrega, si fue completa o no, y quién la gestionó.</li>
-<li><strong>G5_Detalle_Entrega:</strong> Detalle de la cantidad efectivamente entregada para cada producto.</li>
-<li><strong>Calendario:</strong> Tabla maestra de fechas utilizada para análisis temporales y generación de medidas como el Fill Rate mensual.</li>
-</ul>
-</div>
+
 <div class="seccion" id="notebook">
 <h2>4. Notebook en PySpark</h2>
 <p>

@@ -52,10 +52,11 @@
 <img alt="Imagen de Farmacias Limeñas" src="1.Inicio/Imagen_Empresa.png" style="max-width: 40%; height: auto; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
 </div>
 <!-- Subtítulo de la sección -->
+<hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
+    
 <h2 style="text-align:left; font-size:1.8em; margin-top:30px;">
     <span style="font-size:1.2em; margin-right:10px;">📄</span> Presentación General
 </h2>
-<hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
 
 <p>
     Este proyecto busca implementar una solución tecnológica integral para la empresa ficticia 
@@ -72,10 +73,12 @@
 </p>
 
 <!-- Subtítulo de la sección -->
+<hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
+    
 <h2 style="text-align:left; font-size:1.8em; margin-top:40px;">
     <span style="font-size:1.2em; margin-right:10px;">🎯</span> Objetivos del Proyecto
 </h2>
-<hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
+    
 
 <ul style="line-height:1.8em; font-size:1.05em;">
     <li>Brindar trazabilidad completa de los pedidos y entregas mediante una plataforma integrada.</li>
@@ -87,7 +90,11 @@
 
 <!-- ================== HERRAMIENTAS TECNOLÓGICAS ================== -->
 <div class="seccion" id="herramientas">
-  <h2>🛠️ Herramientas Tecnológicas</h2>
+  <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
+    
+<h2 style="text-align:left; font-size:1.8em; margin-top:40px;">
+    <span style="font-size:1.2em; margin-right:10px;">🛠️</span> Herramientas Tecnológicas
+</h2>  
   <p>
     Para el desarrollo de este proyecto se emplearon diversas herramientas de Microsoft Cloud y aplicaciones de apoyo que 
     permitieron integrar, transformar y visualizar los datos de manera eficiente:
@@ -132,7 +139,11 @@
 
 <!-- ================== ARQUITECTURA DEL PROYECTO ================== -->
 <div class="seccion" id="arquitectura">
-  <h2>🏗️ Arquitectura del Proyecto</h2>
+<hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0 20px 0;">
+    
+<h2 style="text-align:left; font-size:1.8em; margin-top:40px;">
+    <span style="font-size:1.2em; margin-right:10px;">🏗️</span> Arquitectura del Proyecto
+</h2>    
   <p>
     La arquitectura del proyecto fue diseñada para integrar múltiples herramientas en la nube con el fin de 
     automatizar y facilitar la medición del <strong>Fill Rate</strong>. Esta solución combina el uso de una base 
@@ -148,25 +159,25 @@
   </div>
 
   <!-- Subcapas -->
-  <h3>📂 Data Sources</h3>
+  <h2>📂 Data Sources</h2>
   <p>El origen de los datos proviene principalmente de archivos Excel que contienen información de pedidos, entregas, productos y almacenes. Estos archivos constituyen la base inicial del ecosistema de datos.</p>
 
-  <h3>🗄️ Data Layer</h3>
+  <h2>🗄️ Data Layer</h2>
   <p>Con Azure SQL, los datos son cargados y normalizados en una base de datos relacional en la nube. Este nivel garantiza consistencia y prepara la información para los procesos ETL posteriores.</p>
 
-  <h3>📱 Application Layer</h3>
+  <h2>📱 Application Layer</h2>
   <p>Mediante Power Apps, los usuarios registran y actualizan pedidos, entregas e inventarios. Para su desarrollo, se definió un diagrama de flujo que guía la interacción y asegura la correcta trazabilidad de las operaciones.</p>
 
-  <h3>⚙️ ETL Layer</h3>
+  <h2>⚙️ ETL Layer</h2>
   <p>El flujo de datos es orquestado con Microsoft Fabric a través de Pipelines y Notebooks en PySpark. Estos procesos automatizan la ingesta, validan la información y generan notificaciones al correo electrónico.</p>
 
-  <h3>🏢 Data Warehouse Layer</h3>
+  <h2>🏢 Data Warehouse Layer</h2>
   <p>La información consolidada se almacena en un Data Warehouse de Microsoft Fabric. Este repositorio central permite realizar análisis avanzados y servir como base para la generación de reportes confiables en Power BI.</p>
 
-  <h3>⚡ Automate Layer</h3>
+  <h2>⚡ Automate Layer</h2>
   <p>Con Power Automate se gestionan flujos automáticos que exportan reportes y los distribuyen a los responsables mediante correo electrónico o archivos Excel, asegurando la actualización constante de la información.</p>
 
-  <h3>📊 Presentation Layer</h3>
+  <h2>📊 Presentation Layer</h2>
   <p>Power BI es la capa de visualización que transforma los datos en dashboards interactivos y reportes dinámicos, permitiendo un análisis intuitivo de indicadores y facilitando la toma de decisiones.</p>
 
   <h3>👥 User Access</h3>
@@ -509,7 +520,7 @@
 
 
     
-<h2>7. Dashboard en Power BI</h2>
+<h2>📊 Dashboard en Power BI</h2>
 <h3>🗄️ Modelo de datos en Power BI</h3>
 
 <p>
@@ -788,6 +799,8 @@
 <div style="text-align: left; margin-top: 30px;">
 <p><b>✅ Resumen:</b> Esta sección permitió identificar claramente a los clientes y productos más y menos eficientes en términos de facturación y cumplimiento de pedidos. Se concluye que una mejor trazabilidad por almacén y cliente puede facilitar una estrategia de mejora en la operación logística.</p>
 </div>
+
+    
 <h2>8. Automatización con Power Automate</h2>
 <p>
     En esta sección se muestra cómo se ha utilizado <strong>Power Automate</strong> para automatizar el envío diario del reporte de indicadores de Fill Rate de Farmacias Limeñas. Esta automatización permite que el usuario reciba cada mañana el archivo PDF con el dashboard actualizado, sin necesidad de intervención manual.

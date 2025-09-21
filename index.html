@@ -353,176 +353,157 @@
 
 
     
-<!-- ================== SECCIÓN 6: POWER APPS ================== -->
 <div class="seccion" id="powerapps">
-  <h2>📱 6. Power Apps y Flujo Operativo</h2>
-  <p>
-    Uno de los pilares del proyecto fue la implementación de una aplicación operativa en <strong>Power Apps</strong> que permite 
-    registrar, consultar y actualizar información clave como pedidos, entregas, inventario y datos maestros. 
-    A continuación, se muestra el diagrama de flujo que resume el funcionamiento lógico detrás de la aplicación.
-  </p>
+    <h2>6. Power Apps y Flujo Operativo</h2>
+    <p>
+        Uno de los pilares del proyecto fue la implementación de una aplicación operativa en Power Apps que permite 
+        registrar, consultar y actualizar información clave como pedidos, entregas, inventario y datos maestros. 
+        A continuación, se muestra el diagrama de flujo que resume el funcionamiento lógico detrás de la aplicación.
+    </p>
 
-  <!-- Imagen del diagrama -->
-  <div style="text-align: center; margin: 30px 0;">
-    <img alt="Diagrama de flujo Power Apps" src="5.Power_apps/Diagrama_flujo.png" 
-         style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"/>
-  </div>
+    <!-- Imagen del diagrama -->
+    <div style="text-align: center; margin: 30px 0;">
+        <img alt="Diagrama de flujo Power Apps" src="5.Power_apps/Diagrama_flujo.png" 
+             style="max-width: 85%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"/>
+    </div>
 
-  <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
+    <p>El diagrama define los 4 principales procesos habilitados en Power Apps:</p>
 
-  <!-- FLUJO 0 -->
-  <h3>🟦 Flujo 0: Pantalla de Inicio</h3>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Pantalla principal de Power Apps" src="5.Power_apps/app_principal.png" 
-         style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
-  </div>
+    <!-- ================= FLUJO 0 ================= -->
+    <div class="subseccion">
+        <h3>Flujo 0: Pantalla de Inicio</h3>
+        <p>
+            La pantalla principal de la aplicación actúa como menú de navegación para los distintos flujos 
+            (Pedidos, Entregas, Inventario y Tablas Maestras).
+        </p>
 
-  <h4>🎯 Propósito</h4>
-  <ul>
-    <li>Servir como menú principal para acceder a los cuatro flujos operativos de la aplicación.</li>
-    <li>Centralizar la gestión de pedidos, entregas, inventario y tablas maestras en un único punto.</li>
-  </ul>
+        <h4>🎯 Propósito</h4>
+        <ul>
+            <li>Centralizar en un solo punto el acceso a todos los procesos de la aplicación.</li>
+            <li>Permitir que cada rol (ventas, logística, administración) elija el flujo que le corresponde.</li>
+            <li>Facilitar la navegación entre procesos de forma intuitiva.</li>
+        </ul>
+        <h4>⚡ Funcionalidades</h4>
+        <ul>
+            <li>Menú interactivo con accesos a los flujos de <em>Pedidos, Entregas, Inventario</em> y <em>Tablas Maestras</em>.</li>
+            <li>Identificación clara del responsable de cada flujo.</li>
+            <li>Interfaz simplificada para reducir errores de operación.</li>
+        </ul>
+        <div style="text-align: center; margin: 30px 0;">
+            <img alt="Pantalla principal de Power Apps" src="5.Power_apps/app_principal.png" 
+                 style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
+        </div>        
+    </div>
 
-  <h4>⚡ Funcionalidades</h4>
-  <ul>
-    <li>Acceso rápido a: <strong>Registrar pedido</strong>, <strong>Registrar entrega</strong>, 
-        <strong>Registrar inventario</strong> y <strong>Actualizar tablas maestras</strong>.</li>
-    <li>Definir perfiles de usuario según rol (ejemplo: Asistente de Logística).</li>
-    <li>Garantizar sincronización directa con el Data Warehouse en Microsoft Fabric.</li>
-  </ul>
+    <!-- ================= FLUJO 1: PEDIDOS ================= -->
+    <div class="subseccion">
+        <h3>Flujo 1: Registro de Pedidos (Responsable: Asistente de Ventas)</h3>
+        
 
-  <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
 
-  <!-- FLUJO 1 -->
-  <h3>🟩 Flujo 1: Registro de Pedidos (Responsable: Asistente de Ventas)</h3>
+        <h4>🎯 Propósito</h4>
+        <ul>
+            <li>Asegurar que todos los pedidos estén asociados a clientes válidos.</li>
+            <li>Garantizar que los productos solicitados existan en la base de datos.</li>
+            <li>Registrar en forma estructurada la información de cada pedido.</li>
+            <li>Servir como punto de entrada al cálculo posterior del Fill Rate.</li>
+        </ul>
 
-  <h4>🎯 Propósito</h4>
-  <ul>
-    <li>Registrar nuevos pedidos realizados por los clientes.</li>
-    <li>Validar la existencia del cliente y producto antes de completar el registro.</li>
-  </ul>
+        <h4>⚡ Funcionalidades</h4>
+        <ul>
+            <li>Validación de cliente: si no existe, se abre un formulario para registrarlo (Imagen 2 y 3).</li>
+            <li>Formulario de pedidos con campos autocompletados como ID de pedido y cliente (Imagen 4).</li>
+            <li>Notas de ayuda en pantalla para guiar al operador.</li>
+            <li>Registro de detalle del pedido con múltiples productos (Imagen 5).</li>
+            <li>Si un producto no existe, se cancela el pedido para evitar inconsistencias.</li>
+            <li>Automatización de IDs y vínculos con las tablas <code>G5_Pedidos</code> y <code>G5_Detalle_Pedidos</code>.</li>
+        </ul>
+        <!-- Imagen paso 1 -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img alt="Confirmar cliente" src="5.Power_apps/pedido_1.png" style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
+        </div>        
+    </div>
 
-  <h4>⚡ Funcionalidades</h4>
-  <ul>
-    <li>Verificar si el cliente ya existe en la base de datos.</li>
-    <li>Registrar clientes nuevos con campos básicos (<em>nombre, dirección, categoría</em>).</li>
-    <li>Autocompletar <em>ID de cliente</em> e <em>ID de pedido</em> para agilizar el proceso.</li>
-    <li>Registrar detalle del pedido validando la existencia del producto.</li>
-    <li>Almacenar los pedidos en las tablas <code>G5_Pedidos</code> y <code>G5_Detalle_Pedidos</code>.</li>
-  </ul>
+    <!-- ================= FLUJO 2: ENTREGAS ================= -->
+    <div class="subseccion">
+        <h3>Flujo 2: Registro de Entregas (Responsable: Auxiliar de Logística)</h3>
+        
 
-  <!-- Imágenes de flujo de pedidos -->
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Confirmar cliente" src="5.Power_apps/pedido_1.png" style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
-  </div>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Registro cliente nuevo" src="5.Power_apps/pedido_2.png" style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
-  </div>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Formulario registro de pedido" src="5.Power_apps/pedido_3.png" style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
-  </div>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Formulario detalle de pedido" src="5.Power_apps/pedido_4.png" style="max-width: 80%; border: 1px solid #ccc; border-radius: 8px;"/>
-  </div>
 
-  <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
+        <h4>🎯 Propósito</h4>
+        <ul>
+            <li>Garantizar que todas las entregas sean registradas en forma estandarizada.</li>
+            <li>Determinar si los pedidos se cumplen de forma completa (S) o incompleta (N).</li>
+            <li>Registrar información logística crítica como fecha, responsable y almacén.</li>
+            <li>Apoyar directamente el cálculo del Fill Rate al marcar la condición de cumplimiento.</li>
+        </ul>
 
-  <!-- FLUJO 2 -->
-  <h3>🟨 Flujo 2: Registro de Entregas (Responsable: Auxiliar de Almacén)</h3>
+        <h4>⚡ Funcionalidades</h4>
+        <ul>
+            <li>Formulario de registro de detalle de entrega con cantidad entregada (Imagen 1).</li>
+            <li>Visualización previa de stock disponible por producto y almacén.</li>
+            <li>Formulario principal de entrega con campos de fecha, repartidor, pedido y estado de entrega (Imagen 2).</li>
+            <li>Marcado automático de pedidos como completos o incompletos.</li>
+            <li>Actualización automática de tablas <code>G5_Entregas</code> y <code>G5_Detalle_Entrega</code>.</li>
+        </ul>
+        <!-- Imagen detalle entrega -->
+        <div style="text-align: center; margin: 30px 0;">
+            <img alt="Detalle de entrega" src="5.Power_apps/entrega_1.png" style="max-width: 90%; border: 1px solid #ccc; border-radius: 8px;"/>
+        </div>        
+    </div>
 
-  <h4>🎯 Propósito</h4>
-  <ul>
-    <li>Registrar la entrega de productos a los clientes validando stock disponible.</li>
-    <li>Determinar si la entrega fue completa (<code>S</code>) o incompleta (<code>N</code>).</li>
-  </ul>
+    <!-- ================= FLUJO 3: INVENTARIO ================= -->
+    <div class="subseccion">
+        <h3>Flujo 3: Registro de Inventario (Responsable: Operador de Logística)</h3>
 
-  <h4>⚡ Funcionalidades</h4>
-  <ul>
-    <li>Completar formularios de detalle de entrega con <em>ID de entrega</em>, producto y cantidad.</li>
-    <li>Visualizar stock disponible para verificar cumplimiento.</li>
-    <li>Ingresar información del repartidor, fecha y pedido relacionado.</li>
-    <li>Guardar información en <code>G5_Entregas</code> y <code>G5_Detalle_Entrega</code>.</li>
-  </ul>
+        <h4>🎯 Propósito</h4>
+        <ul>
+            <li>Actualizar en tiempo real las cantidades de inventario por producto y almacén.</li>
+            <li>Evitar quiebres de stock mediante un control más oportuno.</li>
+            <li>Validar la coherencia entre entregas y existencias actuales.</li>
+        </ul>
+        <h4>⚡ Funcionalidades</h4>
+        <ul>
+            <li>Consulta del último inventario ingresado.</li>
+            <li>Validación automática de IDs de inventario, producto y almacén.</li>
+            <li>Restricciones para impedir duplicados.</li>
+            <li>Formulario de ingreso simple con campos de cantidad, fecha y códigos asociados.</li>
+        </ul>
+        <div style="text-align: center; margin: 30px 0;">
+            <img alt="Inventario" src="5.Power_apps/inventario.png" style="max-width: 85%; border: 1px solid #ccc; border-radius: 8px;"/>
+        </div>        
+    </div>
 
-  <!-- Imágenes de entrega -->
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Registro detalle de entrega" src="5.Power_apps/entrega_1.png" style="max-width: 90%; border: 1px solid #ccc; border-radius: 8px;"/>
-  </div>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Registro general de entrega" src="5.Power_apps/entrega_2.png" style="max-width: 90%; border: 1px solid #ccc; border-radius: 8px;"/>
-  </div>
+    <!-- ================= FLUJO 4: TABLAS MAESTRAS ================= -->
+    <div class="subseccion">
+        <h3>Flujo 4: Actualización de Tablas Maestras (Responsable: Administrador de Datos)</h3>
+        
 
-  <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
 
-  <!-- FLUJO 3 -->
-  <h3>🟥 Flujo 3: Registro de Inventario (Responsable: Operador de Logística)</h3>
+        <h4>🎯 Propósito</h4>
+        <ul>
+            <li>Centralizar la gestión de clientes, proveedores, productos y almacenes.</li>
+            <li>Evitar inconsistencias y duplicados en los registros básicos del sistema.</li>
+            <li>Garantizar que todas las operaciones de pedidos y entregas se apoyen en entidades válidas.</li>
+            <li>Permitir un mantenimiento ágil y continuo de la base de datos maestra.</li>
+        </ul>
 
-  <h4>🎯 Propósito</h4>
-  <ul>
-    <li>Actualizar en tiempo real el stock disponible de productos en cada almacén.</li>
-    <li>Prevenir inconsistencias en la base de datos mediante validaciones.</li>
-  </ul>
-
-  <h4>⚡ Funcionalidades</h4>
-  <ul>
-    <li>Consultar inventarios históricos y últimas entregas.</li>
-    <li>Completar formulario con <em>inventario_id</em>, producto, almacén, cantidad y fecha.</li>
-    <li>Validar existencia de <code>producto_id</code> y <code>almacen_id</code>.</li>
-    <li>Evitar duplicidad de registros mediante control de claves únicas.</li>
-    <li>Enviar registros validados a la tabla <code>G5_Inventario</code>.</li>
-  </ul>
-
-  <!-- Imagen inventario -->
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Registro inventario" src="5.Power_apps/inventario.png" 
-         style="max-width: 85%; border: 1px solid #ccc; border-radius: 8px;"/>
-  </div>
-
-  <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
-
-  <!-- FLUJO 4 -->
-  <h3>🟪 Flujo 4: Actualización de Tablas Maestras (Responsable: Administrador de Datos)</h3>
-
-  <h4>🎯 Propósito</h4>
-  <ul>
-    <li>Mantener actualizadas las entidades principales que alimentan todos los procesos del sistema.</li>
-    <li>Asegurar que pedidos y entregas puedan registrarse con información válida.</li>
-  </ul>
-
-  <h4>⚡ Funcionalidades</h4>
-  <ul>
-    <li>Registrar, editar o eliminar clientes.</li>
-    <li>Gestionar proveedores desde una misma pantalla.</li>
-    <li>Registrar y modificar productos, incluyendo precio y proveedor asociado.</li>
-    <li>Administrar almacenes con ubicación, dirección y encargado asignado.</li>
-  </ul>
-
-  <!-- Imágenes tablas maestras -->
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Pantalla principal tablas maestras" src="5.Power_apps/maestras_0.png" style="max-width: 90%;"/>
-  </div>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Gestión clientes" src="5.Power_apps/maestras_2.png" style="max-width: 90%;"/>
-  </div>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Registro nuevo cliente" src="5.Power_apps/maestras_21.png" style="max-width: 90%;"/>
-  </div>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Gestión proveedores" src="5.Power_apps/maestras_3.png" style="max-width: 90%;"/>
-  </div>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Gestión productos" src="5.Power_apps/maestras_4.png" style="max-width: 90%;"/>
-  </div>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Formulario nuevo producto" src="5.Power_apps/maestras_41.png" style="max-width: 90%;"/>
-  </div>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Gestión almacenes" src="5.Power_apps/maestras_5.png" style="max-width: 90%;"/>
-  </div>
-  <div style="text-align: center; margin: 25px 0;">
-    <img alt="Formulario nuevo almacén" src="5.Power_apps/maestras_51.png" style="max-width: 90%;"/>
-  </div>
+        <h4>⚡ Funcionalidades</h4>
+        <ul>
+            <li><strong>Clientes:</strong> Listado, edición, eliminación y registro de nuevos clientes con validación de duplicados.</li>
+            <li><strong>Proveedores:</strong> Consulta rápida y creación de nuevos proveedores en la misma pantalla.</li>
+            <li><strong>Productos:</strong> Registro y mantenimiento de productos con precios y proveedores asociados.</li>
+            <li><strong>Almacenes:</strong> Registro y gestión de ubicaciones de almacenes con encargado responsable.</li>
+            <li>Interfaz separada por cada tabla maestra para claridad operativa.</li>
+            <li>Validaciones de integridad en IDs y relaciones entre tablas.</li>
+            <li>Actualización inmediata en el Data Warehouse tras registrar cambios.</li>
+        </ul>
+        <div style="text-align: center; margin: 20px 0;">
+            <img alt="Pantalla principal tablas maestras" src="5.Power_apps/maestras_0.png" style="max-width: 90%; border: 1px solid #ccc;"/>
+        </div>        
+    </div>
 </div>
+
 
     
 <h2>7. Dashboard en Power BI</h2>
